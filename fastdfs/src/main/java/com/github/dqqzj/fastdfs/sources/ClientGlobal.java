@@ -41,7 +41,7 @@ public class ClientGlobal {
 
     /**
      * load global variables
-     * @param conf_filename config filename
+     * @param conf_filename router filename
      */
     public static void init(String conf_filename) throws FileNotFoundException, IOException, MyException {
         IniFileReader iniReader;

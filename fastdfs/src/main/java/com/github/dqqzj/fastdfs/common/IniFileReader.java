@@ -25,7 +25,7 @@ public class IniFileReader {
     private String conf_filename;
 
     /**
-     * @param conf_filename config filename
+     * @param conf_filename router filename
      */
     public IniFileReader(String conf_filename) throws FileNotFoundException, IOException {
         this.conf_filename = conf_filename;
@@ -33,16 +33,16 @@ public class IniFileReader {
     }
 
     /**
-     * get the config filename
-     * @return config filename
+     * get the router filename
+     * @return router filename
      */
     public String getConfFilename() {
         return this.conf_filename;
     }
 
     /**
-     * get string value from config file
-     * @param name item name in config file
+     * get string value from router file
+     * @param name item name in router file
      * @return string value
      */
     public String getStrValue(String name) {
@@ -60,8 +60,8 @@ public class IniFileReader {
     }
 
     /**
-     * get int value from config file
-     * @param name item name in config file
+     * get int value from router file
+     * @param name item name in router file
      * @param default_value the default value
      * @return int value
      */
@@ -75,8 +75,8 @@ public class IniFileReader {
     }
 
     /**
-     * get boolean value from config file
-     * @param name item name in config file
+     * get boolean value from router file
+     * @param name item name in router file
      * @param default_value the default value
      * @return boolean value
      */
@@ -91,8 +91,8 @@ public class IniFileReader {
     }
 
     /**
-     * get all values from config file
-     * @param name item name in config file
+     * get all values from router file
+     * @param name item name in router file
      * @return string values (array)
      */
     public String[] getValues(String name) {
