@@ -45,5 +45,10 @@ public class Server {
         protected void channelRead0(ChannelHandlerContext channelHandlerContext, Object o) throws Exception {
             System.out.println(o);
         }
+
+        @Override
+        public void channelActive(ChannelHandlerContext ctx) throws Exception {
+            System.out.println("this DefaultChannelPipeline#channelActive in invoked！");
+        }
     }
 }
