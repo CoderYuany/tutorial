@@ -15,8 +15,8 @@ import io.netty.util.AttributeKey;
  */
 public class Server {
     public static void main(String[] args) {
-        EventLoopGroup boss = new NioEventLoopGroup(Runtime.getRuntime().availableProcessors());
-        EventLoopGroup work = new NioEventLoopGroup(Runtime.getRuntime().availableProcessors() * 2);
+        EventLoopGroup boss = new NioEventLoopGroup();
+        EventLoopGroup work = new NioEventLoopGroup();
         ServerBootstrap serverBootstrap = new ServerBootstrap();
         serverBootstrap.group(boss,work)
                 .channel(NioServerSocketChannel.class)
