@@ -26,11 +26,11 @@ Netty是一个NIO client-server框架，可以快速和简单的开发网络应�
 
 - [说明](README.md)
 - [Netty概览](md/netty.md)
-- [Netty之Channel创建](md/channel/build.md)
-- [Netty之Channel初始化](md/channel/init.md)
-- [Netty之Channel注册](md/channel/register.md)
-- [Netty之Channel端口绑定](md/channel/bind.md)
-- [Netty之NioEventLoop创建](md/nioeventloop/build.md)
+- [Netty之Channel](md/channel/build.md)
+	- [Netty之Channel初始化](md/channel/init.md)
+    - [Netty之Channel注册](md/channel/register.md)
+    - [Netty之Channel端口绑定](md/channel/bind.md)
+- [Netty之NioEventLoop](md/nioeventloop/build.md)
 ------
 
 
