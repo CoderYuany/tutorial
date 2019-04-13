@@ -7,7 +7,7 @@
 
   - 创建`ThreadPerTaskExecutor`线程创建器
 
-  - 通过`for`循环构造`EventExecutor[^1]`线程组
+  - 通过`for`循环构造`EventExecutor`[^1]线程组
 
     [^1]: NioEventLoop
 
