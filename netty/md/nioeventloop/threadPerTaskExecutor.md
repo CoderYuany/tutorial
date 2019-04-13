@@ -1,6 +1,6 @@
 ### Netty之ThreadPerTaskExecutor创建
 
-![](https://github.com/dqqzj/tutorial/blob/master/netty/src/main/resources/pictures/nioeventloop/threadfactory.png)
+![](https://github.com/dqqzj/tutorial/blob/master/netty/src/main/resources/pictures/nioeventloop/threadPerTaskExecutor.png)
 - 每一次执行任务都会创建一个线程实体
 - `NioEventLoop`线程命名规则`nioEventLoop-group-xx`[**group表示NioEventLoop的分组**]
 
