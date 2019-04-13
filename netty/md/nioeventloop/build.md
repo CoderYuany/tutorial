@@ -7,9 +7,9 @@
 
   - 创建`ThreadPerTaskExecutor`线程创建器
 
-  - 通过`for`循环构造`EventExecutor`线程组
+  - 通过`for`循环构造`[^EventExecutor]`线程组
 
-    [^NioEventLoop]: 
+    [^NioEventLoop]: sfd
 
   - 通过`DefaultEventExecutorChooserFactory`构造`EventExecutorChooser`线程选择器
 
