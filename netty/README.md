@@ -33,6 +33,7 @@ Netty是一个NIO client-server框架，可以快速和简单的开发网络应�
 - [Netty之NioEventLoop](md/nioeventloop/build.md)
     - [ThreadPerTaskExecutor](md/nioeventloop/threadPerTaskExecutor.md)
     - [EventExecutor](md/nioeventloop/eventExecutor.md)
+    - [EventExecutorChooser](md/nioeventloop/eventExecutorChooser.md)
 ------
 
 
