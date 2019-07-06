@@ -1,0 +1,13 @@
+spring:
+  dynamic:
+    datasource:
+      - name: default
+        url: jdbc:mysql://192.168.1.25:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&autoReconnect=true&failOverReadOnly=false
+        username: root
+        password: 123456
+        driver-class-name: com.mysql.cj.jdbc.Driver
+      - name: slave0
+        url: jdbc:mysql://192.168.1.25:3306/slave0?useUnicode=true&characterEncoding=utf-8&useSSL=false&autoReconnect=true&failOverReadOnly=false
+        username: root
+        password: 123456
+        driver-class-name: com.mysql.cj.jdbc.Driver

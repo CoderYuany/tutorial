@@ -5,8 +5,7 @@
     <parent>
         <groupId>com.github.dqqzj</groupId>
         <artifactId>tutorial</artifactId>
-        <version>1.0.0.SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <artifactId>caffeine</artifactId>
     <version>0.0.1-SNAPSHOT</version>

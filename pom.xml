@@ -4,11 +4,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.dqqzj</groupId>
 	<artifactId>tutorial</artifactId>
-	<version>1.0.0.SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
 		<module>fastdfs</module>
 		<module>caffeine</module>
+		<module>netty</module>
+		<module>springboot</module>
+		<module>dynamic</module>
 	</modules>
 	<properties>
 		<java.version>1.8</java.version>
