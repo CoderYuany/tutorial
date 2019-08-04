@@ -11,7 +11,7 @@
 		<module>caffeine</module>
 		<module>netty</module>
 		<module>dynamic</module>
-		<module>seckill</module>
+		<module>spike</module>
 	</modules>
 	<properties>
 		<java.version>1.8</java.version>
