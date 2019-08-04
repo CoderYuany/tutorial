@@ -1,6 +1,6 @@
 package com.github.dqqzj.com.dynamic.service;
 
-import com.github.dqqzj.com.dynamic.po.DataSourcePO;
+import com.github.dqqzj.com.dynamic.po.DataSourcePo;
 
 /**
  * @author qinzhongjian
@@ -10,5 +10,5 @@ import com.github.dqqzj.com.dynamic.po.DataSourcePO;
  */
 public interface DataSourceService {
 
-    void createDatabase(DataSourcePO dataSourcePO);
+    void createDatabase(DataSourcePo dataSourcePO);
 }

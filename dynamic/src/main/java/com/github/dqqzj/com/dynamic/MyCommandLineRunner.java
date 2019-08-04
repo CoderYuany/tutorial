@@ -1,7 +1,7 @@
 package com.github.dqqzj.com.dynamic;
 
 import com.github.dqqzj.com.dynamic.mapper.DataSourceMapper;
-import com.github.dqqzj.com.dynamic.po.DataSourcePO;
+import com.github.dqqzj.com.dynamic.po.DataSourcePo;
 import com.github.dqqzj.com.dynamic.utils.DynamicRoutingUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +25,9 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        List<DataSourcePO> dataSourcePOS = this.dataSourceMapper.findAll();
-        log.info("MyCommandLineRunner#run ----> init dynamicDatasourceProperties from database:[{}] ", dataSourcePOS);
-        DynamicRoutingUtils.addDynamicRoutingDatasource(dataSourcePOS);
+        List<DataSourcePo> dataSourcePos = this.dataSourceMapper.findAll();
+        log.info("MyCommandLineRunner#run ----> init dynamicDatasourceProperties from database:[{}] ", dataSourcePos);
+        DynamicRoutingUtils.addDynamicRoutingDatasource(dataSourcePos);
     }
 
 }

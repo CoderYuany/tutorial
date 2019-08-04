@@ -1,7 +1,7 @@
 package com.github.dqqzj.com.dynamic.controller;
 
 import com.github.dqqzj.com.dynamic.mapper.DataSourceMapper;
-import com.github.dqqzj.com.dynamic.po.DataSourcePO;
+import com.github.dqqzj.com.dynamic.po.DataSourcePo;
 import com.github.dqqzj.com.dynamic.service.DataSourceService;
 import com.github.dqqzj.com.dynamic.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +38,7 @@ public class DataSourceController {
 
     @GetMapping("db/add")
     public void createDatabase() {
-        DataSourcePO dataSourcePO = DataSourcePO
+        DataSourcePo dataSourcePO = DataSourcePo
                 .builder()
                 .driverClassName("com.mysql.cj.jdbc.Driver")
                 .id(0)

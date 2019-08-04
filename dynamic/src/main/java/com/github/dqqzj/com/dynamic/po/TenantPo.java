@@ -11,7 +11,7 @@ import java.time.LocalDate;
  * @since JDK 1.8
  */
 @Data
-public class TenantPO {
+public class TenantPo {
     private int id;
     private String username;
     private String connection;

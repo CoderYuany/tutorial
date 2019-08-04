@@ -1,7 +1,7 @@
 package com.github.dqqzj.com.dynamic.utils;
 
 import com.github.dqqzj.com.dynamic.core.DynamicRoutingDataSource;
-import com.github.dqqzj.com.dynamic.po.DataSourcePO;
+import com.github.dqqzj.com.dynamic.po.DataSourcePo;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 
 import javax.sql.DataSource;
@@ -25,7 +25,7 @@ public class DynamicRoutingUtils {
      * @description:
      * {@link DynamicRoutingDataSource#setTargetDataSources(Map<Object, Object>)}
      */
-    public static void addDynamicRoutingDatasource(DataSourcePO dataSourcePO) {
+    public static void addDynamicRoutingDatasource(DataSourcePo dataSourcePO) {
         DataSource dataSource = createDataSource(dataSourcePO);
         DynamicRoutingDataSource dynamicRoutingDataSource = DynamicRoutingDataSource.getInstance();
         Map<Object,Object> dataSourceMap =  new HashMap<>(1);
@@ -33,7 +33,7 @@ public class DynamicRoutingUtils {
         dynamicRoutingDataSource.setTargetDataSources(dataSourceMap);
     }
 
-    public static void addDynamicRoutingDatasource(List<DataSourcePO> dataSourceList) {
+    public static void addDynamicRoutingDatasource(List<DataSourcePo> dataSourceList) {
         DynamicRoutingDataSource dynamicRoutingDataSource = DynamicRoutingDataSource.getInstance();
         Map<Object,Object> dataSourceMap =  new HashMap<>(dataSourceList.size());
         dataSourceList.forEach(v ->
@@ -42,7 +42,7 @@ public class DynamicRoutingUtils {
         dynamicRoutingDataSource.setTargetDataSources(dataSourceMap);
     }
 
-    private static DataSource createDataSource(DataSourcePO dataSourcePO) {
+    private static DataSource createDataSource(DataSourcePo dataSourcePO) {
         DataSource dataSource = DataSourceBuilder
                 .create()
                 .driverClassName(dataSourcePO.getDriverClassName())

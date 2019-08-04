@@ -2,7 +2,7 @@ package com.github.dqqzj.com.dynamic.service;
 
 import com.github.dqqzj.com.dynamic.core.DynamicDataSourceContextHolder;
 import com.github.dqqzj.com.dynamic.mapper.DataSourceMapper;
-import com.github.dqqzj.com.dynamic.po.DataSourcePO;
+import com.github.dqqzj.com.dynamic.po.DataSourcePo;
 import com.github.dqqzj.com.dynamic.utils.DynamicRoutingUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class DataSourceServiceImpl implements DataSourceService {
      * @description: 利用mysql的特殊表mysql进行链接，并创建其他的数据库
      */
     @Override
-    public void createDatabase(DataSourcePO dataSourcePO) {
+    public void createDatabase(DataSourcePo dataSourcePO) {
         String dbName = dataSourcePO.getName();
         String url = dataSourcePO.getUrl();
         int ipLen = dataSourcePO.getIp().length();

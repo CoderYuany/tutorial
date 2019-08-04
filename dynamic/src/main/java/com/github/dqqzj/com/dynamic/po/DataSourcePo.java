@@ -13,7 +13,7 @@ import java.time.LocalDate;
  */
 @Data
 @Builder
-public class DataSourcePO {
+public class DataSourcePo {
     private int id;
     private long active;
     private LocalDate createTime;

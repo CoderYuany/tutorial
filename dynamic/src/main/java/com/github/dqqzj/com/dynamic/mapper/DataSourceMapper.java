@@ -1,6 +1,6 @@
 package com.github.dqqzj.com.dynamic.mapper;
 
-import com.github.dqqzj.com.dynamic.po.DataSourcePO;
+import com.github.dqqzj.com.dynamic.po.DataSourcePo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -18,7 +18,7 @@ import java.util.List;
 public interface DataSourceMapper {
 
     @Select("SELECT * FROM DataSourcePO")
-    List<DataSourcePO> findAll();
+    List<DataSourcePo> findAll();
 
     @Update("CREATE database ${db}")
     void createDatabase(@Param("db") String db);
