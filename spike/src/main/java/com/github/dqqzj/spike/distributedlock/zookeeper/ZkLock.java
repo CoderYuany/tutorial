@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class ZkLock {
 	
-	private static String address = "192.168.1.180:2181";
+	private static String address = "localhost:2181";
 	
 	public static CuratorFramework client;
 	
