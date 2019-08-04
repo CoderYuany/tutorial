@@ -2,7 +2,12 @@ package com.github.dqqzj.spike.service;
 
 import com.github.dqqzj.spike.request.SpikeRequest;
 import com.github.dqqzj.spike.response.Result;
-
+/**
+ * @author qinzhongjian
+ * @date created in 2019-08-04 09:58
+ * @description: TODO
+ * @since JDK 1.8.0_212-b10
+ */
 public interface ISpikeDistributedService {
 
 	/**
