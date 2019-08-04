@@ -1,6 +1,7 @@
 package com.github.dqqzj.spike.service.impl;
 
 import com.github.dqqzj.spike.distributedlock.redis.RedissonLock;
+import com.github.dqqzj.spike.distributedlock.zookeeper.ZkLock;
 import com.github.dqqzj.spike.enums.SpikeStatusEnum;
 import com.github.dqqzj.spike.po.SpikeGoods;
 import com.github.dqqzj.spike.po.SpikeOrder;
@@ -9,11 +10,6 @@ import com.github.dqqzj.spike.repository.SpikeOrderRepository;
 import com.github.dqqzj.spike.request.SpikeRequest;
 import com.github.dqqzj.spike.response.Result;
 import com.github.dqqzj.spike.service.ISpikeDistributedService;
-import com.itstyle.seckill.common.entity.SuccessKilled;
-import com.itstyle.seckill.common.enums.SeckillStatEnum;
-import com.itstyle.seckill.distributedlock.redis.RedissLockUtil;
-import com.itstyle.seckill.distributedlock.zookeeper.ZkLockUtil;
-import com.itstyle.seckill.service.ISeckillDistributedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -77,74 +73,49 @@ public class SpikeDistributedServiceImpl implements ISpikeDistributedService {
 	}
 	@Override
 	@Transactional
-	public Result startSeckilZksLock(long seckillId, long userId) {
+	public Result startZksLock(SpikeRequest spikeRequest) {
+		final Result[] result = {Result.ok()};
+		Long goodsId = spikeRequest.getGoodsId();
+		Integer count = spikeRequest.getCount();
 		boolean res=false;
 		try {
 			//基于redis分布式锁 基本就是上面这个解释 但是 使用zk分布式锁 使用本地zk服务 并发到10000+还是没有问题，谁的锅？
-			res = ZkLockUtil.acquire(3,TimeUnit.SECONDS);
+			res = ZkLock.acquire(3,TimeUnit.SECONDS);
 			if(res){
-				String nativeSql = "SELECT number FROM seckill WHERE seckill_id=?";
-				Object object =  dynamicQuery.nativeQueryObject(nativeSql, new Object[]{seckillId});
-				Long number =  ((Number) object).longValue();
-				if(number>0){
-					SuccessKilled killed = new SuccessKilled();
-					killed.setSeckillId(seckillId);
-					killed.setUserId(userId);
-					killed.setState((short)0);
-					killed.setCreateTime(new Timestamp(new Date().getTime()));
-					dynamicQuery.save(killed);
-					nativeSql = "UPDATE seckill  SET number=number-1 WHERE seckill_id=? AND number>0";
-					dynamicQuery.nativeExecuteUpdate(nativeSql, new Object[]{seckillId});
-				}else{
-					return Result.error(SeckillStatEnum.END);
-				}
-			}else{
-			    return Result.error(SeckillStatEnum.MUCH);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally{
-			if(res){//释放锁
-				ZkLockUtil.release();
-			}
-		}
-		return Result.ok(SeckillStatEnum.SUCCESS);
-	}
 
-	@Override
-	@Transactional
-	public Result startSeckilLock(long seckillId, long userId, long number) {
-		boolean res=false;
-		try {
-			//尝试获取锁，最多等待3秒，上锁以后10秒自动解锁（实际项目中推荐这种，以防出现死锁）
-			res = RedissLockUtil.tryLock(seckillId+"", TimeUnit.SECONDS, 3, 10);
-			if(res){
-				String nativeSql = "SELECT number FROM seckill WHERE seckill_id=?";
-				Object object =  dynamicQuery.nativeQueryObject(nativeSql, new Object[]{seckillId});
-				Long count =  ((Number) object).longValue();
-				if(count>=number){
-					SuccessKilled killed = new SuccessKilled();
-					killed.setSeckillId(seckillId);
-					killed.setUserId(userId);
-					killed.setState((short)0);
-					killed.setCreateTime(new Timestamp(new Date().getTime()));
-					dynamicQuery.save(killed);
-					nativeSql = "UPDATE seckill  SET number=number-? WHERE seckill_id=? AND number>0";
-					dynamicQuery.nativeExecuteUpdate(nativeSql, new Object[]{number,seckillId});
-				}else{
-					return Result.error(SeckillStatEnum.END);
-				}
+				//校验库存
+				Optional<SpikeGoods> goodsOptional = this.spikeGoodsRepository.findById(goodsId);
+				goodsOptional.ifPresent(spikeGoods -> {
+					Integer stock = spikeGoods.getStock();
+					if(stock > 0 && stock >= count){
+						//扣库存
+						spikeGoods.setStock(stock--);
+						spikeGoodsRepository.save(spikeGoods);
+						//创建订单
+						SpikeOrder spikeOrder = SpikeOrder.builder()
+								.createTime(LocalDateTime.now())
+								.goodsId(goodsId)
+								.state((short) 0)
+								.userId(spikeRequest.getUserId())
+								.totalPrice(count* spikeGoods.getPrice())
+								.build();
+						spikeOrderRepository.save(spikeOrder);
+						//支付....
+					}else{
+						result[0] = Result.error(SpikeStatusEnum.END);
+					}
+				});
 			}else{
-				return Result.error(SeckillStatEnum.MUCH);
+			    return Result.error(SpikeStatusEnum.MUCH);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally{
-			if(res){//释放锁
-				RedissLockUtil.unlock(seckillId+"");
+			if(res){
+				ZkLock.release();
 			}
 		}
-		return Result.ok(SeckillStatEnum.SUCCESS);
+		return result[0];
 	}
 
 }
