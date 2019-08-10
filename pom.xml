@@ -12,6 +12,7 @@
 		<module>netty</module>
 		<module>dynamic</module>
 		<module>spike</module>
+		<module>pay</module>
 	</modules>
 	<properties>
 		<java.version>1.8</java.version>
