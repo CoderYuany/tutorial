@@ -1,8 +1,8 @@
 package com.github.dqqzj.com.dynamic.service;
 
-import com.example.demo.annotation.DS;
-import com.example.demo.mapper.DataSourceMapper;
-import com.example.demo.po.DataSourcePO;
+import com.github.dqqzj.com.dynamic.annotation.DS;
+import com.github.dqqzj.com.dynamic.mapper.DataSourceMapper;
+import com.github.dqqzj.com.dynamic.po.DataSourcePo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class DemoServiceImpl implements DemoService {
 
     @Override
     public ResponseEntity find() {
-        List<DataSourcePO> list = this.dataSourceMapper.findAll();
+        List<DataSourcePo> list = this.dataSourceMapper.findAll();
         return ResponseEntity.ok(list);
     }
 }

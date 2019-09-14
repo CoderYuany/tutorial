@@ -12,7 +12,7 @@
 		<module>netty</module>
 		<module>dynamic</module>
 		<module>spike</module>
-		<module>pay</module>
+		<module>security</module>
 	</modules>
 	<properties>
 		<java.version>1.8</java.version>
@@ -23,7 +23,7 @@
 		<maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
 		<maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
 		<maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
-		<spring-boot.version>2.1.6.RELEASE</spring-boot.version>
+		<spring-boot.version>2.1.7.RELEASE</spring-boot.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
@@ -39,9 +39,9 @@
 		</license>
 	</licenses>
 	<scm>
-		<connection>scm:git:git://github.com/dqqzj/jmtqq.git</connection>
-		<developerConnection>scm:git:git://github.com/dqqzj/jmtqq.git</developerConnection>
-		<url>git://github.com/dqqzj/jmtqq.git</url>
+		<connection>scm:git:git://github.com/dqqzj/tutorial.git</connection>
+		<developerConnection>scm:git:git://github.com/dqqzj/tutorial.git</developerConnection>
+		<url>git://github.com/dqqzj/tutorial.git</url>
 	</scm>
 	<developers>
 		<developer>
