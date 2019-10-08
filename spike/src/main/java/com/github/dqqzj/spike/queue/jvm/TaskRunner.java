@@ -25,7 +25,7 @@ public class TaskRunner implements ApplicationRunner {
 			//进程内队列
 			SpikeRequest spikeRequest = SpikeQueue.getMailQueue().consume();
 			if(spikeRequest != null){
-				this.seckillService.startSeckill(spikeRequest);
+				this.seckillService.start(spikeRequest);
 			}
 		}
     }

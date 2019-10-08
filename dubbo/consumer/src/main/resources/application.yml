@@ -1,0 +1,7 @@
+dubbo:
+  application:
+    name: consumer
+  registry:
+    address: N/A
+server:
+  port: 8081
