@@ -4,40 +4,23 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.core.Ordered;
-import org.springframework.jmx.export.annotation.ManagedOperation;
-import org.springframework.jmx.export.annotation.ManagedResource;
 
-@ManagedResource
-public class RefreshScope extends GenericScope implements ApplicationContextAware, Ordered {
+public class RefreshScope extends GenericScope implements ApplicationContextAware {
     private ApplicationContext context;
     private BeanDefinitionRegistry registry;
-    private int order = 2147483547;
 
     public RefreshScope() {
         super.setName("refresh");
     }
-
-    public int getOrder() {
-        return this.order;
-    }
-
-    public void setOrder(int order) {
-        this.order = order;
-    }
-
 
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
         this.registry = registry;
         super.postProcessBeanDefinitionRegistry(registry);
     }
 
-    @ManagedOperation(
-        description = "Dispose of the current instance of bean name provided and force a refresh on next method execution."
-    )
     public boolean refresh(String name) {
-        if (!name.startsWith("scopedTarget.")) {
-            name = "scopedTarget." + name;
+        if (!name.startsWith(SCOPED_TARGET_PREFIX)) {
+            name = SCOPED_TARGET_PREFIX + name;
         }
 
         if (super.destroy(name)) {
@@ -48,9 +31,6 @@ public class RefreshScope extends GenericScope implements ApplicationContextAwar
         }
     }
 
-    @ManagedOperation(
-        description = "Dispose of the current instance of all beans in this scope and force a refresh on next method execution."
-    )
     public void refreshAll() {
         super.destroy();
         this.context.publishEvent(new RefreshedEvent());
