@@ -16,7 +16,6 @@ import java.util.TreeSet;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.context.properties.bind.Bindable;
 import org.springframework.boot.context.properties.bind.Binder;
 import org.springframework.boot.logging.LogFile;
@@ -56,7 +55,7 @@ public class PropertySourceBootstrapConfiguration implements ApplicationContextI
     }
 
     public void initialize(ConfigurableApplicationContext applicationContext) {
-        CompositePropertySource composite = new CompositePropertySource("bootstrapProperties");
+        CompositePropertySource composite = new CompositePropertySource(BOOTSTRAP_PROPERTY_SOURCE_NAME);
         AnnotationAwareOrderComparator.sort(this.propertySourceLocators);
         boolean empty = true;
         ConfigurableEnvironment environment = applicationContext.getEnvironment();
@@ -77,8 +76,8 @@ public class PropertySourceBootstrapConfiguration implements ApplicationContextI
             MutablePropertySources propertySources = environment.getPropertySources();
             String logConfig = environment.resolvePlaceholders("${logging.config:}");
             LogFile logFile = LogFile.get(environment);
-            if (propertySources.contains("bootstrapProperties")) {
-                propertySources.remove("bootstrapProperties");
+            if (propertySources.contains(BOOTSTRAP_PROPERTY_SOURCE_NAME)) {
+                propertySources.remove(BOOTSTRAP_PROPERTY_SOURCE_NAME);
             }
 
             this.reinitializeLoggingSystem(environment, logConfig, logFile);
@@ -128,7 +127,7 @@ public class PropertySourceBootstrapConfiguration implements ApplicationContextI
                 activeProfiles.add(0, profile);
             }
 
-            environment.setActiveProfiles((String[])activeProfiles.toArray(new String[activeProfiles.size()]));
+            environment.setActiveProfiles(activeProfiles.toArray(new String[activeProfiles.size()]));
         }
     }
 
