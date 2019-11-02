@@ -1,3 +1,4 @@
+/*
 package com.github.dqqzj.refresh.autoconfigure;
 
 import java.util.HashSet;
@@ -15,7 +16,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class ConfigurationPropertiesRebinder implements ApplicationContextAware, ApplicationListener<EnvironmentChangeEvent> {
     private ConfigurationPropertiesBeans beans;
     private ApplicationContext applicationContext;
@@ -92,3 +93,4 @@ public class ConfigurationPropertiesRebinder implements ApplicationContextAware,
 
     }
 }
+*/
