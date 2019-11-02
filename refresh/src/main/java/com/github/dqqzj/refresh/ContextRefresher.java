@@ -32,7 +32,6 @@ import org.springframework.core.env.PropertySource;
 import org.springframework.core.env.StandardEnvironment;
 
 public class ContextRefresher {
-    private static final String REFRESH_ARGS_PROPERTY_SOURCE = "refreshArgs";
     private static final String[] DEFAULT_PROPERTY_SOURCES = new String[]{"commandLineArgs", "defaultProperties"};
     private Set<String> standardSources = new HashSet(Arrays.asList("systemProperties", "systemEnvironment", "jndiProperties", "servletConfigInitParams", "servletContextInitParams", "configurationProperties"));
     private ConfigurableApplicationContext context;
