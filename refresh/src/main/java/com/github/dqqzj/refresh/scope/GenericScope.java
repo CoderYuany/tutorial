@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package com.github.dqqzj.refresh.scope;
 
 import java.lang.reflect.Method;
@@ -271,7 +266,7 @@ public class GenericScope implements Scope, BeanFactoryPostProcessor, BeanDefini
                     readWriteLock = new ReentrantReadWriteLock();
                 }
 
-                Lock lock = ((ReadWriteLock)readWriteLock).readLock();
+                Lock lock = (readWriteLock).readLock();
                 lock.lock();
 
                 Object var7;
@@ -346,31 +341,6 @@ public class GenericScope implements Scope, BeanFactoryPostProcessor, BeanDefini
             }
         }
 
-        public int hashCode() {
-            int result = 31 * 1 + (this.name == null ? 0 : this.name.hashCode());
-            return result;
-        }
-
-        public boolean equals(Object obj) {
-            if (this == obj) {
-                return true;
-            } else if (obj == null) {
-                return false;
-            } else if (this.getClass() != obj.getClass()) {
-                return false;
-            } else {
-                GenericScope.BeanLifecycleWrapper other = (GenericScope.BeanLifecycleWrapper)obj;
-                if (this.name == null) {
-                    if (other.name != null) {
-                        return false;
-                    }
-                } else if (!this.name.equals(other.name)) {
-                    return false;
-                }
-
-                return true;
-            }
-        }
     }
 
     private static class BeanLifecycleWrapperCache {
