@@ -12,7 +12,6 @@ import org.springframework.jmx.export.annotation.ManagedResource;
 public class RefreshScope extends GenericScope implements ApplicationContextAware, Ordered {
     private ApplicationContext context;
     private BeanDefinitionRegistry registry;
-    private boolean eager = true;
     private int order = 2147483547;
 
     public RefreshScope() {
@@ -27,9 +26,6 @@ public class RefreshScope extends GenericScope implements ApplicationContextAwar
         this.order = order;
     }
 
-    public void setEager(boolean eager) {
-        this.eager = eager;
-    }
 
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
         this.registry = registry;
