@@ -270,9 +270,6 @@ public class BootstrapApplicationListener implements ApplicationListener<Applica
 
         while(var3.hasNext()) {
             ApplicationContextInitializer<ConfigurableApplicationContext> initializer = (ApplicationContextInitializer)var3.next();
-            if (initializer instanceof EnvironmentDecryptApplicationInitializer) {
-                decrypter = new BootstrapApplicationListener.DelegatingEnvironmentDecryptApplicationInitializer(initializer);
-            }
         }
 
         if (decrypter != null) {
