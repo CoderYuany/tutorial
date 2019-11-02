@@ -23,11 +23,8 @@ import org.springframework.beans.factory.config.BeanDefinitionHolder;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
-import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.context.properties.bind.Bindable;
 import org.springframework.boot.context.properties.bind.Binder;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -41,11 +38,6 @@ import org.springframework.stereotype.Component;
 
 @Configuration
 @ConditionalOnClass({RefreshScope.class})
-@ConditionalOnProperty(
-    name = {"spring.cloud.refresh.enabled"},
-    matchIfMissing = true
-)
-@AutoConfigureBefore({HibernateJpaAutoConfiguration.class})
 public class RefreshAutoConfiguration {
     public RefreshAutoConfiguration() {
     }
