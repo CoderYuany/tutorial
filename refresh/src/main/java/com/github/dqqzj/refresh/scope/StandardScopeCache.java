@@ -5,28 +5,29 @@ import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-public class StandardScopeCache implements ScopeCache {
-    private final ConcurrentMap<String, Object> cache = new ConcurrentHashMap();
+public class StandardScopeCache<T> implements ScopeCache<T> {
+    private final ConcurrentMap<String, T> cache = new ConcurrentHashMap();
 
     public StandardScopeCache() {
     }
 
-    public Object remove(String name) {
+    public T remove(String name) {
         return this.cache.remove(name);
     }
 
-    public Collection<Object> clear() {
-        Collection<Object> values = new ArrayList(this.cache.values());
+    public Collection<T> clear() {
+        Collection<T> values = new ArrayList(this.cache.values());
         this.cache.clear();
         return values;
     }
 
-    public Object get(String name) {
+    public T get(String name) {
         return this.cache.get(name);
     }
 
-    public Object put(String name, Object value) {
-        Object result = this.cache.putIfAbsent(name, value);
+    public T put(String name, T value) {
+        T result = this.cache.putIfAbsent(name, value);
         return result != null ? result : value;
     }
+
 }

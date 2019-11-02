@@ -7,9 +7,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -45,12 +43,11 @@ import org.springframework.util.StringUtils;
 
 public class GenericScope implements Scope, BeanFactoryPostProcessor, BeanDefinitionRegistryPostProcessor, DisposableBean {
     private static final Log logger = LogFactory.getLog(GenericScope.class);
-    private GenericScope.BeanLifecycleWrapperCache cache = new GenericScope.BeanLifecycleWrapperCache(new StandardScopeCache());
+    private GenericScope.BeanLifecycleWrapperCache cache = new GenericScope.BeanLifecycleWrapperCache(new StandardScopeCache<BeanLifecycleWrapper>());
     private String name = "generic";
     private ConfigurableListableBeanFactory beanFactory;
     private StandardEvaluationContext evaluationContext;
     private String id;
-    private Map<String, Exception> errors = new ConcurrentHashMap();
     private ConcurrentMap<String, ReadWriteLock> locks = new ConcurrentHashMap();
 
     public GenericScope() {
@@ -65,11 +62,7 @@ public class GenericScope implements Scope, BeanFactoryPostProcessor, BeanDefini
     }
 
     public void setScopeCache(ScopeCache cache) {
-        this.cache = new GenericScope.BeanLifecycleWrapperCache(cache);
-    }
-
-    public Map<String, Exception> getErrors() {
-        return this.errors;
+        this.cache = new BeanLifecycleWrapperCache(cache);
     }
 
     public void destroy() {
@@ -94,11 +87,6 @@ public class GenericScope implements Scope, BeanFactoryPostProcessor, BeanDefini
             }
         }
 
-        if (!errors.isEmpty()) {
-            throw wrapIfNecessary(errors.get(0));
-        } else {
-            this.errors.clear();
-        }
     }
 
     protected boolean destroy(String name) {
@@ -112,7 +100,6 @@ public class GenericScope implements Scope, BeanFactoryPostProcessor, BeanDefini
             } finally {
                 lock.unlock();
             }
-            this.errors.remove(name);
             return true;
         } else {
             return false;
@@ -126,7 +113,6 @@ public class GenericScope implements Scope, BeanFactoryPostProcessor, BeanDefini
         try {
             return value.getBean();
         } catch (RuntimeException var5) {
-            this.errors.put(name, var5);
             throw var5;
         }
     }
@@ -208,16 +194,6 @@ public class GenericScope implements Scope, BeanFactoryPostProcessor, BeanDefini
             logger.warn("BeanFactory was not a DefaultListableBeanFactory, scoped proxy beans cannot be serialized.");
         }
 
-    }
-
-    static RuntimeException wrapIfNecessary(Throwable throwable) {
-        if (throwable instanceof RuntimeException) {
-            return (RuntimeException)throwable;
-        } else if (throwable instanceof Error) {
-            throw (Error)throwable;
-        } else {
-            return new IllegalStateException(throwable);
-        }
     }
 
     protected String getName() {
@@ -342,35 +318,27 @@ public class GenericScope implements Scope, BeanFactoryPostProcessor, BeanDefini
     }
 
     private static class BeanLifecycleWrapperCache {
-        private final ScopeCache cache;
+        private final ScopeCache<BeanLifecycleWrapper> cache;
 
         public BeanLifecycleWrapperCache(ScopeCache cache) {
             this.cache = cache;
         }
 
-        public GenericScope.BeanLifecycleWrapper remove(String name) {
-            return (GenericScope.BeanLifecycleWrapper)this.cache.remove(name);
+        public BeanLifecycleWrapper remove(String name) {
+            return this.cache.remove(name);
         }
 
-        public Collection<GenericScope.BeanLifecycleWrapper> clear() {
-            Collection<Object> values = this.cache.clear();
-            Collection<GenericScope.BeanLifecycleWrapper> wrappers = new LinkedHashSet();
-            Iterator var3 = values.iterator();
-
-            while(var3.hasNext()) {
-                Object object = var3.next();
-                wrappers.add((GenericScope.BeanLifecycleWrapper)object);
-            }
-
+        public Collection<BeanLifecycleWrapper> clear() {
+            Collection<BeanLifecycleWrapper> wrappers = this.cache.clear();
             return wrappers;
         }
 
-        public GenericScope.BeanLifecycleWrapper get(String name) {
-            return (GenericScope.BeanLifecycleWrapper)this.cache.get(name);
+        public BeanLifecycleWrapper get(String name) {
+            return this.cache.get(name);
         }
 
-        public GenericScope.BeanLifecycleWrapper put(String name, GenericScope.BeanLifecycleWrapper value) {
-            return (GenericScope.BeanLifecycleWrapper)this.cache.put(name, value);
+        public BeanLifecycleWrapper put(String name, BeanLifecycleWrapper value) {
+            return this.cache.put(name, value);
         }
     }
 }

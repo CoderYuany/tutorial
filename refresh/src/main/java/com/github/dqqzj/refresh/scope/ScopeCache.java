@@ -7,12 +7,12 @@ package com.github.dqqzj.refresh.scope;
 
 import java.util.Collection;
 
-public interface ScopeCache {
-    Object remove(String name);
+public interface ScopeCache<T> {
+    T remove(String name);
 
-    Collection<Object> clear();
+    Collection<T> clear();
 
-    Object get(String name);
+    T get(String name);
 
-    Object put(String name, Object value);
+    T put(String name, T value);
 }

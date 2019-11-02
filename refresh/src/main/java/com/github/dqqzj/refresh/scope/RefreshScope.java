@@ -23,7 +23,6 @@ public class RefreshScope extends GenericScope implements ApplicationContextAwar
         if (!ScopedProxyUtils.isScopedTarget(name)){
             name = ScopedProxyUtils.getOriginalBeanName(name);
         }
-
         if (super.destroy(name)) {
             this.context.publishEvent(new RefreshedEvent(name));
             return true;
