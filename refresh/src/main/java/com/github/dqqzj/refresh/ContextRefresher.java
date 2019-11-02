@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.github.dqqzj.refresh.bootstrap.BootstrapApplicationListener;
 import com.github.dqqzj.refresh.environment.EnvironmentChangeEvent;
 import com.github.dqqzj.refresh.scope.RefreshScope;
 import org.springframework.boot.WebApplicationType;
@@ -59,7 +58,7 @@ public class ContextRefresher {
             var15 = true;
             StandardEnvironment environment = this.copyEnvironment(this.context.getEnvironment());
             SpringApplicationBuilder builder = (new SpringApplicationBuilder(new Class[]{ContextRefresher.Empty.class})).bannerMode(Mode.OFF).web(WebApplicationType.NONE).environment(environment);
-            builder.application().setListeners(Arrays.asList(new BootstrapApplicationListener(), new ConfigFileApplicationListener()));
+            builder.application().setListeners(Arrays.asList(new ConfigFileApplicationListener()));
             capture = builder.run(new String[0]);
             if (environment.getPropertySources().contains("refreshArgs")) {
                 environment.getPropertySources().remove("refreshArgs");
