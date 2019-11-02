@@ -18,10 +18,10 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConditionalOnBean({ConfigurationPropertiesBindingPostProcessor.class})
-public class ConfigurationPropertiesRebinderAutoConfiguration implements ApplicationContextAware, SmartInitializingSingleton {
+public class ConfigurationPropertiesBindingAutoConfiguration implements ApplicationContextAware, SmartInitializingSingleton {
     private ApplicationContext context;
 
-    public ConfigurationPropertiesRebinderAutoConfiguration() {
+    public ConfigurationPropertiesBindingAutoConfiguration() {
     }
 
     public void setApplicationContext(ApplicationContext applicationContext) {
