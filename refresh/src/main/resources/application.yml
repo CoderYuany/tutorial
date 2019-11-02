@@ -1,0 +1,3 @@
+spring:
+  refresh:
+    content: ${random.uuid}

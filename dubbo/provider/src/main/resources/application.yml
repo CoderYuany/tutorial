@@ -1,7 +1,0 @@
-dubbo:
-  application:
-    name: provider
-  registry:
-    address: N/A
-  protocol:
-    port: 9090
