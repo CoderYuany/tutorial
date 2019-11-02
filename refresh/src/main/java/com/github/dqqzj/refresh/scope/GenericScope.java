@@ -150,7 +150,7 @@ public class GenericScope implements Scope, BeanFactoryPostProcessor, BeanDefini
             if (definition instanceof RootBeanDefinition) {
                 RootBeanDefinition root = (RootBeanDefinition) definition;
                 if (root.getDecoratedDefinition() != null && root.hasBeanClass() && root.getBeanClass() == ScopedProxyFactoryBean.class && this.getName().equals(root.getDecoratedDefinition().getBeanDefinition().getScope())) {
-                    root.setBeanClass(GenericScope.LockedScopedProxyFactoryBean.class);
+                    root.setBeanClass(LockedScopedProxyFactoryBean.class);
                     root.getConstructorArgumentValues().addGenericArgumentValue(this);
                     root.setSynthetic(true);
                 }

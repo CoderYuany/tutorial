@@ -1,6 +1,7 @@
 package com.github.dqqzj.refresh;
 
 import com.github.dqqzj.refresh.environment.EnvironmentChangeEvent;
+import com.github.dqqzj.refresh.scope.RefreshedEvent;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.event.EventListener;
@@ -12,8 +13,7 @@ public class RefreshApplication {
         SpringApplication.run(RefreshApplication.class, args);
     }
     @EventListener
-    public void envListener(EnvironmentChangeEvent event) {
-        System.out.println("keys: "+ event.getKeys());
+    public void envListener(RefreshedEvent event) {
         System.out.println("conf change: " + event);
     }
 }
