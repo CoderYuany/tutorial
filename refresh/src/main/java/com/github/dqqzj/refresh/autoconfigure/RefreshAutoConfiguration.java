@@ -135,27 +135,4 @@ public class RefreshAutoConfiguration {
         }
     }
 
-    @Configuration
-    @ConditionalOnClass(
-        name = {"javax.persistence.EntityManagerFactory"}
-    )
-    protected static class JpaInvokerConfiguration implements LoadTimeWeaverAware {
-        @Autowired
-        private ListableBeanFactory beanFactory;
-
-        protected JpaInvokerConfiguration() {
-        }
-
-        @PostConstruct
-        public void init() {
-            String cls = "org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker";
-            if (this.beanFactory.containsBean(cls)) {
-                this.beanFactory.getBean(cls);
-            }
-
-        }
-
-        public void setLoadTimeWeaver(LoadTimeWeaver ltw) {
-        }
-    }
 }
