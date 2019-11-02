@@ -45,7 +45,6 @@ import org.springframework.util.StringUtils;
 
 public class GenericScope implements Scope, BeanFactoryPostProcessor, BeanDefinitionRegistryPostProcessor, DisposableBean {
     private static final Log logger = LogFactory.getLog(GenericScope.class);
-    public static final String SCOPED_TARGET_PREFIX = "scopedTarget.";
     private GenericScope.BeanLifecycleWrapperCache cache = new GenericScope.BeanLifecycleWrapperCache(new StandardScopeCache());
     private String name = "generic";
     private ConfigurableListableBeanFactory beanFactory;

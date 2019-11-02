@@ -1,5 +1,6 @@
 package com.github.dqqzj.refresh.scope;
 
+import org.springframework.aop.scope.ScopedProxyUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.ApplicationContext;
@@ -19,8 +20,8 @@ public class RefreshScope extends GenericScope implements ApplicationContextAwar
     }
 
     public boolean refresh(String name) {
-        if (!name.startsWith(SCOPED_TARGET_PREFIX)) {
-            name = SCOPED_TARGET_PREFIX + name;
+        if (!ScopedProxyUtils.isScopedTarget(name)){
+            name = ScopedProxyUtils.getOriginalBeanName(name);
         }
 
         if (super.destroy(name)) {
