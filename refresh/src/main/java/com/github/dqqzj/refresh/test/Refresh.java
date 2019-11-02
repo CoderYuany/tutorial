@@ -3,6 +3,7 @@ package com.github.dqqzj.refresh.test;
 import com.github.dqqzj.refresh.annotation.RefreshScope;
 import lombok.Data;
 import lombok.ToString;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -18,5 +19,6 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "spring.refresh")
 public class Refresh {
+    //@Value("${spring.refresh.content:dqqzj}")
     private String content;
 }

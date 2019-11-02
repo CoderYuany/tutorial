@@ -78,7 +78,7 @@ public class RefreshScope extends GenericScope implements ApplicationContextAwar
         }
 
         if (super.destroy(name)) {
-            this.context.publishEvent(new RefreshScopeRefreshedEvent(name));
+            this.context.publishEvent(new RefreshedEvent(name));
             return true;
         } else {
             return false;
@@ -90,7 +90,7 @@ public class RefreshScope extends GenericScope implements ApplicationContextAwar
     )
     public void refreshAll() {
         super.destroy();
-        this.context.publishEvent(new RefreshScopeRefreshedEvent());
+        this.context.publishEvent(new RefreshedEvent());
     }
 
     public void setApplicationContext(ApplicationContext context) throws BeansException {

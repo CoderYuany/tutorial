@@ -113,7 +113,6 @@ public class GenericScope implements Scope, BeanFactoryPostProcessor, BeanDefini
             } finally {
                 lock.unlock();
             }
-
             this.errors.remove(name);
             return true;
         } else {

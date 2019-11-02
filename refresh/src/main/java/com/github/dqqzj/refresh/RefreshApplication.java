@@ -13,6 +13,7 @@ public class RefreshApplication {
     }
     @EventListener
     public void envListener(EnvironmentChangeEvent event) {
+        System.out.println("keys: "+ event.getKeys());
         System.out.println("conf change: " + event);
     }
 }
