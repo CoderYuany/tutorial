@@ -33,7 +33,7 @@ public class ConfigurationPropertiesRebinderAutoConfiguration implements Applica
         search = SearchStrategy.CURRENT
     )
     public ConfigurationPropertiesBeans configurationPropertiesBeans() {
-        ConfigurationBeanFactoryMetadata metaData = (ConfigurationBeanFactoryMetadata)this.context.getBean(ConfigurationBeanFactoryMetadata.BEAN_NAME, ConfigurationBeanFactoryMetadata.class);
+        ConfigurationBeanFactoryMetadata metaData = this.context.getBean(ConfigurationBeanFactoryMetadata.BEAN_NAME, ConfigurationBeanFactoryMetadata.class);
         ConfigurationPropertiesBeans beans = new ConfigurationPropertiesBeans();
         beans.setBeanMetaDataStore(metaData);
         return beans;
@@ -50,7 +50,7 @@ public class ConfigurationPropertiesRebinderAutoConfiguration implements Applica
 
     public void afterSingletonsInstantiated() {
         if (this.context.getParent() != null) {
-            ConfigurationPropertiesRebinder rebinder = (ConfigurationPropertiesRebinder)this.context.getBean(ConfigurationPropertiesRebinder.class);
+            ConfigurationPropertiesRebinder rebinder = this.context.getBean(ConfigurationPropertiesRebinder.class);
             String[] var2 = this.context.getParent().getBeanDefinitionNames();
             int var3 = var2.length;
 

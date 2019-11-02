@@ -87,7 +87,7 @@ public class GenericScope implements Scope, BeanFactoryPostProcessor, BeanDefini
             GenericScope.BeanLifecycleWrapper wrapper = (GenericScope.BeanLifecycleWrapper)var3.next();
 
             try {
-                Lock lock = ((ReadWriteLock)this.locks.get(wrapper.getName())).writeLock();
+                Lock lock = (this.locks.get(wrapper.getName())).writeLock();
                 lock.lock();
 
                 try {
@@ -101,7 +101,7 @@ public class GenericScope implements Scope, BeanFactoryPostProcessor, BeanDefini
         }
 
         if (!errors.isEmpty()) {
-            throw wrapIfNecessary((Throwable)errors.get(0));
+            throw wrapIfNecessary(errors.get(0));
         } else {
             this.errors.clear();
         }
@@ -110,7 +110,7 @@ public class GenericScope implements Scope, BeanFactoryPostProcessor, BeanDefini
     protected boolean destroy(String name) {
         GenericScope.BeanLifecycleWrapper wrapper = this.cache.remove(name);
         if (wrapper != null) {
-            Lock lock = ((ReadWriteLock)this.locks.get(wrapper.getName())).writeLock();
+            Lock lock = (this.locks.get(wrapper.getName())).writeLock();
             lock.lock();
 
             try {
@@ -232,7 +232,7 @@ public class GenericScope implements Scope, BeanFactoryPostProcessor, BeanDefini
     }
 
     protected ReadWriteLock getLock(String beanName) {
-        return (ReadWriteLock)this.locks.get(beanName);
+        return this.locks.get(beanName);
     }
 
     public static class LockedScopedProxyFactoryBean<S extends GenericScope> extends ScopedProxyFactoryBean implements MethodInterceptor {

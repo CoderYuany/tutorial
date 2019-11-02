@@ -57,11 +57,11 @@ public class ConfigurationPropertiesBeans implements BeanPostProcessor, Applicat
         if (this.isRefreshScoped(beanName)) {
             return bean;
         } else {
-            ConfigurationProperties annotation = (ConfigurationProperties)AnnotationUtils.findAnnotation(bean.getClass(), ConfigurationProperties.class);
+            ConfigurationProperties annotation = AnnotationUtils.findAnnotation(bean.getClass(), ConfigurationProperties.class);
             if (annotation != null) {
                 this.beans.put(beanName, bean);
             } else if (this.metaData != null) {
-                annotation = (ConfigurationProperties)this.metaData.findFactoryAnnotation(beanName, ConfigurationProperties.class);
+                annotation = this.metaData.findFactoryAnnotation(beanName, ConfigurationProperties.class);
                 if (annotation != null) {
                     this.beans.put(beanName, bean);
                 }

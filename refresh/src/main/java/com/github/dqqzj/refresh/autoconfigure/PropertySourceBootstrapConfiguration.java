@@ -29,15 +29,12 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.AnnotationAwareOrderComparator;
 import org.springframework.core.env.CompositePropertySource;
 import org.springframework.core.env.ConfigurableEnvironment;
-import org.springframework.core.env.Environment;
 import org.springframework.core.env.MutablePropertySources;
 import org.springframework.core.env.PropertySource;
-import org.springframework.core.env.StandardEnvironment;
 import org.springframework.util.ResourceUtils;
 import org.springframework.util.StringUtils;
 
 @Configuration
-@EnableConfigurationProperties({PropertySourceBootstrapProperties.class})
 public class PropertySourceBootstrapConfiguration implements ApplicationContextInitializer<ConfigurableApplicationContext>, Ordered {
     public static final String BOOTSTRAP_PROPERTY_SOURCE_NAME = "bootstrapProperties";
     private static Log logger = LogFactory.getLog(PropertySourceBootstrapConfiguration.class);
@@ -84,7 +81,6 @@ public class PropertySourceBootstrapConfiguration implements ApplicationContextI
                 propertySources.remove("bootstrapProperties");
             }
 
-            this.insertPropertySources(propertySources, composite);
             this.reinitializeLoggingSystem(environment, logConfig, logFile);
             this.handleIncludedProfiles(environment);
         }
@@ -110,50 +106,7 @@ public class PropertySourceBootstrapConfiguration implements ApplicationContextI
 
     }
 
-    private void insertPropertySources(MutablePropertySources propertySources, CompositePropertySource composite) {
-        MutablePropertySources incoming = new MutablePropertySources();
-        incoming.addFirst(composite);
-        PropertySourceBootstrapProperties remoteProperties = new PropertySourceBootstrapProperties();
-        Binder.get(this.environment(incoming)).bind("spring.cloud.config", Bindable.ofInstance(remoteProperties));
-        if (remoteProperties.isAllowOverride() && (remoteProperties.isOverrideNone() || !remoteProperties.isOverrideSystemProperties())) {
-            if (remoteProperties.isOverrideNone()) {
-                propertySources.addLast(composite);
-            } else {
-                if (propertySources.contains("systemEnvironment")) {
-                    if (!remoteProperties.isOverrideSystemProperties()) {
-                        propertySources.addAfter("systemEnvironment", composite);
-                    } else {
-                        propertySources.addBefore("systemEnvironment", composite);
-                    }
-                } else {
-                    propertySources.addLast(composite);
-                }
 
-            }
-        } else {
-            propertySources.addFirst(composite);
-        }
-    }
-
-    private Environment environment(MutablePropertySources incoming) {
-        StandardEnvironment environment = new StandardEnvironment();
-        Iterator var3 = environment.getPropertySources().iterator();
-
-        PropertySource source;
-        while(var3.hasNext()) {
-            source = (PropertySource)var3.next();
-            environment.getPropertySources().remove(source.getName());
-        }
-
-        var3 = incoming.iterator();
-
-        while(var3.hasNext()) {
-            source = (PropertySource)var3.next();
-            environment.getPropertySources().addLast(source);
-        }
-
-        return environment;
-    }
 
     private void handleIncludedProfiles(ConfigurableEnvironment environment) {
         Set<String> includeProfiles = new TreeSet();
