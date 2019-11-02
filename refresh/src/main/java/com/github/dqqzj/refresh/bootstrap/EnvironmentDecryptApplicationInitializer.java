@@ -30,21 +30,9 @@ import org.springframework.core.env.PropertySources;
 import org.springframework.core.env.SystemEnvironmentPropertySource;
 
 public class EnvironmentDecryptApplicationInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext>, Ordered {
-    public static final String DECRYPTED_PROPERTY_SOURCE_NAME = "decrypted";
-    public static final String DECRYPTED_BOOTSTRAP_PROPERTY_SOURCE_NAME = "decryptedBootstrap";
     private int order = -2147483633;
     private static Log logger = LogFactory.getLog(EnvironmentDecryptApplicationInitializer.class);
-    //private TextEncryptor encryptor;
-    private boolean failOnError = true;
     private static final Pattern COLLECTION_PROPERTY = Pattern.compile("(\\S+)?\\[(\\d+)\\](\\.\\S+)?");
-
-    public void setFailOnError(boolean failOnError) {
-        this.failOnError = failOnError;
-    }
-
-   /* public EnvironmentDecryptApplicationInitializer(TextEncryptor encryptor) {
-        this.encryptor = encryptor;
-    }*/
 
     public int getOrder() {
         return this.order;
@@ -58,10 +46,10 @@ public class EnvironmentDecryptApplicationInitializer implements ApplicationCont
         ConfigurableEnvironment environment = applicationContext.getEnvironment();
         MutablePropertySources propertySources = environment.getPropertySources();
         Set<String> found = new LinkedHashSet();
-        Map<String, Object> map = this.decrypt((PropertySources)propertySources);
+        Map<String, Object> map = this.decrypt(propertySources);
         if (!map.isEmpty()) {
             found.addAll(map.keySet());
-            this.insert((ApplicationContext)applicationContext, new SystemEnvironmentPropertySource("decrypted", map));
+            this.insert(applicationContext, new SystemEnvironmentPropertySource("decrypted", map));
         }
 
         PropertySource<?> bootstrap = propertySources.get("bootstrap");
@@ -69,7 +57,7 @@ public class EnvironmentDecryptApplicationInitializer implements ApplicationCont
             map = this.decrypt(bootstrap);
             if (!map.isEmpty()) {
                 found.addAll(map.keySet());
-                this.insert((ApplicationContext)applicationContext, new SystemEnvironmentPropertySource("decryptedBootstrap", map));
+                this.insert(applicationContext, new SystemEnvironmentPropertySource("decryptedBootstrap", map));
             }
         }
 
@@ -164,27 +152,6 @@ public class EnvironmentDecryptApplicationInitializer implements ApplicationCont
                     String value = property.toString();
                     if (value.startsWith("{cipher}")) {
                         value = value.substring("{cipher}".length());
-
-//                        try {
-//                            value = this.encryptor.decrypt(value);
-//                            if (logger.isDebugEnabled()) {
-//                                logger.debug("Decrypted: key=" + key);
-//                            }
-//                        } catch (Exception var14) {
-//                            String message = "Cannot decrypt: key=" + key;
-//                            if (this.failOnError) {
-//                                throw new IllegalStateException(message, var14);
-//                            }
-//
-//                            if (logger.isDebugEnabled()) {
-//                                logger.warn(message, var14);
-//                            } else {
-//                                logger.warn(message);
-//                            }
-//
-//                            value = "";
-//                        }
-
                         overrides.put(key, value);
                         if (COLLECTION_PROPERTY.matcher(key).matches()) {
                             sourceHasDecryptedCollection = true;
