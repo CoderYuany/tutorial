@@ -88,7 +88,7 @@ public class GenericScope implements Scope, BeanFactoryPostProcessor, BeanDefini
             return false;
         }
     }
-
+    @Override
     public Object get(String name, ObjectFactory<?> objectFactory) {
         BeanLifecycleWrapper value = this.cache.put(name, new BeanLifecycleWrapper(name, objectFactory));
         this.locks.putIfAbsent(name, new ReentrantReadWriteLock());
@@ -99,11 +99,11 @@ public class GenericScope implements Scope, BeanFactoryPostProcessor, BeanDefini
             throw var5;
         }
     }
-
+    @Override
     public String getConversationId() {
         return this.name;
     }
-
+    @Override
     public void registerDestructionCallback(String name, Runnable callback) {
         GenericScope.BeanLifecycleWrapper value = this.cache.get(name);
         if (value != null) {
@@ -111,11 +111,12 @@ public class GenericScope implements Scope, BeanFactoryPostProcessor, BeanDefini
         }
     }
 
+    @Override
     public Object remove(String name) {
         GenericScope.BeanLifecycleWrapper value = this.cache.remove(name);
         return value == null ? null : value.getBean();
     }
-
+    @Override
     public Object resolveContextualObject(String key) {
         Expression expression = this.parseExpression(key);
         return expression.getValue(this.evaluationContext, this.beanFactory);
