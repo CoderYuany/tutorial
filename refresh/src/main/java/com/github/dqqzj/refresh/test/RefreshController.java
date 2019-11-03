@@ -2,6 +2,11 @@ package com.github.dqqzj.refresh.test;
 
 import com.github.dqqzj.refresh.ContextRefresher;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
+import org.springframework.boot.WebApplicationType;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.config.ConfigFileApplicationListener;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +24,7 @@ public class RefreshController {
     @Autowired
     private Refresh refresh;
 
-    @GetMapping(path = "/refresh")
+    @GetMapping(path = "refresh")
     public String refresh() {
         new Thread(() -> contextRefresher.refresh()).start();
         return refresh.toString();
