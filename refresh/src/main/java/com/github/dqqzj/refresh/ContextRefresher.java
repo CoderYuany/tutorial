@@ -175,24 +175,14 @@ public class ContextRefresher {
 
     private Map<String, Object> extract(MutablePropertySources propertySources) {
         Map<String, Object> result = new HashMap();
-        List<PropertySource<?>> sources = new ArrayList();
-        Iterator var4 = propertySources.iterator();
-
+        Iterator propertySourceIterator = propertySources.iterator();
         PropertySource source;
-        while(var4.hasNext()) {
-            source = (PropertySource)var4.next();
-            sources.add(0, source);
-        }
-
-        var4 = sources.iterator();
-
-        while(var4.hasNext()) {
-            source = (PropertySource)var4.next();
+        while(propertySourceIterator.hasNext()) {
+            source = (PropertySource)propertySourceIterator.next();
             if (!this.standardSources.contains(source.getName())) {
                 this.extract(source, result);
             }
         }
-
         return result;
     }
 
@@ -218,11 +208,10 @@ public class ContextRefresher {
                 return;
             }
         } else if (parent instanceof EnumerablePropertySource) {
-            String[] var8 = ((EnumerablePropertySource)parent).getPropertyNames();
-            int var9 = var8.length;
-
-            for(int var10 = 0; var10 < var9; ++var10) {
-                String key = var8[var10];
+            String[] propertyNames = ((EnumerablePropertySource)parent).getPropertyNames();
+            int propertyNameNumbers = propertyNames.length;
+            for(int i = 0; i < propertyNameNumbers; ++i) {
+                String key = propertyNames[i];
                 result.put(key, parent.getProperty(key));
             }
         }
