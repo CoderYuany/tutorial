@@ -14,6 +14,7 @@ public class RefreshScope extends GenericScope implements ApplicationContextAwar
         super.setName("refresh");
     }
 
+    @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
         this.registry = registry;
         super.postProcessBeanDefinitionRegistry(registry);
