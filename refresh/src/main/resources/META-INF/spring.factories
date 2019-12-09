@@ -1,3 +1,0 @@
-# Bootstrap components
-com.github.dqqzj.refresh.bootstrap.BootstrapConfiguration=\
-org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration

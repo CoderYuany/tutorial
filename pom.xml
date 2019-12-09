@@ -8,11 +8,9 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>refresh</module>
         <module>dynamic</module>
         <module>security</module>
         <module>springboot</module>
-        <module>demo</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
