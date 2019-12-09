@@ -1,4 +1,4 @@
-# Mockito 中文文档 ( 2.0.26 beta )
+# Mockito 中文文档
 
 ![](http://img.blog.csdn.net/20150731162529393)
 
