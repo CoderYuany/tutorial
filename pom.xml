@@ -51,6 +51,7 @@
                 <version>${spring.boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+                <optional>true</optional>
             </dependency>
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
@@ -120,4 +121,24 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>springboot-1.4.7</id>
+            <properties>
+                <spring.boot.version>1.4.7.RELEASE</spring.boot.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>springboot-1.5.0</id>
+            <properties>
+                <spring.boot.version>1.5.0.RELEASE</spring.boot.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>springboot-2.2.0</id>
+            <properties>
+                <spring.boot.version>2.2.0.RELEASE</spring.boot.version>
+            </properties>
+        </profile>
+    </profiles>
 </project>
