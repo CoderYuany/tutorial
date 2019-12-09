@@ -10,18 +10,6 @@ Mockito库能够Mock对象、验证结果以及打桩(stubbing)。
 
 该文档您也可以通过[http://mockito.org](http://mockito.org)获取到。所有文档都保存在javadocs中，因为它能够保证文档与源代码的一致性。这样也能够让离线的用户从IDE直接访问到文档。这样一来也能够激励Mockito开发者在每次写代码、每次提交时更新对应的文档。
 
-## 参与人员
-
-|  成员 |  任务  |
-|-----------|------|
-| [Mr.Simple](https://github.com/hehonghui/) | 1-15 |
-| [chaosss](https://github.com/chaosss/) | 16-26 |
-|[tiiime](https://github.com/tiiime/) | 27~35 |
-|[dengshiwei](https://github.com/dengshiwei/) | a~c开头的方法,包含 |
-|[objectlife](https://github.com/objectlife/) | d~m开头的方法 |
-|[Conquer](https://github.com/Conquer/) | n-w开头的函数 |
-
-
 ## 目录
 
 0. [迁移到Mockito 2.0](#0)
