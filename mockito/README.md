@@ -1,6 +1,6 @@
 # Mockito 中文文档
 
-![](http://img.blog.csdn.net/20150731162529393)
+![](https://github.com/dqqzj/tutorial/blob/master/mockito/src/main/resources/static/images/mockito.png)
 
 > 由于缺乏校对，难免有谬误之处，如果发现任何语句不通顺、翻译错误，都可以在[github中的项目](https://github.com/dqqzj/tutorial/tree/master/mockito)提出issue。谢谢~ 
 
