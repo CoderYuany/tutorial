@@ -15,8 +15,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class FlowerServiceImpl implements FlowerService {
+
     @Autowired
     FlowerRepository flowerRepository;
+
     @Override
     public Flower findById(long id) {
         Flower flower = Flower.builder().id(0L).name("Ramat").price(88D).build();
@@ -24,7 +26,7 @@ public class FlowerServiceImpl implements FlowerService {
     }
 
     @Override
-    public Flower save(Flower flower) {
+    public Flower add(Flower flower) {
         try {
            return flowerRepository.save(flower);
         }catch (Exception e) {

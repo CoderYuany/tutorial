@@ -24,5 +24,5 @@ public interface FlowerService {
      * @return: com.github.dqqzj.mockito.domain.Flower
      * @description: 保存
      */
-    Flower save(Flower flower);
+    Flower add(Flower flower);
 }

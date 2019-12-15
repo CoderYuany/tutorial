@@ -19,19 +19,22 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class FlowerController {
+
     @Autowired
     FlowerService flowerService;
-    @GetMapping("get/{id}")
-    public ResponseEntity<Flower> get(@NonNull @PathVariable Long id) {
+
+    @GetMapping("find/{id}")
+    public ResponseEntity<Flower> findById(@NonNull @PathVariable Long id) {
         Flower flower = flowerService.findById(id);
         return ResponseEntity.ok().body(flower);
     }
-    @PostMapping("save")
-    public ResponseEntity<Flower> save(@NonNull Flower flower) {
+
+    @PostMapping("add")
+    public ResponseEntity<Flower> add(@NonNull Flower flower) {
         if (StringUtils.isEmpty(flower.getName())) {
             return ResponseEntity.ok().build();
         }
-        Flower returnFlower = flowerService.save(flower);
+        Flower returnFlower = flowerService.add(flower);
         if (returnFlower == null) {
             return ResponseEntity.ok().build();
         }
