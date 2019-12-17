@@ -1,6 +1,6 @@
 package com.github.dqqzj.athena;
 
-import com.github.dqqzj.athena.config.Configuration;
+import com.github.dqqzj.athena.config.LogConfig;
 import com.github.dqqzj.athena.core.InvokeMethod;
 import com.github.dqqzj.athena.resolver.ExceptionResolver;
 import com.github.dqqzj.athena.utils.ReflectionUtils;
@@ -21,7 +21,7 @@ import java.lang.reflect.Method;
 @Slf4j
 public class Unify {
 
-    public static final String TRACE_KEY = Configuration.TRACE_KEY;
+    public static final String TRACE_KEY = LogConfig.TRACE_KEY;
 
     /**
      * 统一异常处理入口
@@ -35,7 +35,7 @@ public class Unify {
     public static Object process(ProceedingJoinPoint pjp, Class<?> returnType, Object globalExceptionHandler)
             throws Throwable {
         try {
-            String traceId = Configuration.traceUtil.get();
+            String traceId = LogConfig.traceUtil.get();
             MDC.put(TRACE_KEY, traceId);
             Method classMethod = ReflectionUtils.getClassMethod(pjp);
             // 类型检查
@@ -43,17 +43,16 @@ public class Unify {
                 return pjp.proceed();
             }
             InvokeMethod invokeMethod = ReflectionUtils.getInvokeMethod(pjp);
-
             Object result;
             try {
-                Configuration.LogConfig.log4InputParams.accept(invokeMethod);
-                Configuration.ValidatorConfig.jsrValidator.accept(invokeMethod);
+                LogConfig.log4InputParams.accept(invokeMethod);
+                LogConfig.ValidatorConfig.jsrValidator.accept(invokeMethod);
                 result = pjp.proceed();
                 invokeMethod.setResult(result);
-                Configuration.LogConfig.log4ReturnValues.accept(invokeMethod);
+                LogConfig.log4ReturnValues.accept(invokeMethod);
             } catch (Throwable throwable) {
                 invokeMethod.setThrowable(throwable);
-                Configuration.LogConfig.log4Exceptions.accept(invokeMethod);
+                LogConfig.log4Exceptions.accept(invokeMethod);
                 result = ExceptionResolver.processException(pjp, throwable, returnType, globalExceptionHandler);
             }
             return result;

@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
  * @description TODO
  * @since JDK 1.8.0_212-b10
  */
-public class ReflectionUtils {
+public abstract class ReflectionUtils {
 
     public static Method getClassMethod(ProceedingJoinPoint pjp) {
         Object target = pjp.getTarget();

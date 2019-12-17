@@ -14,8 +14,9 @@ import com.github.dqqzj.athena.utils.ClearParameterNameProvider;
 import com.github.dqqzj.athena.utils.ReflectionUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.core.annotation.AnnotationUtils;
+
+import static jdk.nashorn.internal.runtime.ScriptRuntime.safeToString;
 
 /**
  * @author qinzhongjian
@@ -26,71 +27,52 @@ import org.springframework.core.annotation.AnnotationUtils;
 @Slf4j
 public class LogPrinter {
 
-    /**
-     * Global config
-     * 目前是白名单机制，需要手动设置打印入参出参
-     */
-    public static boolean logForInputParams;
-    public static boolean logForResult;
-    public static boolean logForAll = false;
-
     private static ParameterNameProvider discoverer = new ClearParameterNameProvider();
-
-    private static String safeToString(Object o) {
-        return ToStringBuilder.reflectionToString(o);
-    }
 
     private static boolean checkLogConfigForInputParams(Method method) {
         LogForParams logForParams = AnnotationUtils.getAnnotation(method, LogForParams.class);
         if (logForParams != null) {
-            return logForParams.logForParams();
+            return logForParams.value();
         }
         LogForAll logForAll = AnnotationUtils.getAnnotation(method, LogForAll.class);
         if (logForAll != null) {
-            return logForAll.logForParams();
+            return logForAll.value();
         }
         logForParams = AnnotationUtils.getAnnotation(method.getDeclaringClass(), LogForParams.class);
         if (logForParams != null) {
-            return logForParams.logForParams();
+            return logForParams.value();
         }
         logForAll = AnnotationUtils.getAnnotation(method.getDeclaringClass(), LogForAll.class);
         if (logForAll != null) {
-            return logForAll.logForParams();
+            return logForAll.value();
         }
-        Boolean logForInputParams = LogPrinter.logForInputParams;
-        if (logForInputParams != null) {
-            return logForInputParams;
-        }
-        return LogPrinter.logForAll;
+        return false;
     }
 
     private static boolean checkLogConfigForResult(Method method) {
         LogForResult logForResult = AnnotationUtils.getAnnotation(method, LogForResult.class);
         if (logForResult != null) {
-            return logForResult.logForResult();
+            return logForResult.value();
         }
         LogForAll logForAll = AnnotationUtils.getAnnotation(method, LogForAll.class);
         if (logForAll != null) {
-            return logForAll.logForResult();
+            return logForAll.value();
         }
         logForResult = AnnotationUtils.getAnnotation(method.getDeclaringClass(), LogForResult.class);
         if (logForResult != null) {
-            return logForResult.logForResult();
+            return logForResult.value();
         }
         logForAll = AnnotationUtils.getAnnotation(method.getDeclaringClass(), LogForAll.class);
         if (logForAll != null) {
-            return logForAll.logForResult();
+            return logForAll.value();
         }
-        Boolean logForResultCheck = LogPrinter.logForResult;
-        if (logForResultCheck != null) {
-            return logForResultCheck;
-        }
-        return LogPrinter.logForAll;
+        return false;
     }
 
-    public void printLog4InputParams(InvokeMethod invokeMethod) {
+    public static void printLog4InputParams(InvokeMethod invokeMethod) {
         Method classMethod = invokeMethod.getMethod();
-        boolean needPrintLog = LogPrinter.checkLogConfigForInputParams(classMethod);
+
+        boolean needPrintLog = checkLogConfigForInputParams(classMethod);
         if (!needPrintLog) {
             return;
         }
@@ -108,7 +90,7 @@ public class LogPrinter {
         log.error(builder.toString());
     }
 
-    public void printLog4ReturnValues(InvokeMethod invokeMethod) {
+    public static void printLog4ReturnValues(InvokeMethod invokeMethod) {
         Method classMethod = invokeMethod.getMethod();
         boolean needPrintLog = LogPrinter.checkLogConfigForResult(classMethod);
         if (!needPrintLog) {
@@ -118,9 +100,10 @@ public class LogPrinter {
         log.info(methodFullName + ": result = {}", invokeMethod.getResult());
     }
 
-    public void printLog4Exceptions(InvokeMethod invokeMethod) {
+    public static void printLog4Exceptions(InvokeMethod invokeMethod) {
         Method classMethod = invokeMethod.getMethod();
         String methodFullName = ReflectionUtils.getMethodFullName(classMethod);
         log.error(methodFullName + ": ", invokeMethod.getThrowable());
     }
+
 }

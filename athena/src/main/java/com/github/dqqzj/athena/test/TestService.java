@@ -1,6 +1,7 @@
 package com.github.dqqzj.athena.test;
 
 import com.github.dqqzj.athena.annotation.LogForAll;
+import com.github.dqqzj.athena.annotation.LogForParams;
 import com.github.dqqzj.athena.annotation.RestApiAdvice;
 import com.github.dqqzj.athena.core.ResultVO;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
  * @description TODO
  * @since JDK1.8.0_211-b12
  */
-@LogForAll(logForParams = true,logForResult = true)
+@LogForParams(value = true)
 @RestApiAdvice
 @Service
 public class TestService {

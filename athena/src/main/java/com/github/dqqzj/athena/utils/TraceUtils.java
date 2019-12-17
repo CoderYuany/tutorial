@@ -8,7 +8,7 @@ import java.util.UUID;
  * @description trace id 获取工具
  * @since JDK 1.8.0_212-b10
  */
-public class TraceUtils {
+public abstract class TraceUtils {
     public static String getTraceId() {
         return UUID.randomUUID().toString().replace("-", "").toUpperCase();
     }
