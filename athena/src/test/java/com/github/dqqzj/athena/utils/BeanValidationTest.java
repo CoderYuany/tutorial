@@ -11,7 +11,7 @@ class BeanValidationTest {
         beanDemo.field = "Hi~";
         BeanValidation.checkAndThrow(beanDemo);
         System.out.println("Run...");
-        beanDemo.field = "";
+        beanDemo.field = null;
         BeanValidation.checkAndThrow(beanDemo);
     }
 

@@ -30,8 +30,8 @@ public class LogPrinter {
      * Global config
      * 目前是白名单机制，需要手动设置打印入参出参
      */
-    public static Boolean logForInputParams;
-    public static Boolean logForResult;
+    public static boolean logForInputParams;
+    public static boolean logForResult;
     public static boolean logForAll = false;
 
     private static ParameterNameProvider discoverer = new ClearParameterNameProvider();
@@ -114,7 +114,6 @@ public class LogPrinter {
         if (!needPrintLog) {
             return;
         }
-
         String methodFullName = ReflectionUtils.getMethodFullName(classMethod);
         log.info(methodFullName + ": result = {}", invokeMethod.getResult());
     }

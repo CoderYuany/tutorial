@@ -5,7 +5,9 @@ import com.github.dqqzj.athena.core.ResultVO;
 import com.github.dqqzj.athena.handler.GlobalExceptionHandler;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
 
 /**
  * @author qinzhongjian
@@ -13,6 +15,8 @@ import org.aspectj.lang.annotation.Pointcut;
  * @description TODO
  * @since JDK 1.8.0_212-b10
  */
+@Aspect
+@Component
 public class HsfProviderAspect {
 
     private static final GlobalExceptionHandler globalExceptionHandler = new GlobalExceptionHandler();

@@ -24,15 +24,17 @@ public class ResultVO<T> implements Serializable {
     private String message;
     private T data;
 
-    public static <T> ResultVOBuilder<T> success(T data) {
+    public static <T> ResultVO<T> success(T data) {
         return ResultVO.<T>common(ResultCodeEnum.OK)
                 .success(Boolean.TRUE)
-                .data(data);
+                .data(data)
+                .build();
     }
-    public static <T> ResultVOBuilder<T> error(ResultCodeInterface resultCode, T data) {
+    public static <T> ResultVO<T> error(ResultCodeInterface resultCode, T data) {
         return ResultVO.<T>common(resultCode)
             .success(Boolean.FALSE)
-            .data(data);
+            .data(data)
+            .build();
     }
     public static <T> ResultVOBuilder<T> common(ResultCodeInterface resultCode) {
         return ResultVO.<T>builder()
