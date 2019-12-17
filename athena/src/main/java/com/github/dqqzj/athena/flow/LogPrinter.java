@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.validation.ParameterNameProvider;
 
+import com.alibaba.fastjson.JSON;
 import com.github.dqqzj.athena.annotation.LogForAll;
 import com.github.dqqzj.athena.annotation.LogForParams;
 import com.github.dqqzj.athena.annotation.LogForResult;
@@ -71,7 +72,6 @@ public class LogPrinter {
 
     public static void printLog4InputParams(InvokeMethod invokeMethod) {
         Method classMethod = invokeMethod.getMethod();
-
         boolean needPrintLog = checkLogConfigForInputParams(classMethod);
         if (!needPrintLog) {
             return;
@@ -82,7 +82,7 @@ public class LogPrinter {
         List<String> kvs = new ArrayList<>();
         for (int i = 0; i < args.length; i++) {
             String parameterName = parameterNames.get(i);
-            String value = safeToString(args[i]);
+            String value = JSON.toJSONString(args[i]);
             kvs.add(parameterName + "=" + value);
         }
         String join = StringUtils.join(kvs, "|");

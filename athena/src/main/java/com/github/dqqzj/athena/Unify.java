@@ -2,6 +2,7 @@ package com.github.dqqzj.athena;
 
 import com.github.dqqzj.athena.config.LogConfig;
 import com.github.dqqzj.athena.core.InvokeMethod;
+import com.github.dqqzj.athena.core.ResultVO;
 import com.github.dqqzj.athena.resolver.ExceptionResolver;
 import com.github.dqqzj.athena.utils.ReflectionUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -48,6 +49,11 @@ public class Unify {
                 LogConfig.log4InputParams.accept(invokeMethod);
                 LogConfig.ValidatorConfig.jsrValidator.accept(invokeMethod);
                 result = pjp.proceed();
+                if (result instanceof ResultVO) {
+                    ResultVO resultVO = ResultVO.class.cast(result);
+                    resultVO.setTraceId(traceId);
+                    result = resultVO;
+                }
                 invokeMethod.setResult(result);
                 LogConfig.log4ReturnValues.accept(invokeMethod);
             } catch (Throwable throwable) {

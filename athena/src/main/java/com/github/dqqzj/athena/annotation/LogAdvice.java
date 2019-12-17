@@ -8,9 +8,10 @@ import java.lang.annotation.*;
  * @description API的GlobalExceptionHandler标记
  * @since JDK 1.8.0_212-b10
  */
-@Target(ElementType.TYPE)
+
+@Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-public @interface RestApiAdvice {
+public @interface LogAdvice {
 }

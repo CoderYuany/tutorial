@@ -3,6 +3,7 @@ package com.github.dqqzj.athena.test;
 import com.github.dqqzj.athena.core.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -17,7 +18,7 @@ public class TestController {
     @Autowired
     TestService testService;
     @GetMapping("hello")
-    public ResultVO hello(String name) {
-        return testService.hello(name);
+    public ResultVO hello(String x,String y) {
+        return testService.hello(x,y);
     }
 }

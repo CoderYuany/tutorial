@@ -21,7 +21,7 @@ public class HsfProviderAspect {
 
     private static final GlobalExceptionHandler globalExceptionHandler = new GlobalExceptionHandler();
 
-    @Pointcut("@within(com.github.dqqzj.athena.annotation.RestApiAdvice)")
+    @Pointcut("@within(com.github.dqqzj.athena.annotation.LogAdvice)")
     public void pointcut() {
     }
 

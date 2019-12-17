@@ -8,6 +8,7 @@ import java.lang.annotation.*;
  * @description 日志打印
  * @since JDK 1.8.0_212-b10
  */
+
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
