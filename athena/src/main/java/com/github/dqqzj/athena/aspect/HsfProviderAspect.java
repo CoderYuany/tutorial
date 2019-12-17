@@ -26,7 +26,7 @@ public class HsfProviderAspect {
     }
 
     @Around("pointcut()")
-    public Object testPointcutAround(ProceedingJoinPoint pjp) throws Throwable {
+    public Object pointcutAround(ProceedingJoinPoint pjp) throws Throwable {
         return Unify.process(pjp, ResultVO.class, globalExceptionHandler);
     }
 }
