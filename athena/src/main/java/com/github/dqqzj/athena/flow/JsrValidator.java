@@ -5,6 +5,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+import javax.validation.executable.ExecutableValidator;
+
+import com.github.dqqzj.athena.core.InvokeMethod;
+import com.github.dqqzj.athena.core.enums.ResultCodeEnum;
+import com.github.dqqzj.athena.core.exception.SimpleBizException;
+import com.github.dqqzj.athena.utils.ReflectionUtils;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.hibernate.validator.internal.engine.ValidatorContextImpl;
+import org.springframework.util.CollectionUtils;
+
 /**
  * @author qinzhongjian
  * @date created in 2019/12/16 23:41
@@ -18,7 +32,6 @@ public class JsrValidator {
 
     static {
         ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
-
         ValidatorContextImpl validatorContext = (ValidatorContextImpl) validatorFactory.usingContext();
         validatorContext.allowOverridingMethodAlterParameterConstraint(true);
         DEFAULT_VALIDATOR = validatorContext.getValidator();
@@ -36,8 +49,7 @@ public class JsrValidator {
     public static void validate(ProceedingJoinPoint pjp) {
         Object target = pjp.getTarget();
         Object[] args = pjp.getArgs();
-        Method realMethod = RefUtil.getClassMethod(pjp);
-
+        Method realMethod = ReflectionUtils.getClassMethod(pjp);
         Set<ConstraintViolation<Object>> constraintViolations = VALIDATOR.validateParameters(target, realMethod, args);
         processConstraintViolations(constraintViolations, realMethod);
     }
@@ -46,7 +58,6 @@ public class JsrValidator {
         Object target = invokeMethod.getTarget();
         Object[] args = invokeMethod.getArgs();
         Method realMethod = invokeMethod.getMethod();
-
         Set<ConstraintViolation<Object>> constraintViolations = VALIDATOR.validateParameters(target, realMethod, args);
         processConstraintViolations(constraintViolations, realMethod);
     }
@@ -55,7 +66,7 @@ public class JsrValidator {
         if (!CollectionUtils.isEmpty(constraintViolations)) {
             String errorMessage = parseConstraintViolation(constraintViolations, realMethod);
             // 这里可以更通用些, 但是统一错误码也没什么坏处
-            throw new SimpleBizException(ResultCodeEnum.PARAMETER_ERROR, errorMessage);
+            throw new SimpleBizException(ResultCodeEnum.ILLEGAL_ARGUMENT, errorMessage);
         }
     }
 

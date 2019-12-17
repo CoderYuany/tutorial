@@ -2,6 +2,7 @@ package com.github.dqqzj.athena;
 
 import com.github.dqqzj.athena.config.Configuration;
 import com.github.dqqzj.athena.core.InvokeMethod;
+import com.github.dqqzj.athena.resolver.ExceptionResolver;
 import com.github.dqqzj.athena.utils.ReflectionUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -31,7 +32,7 @@ public class Unify {
      * @return 执行结果，有可能是异常结果
      * @throws Throwable 不能处理的异常
      */
-    public static Object clear(ProceedingJoinPoint pjp, Class<?> returnType, Object globalExceptionHandler)
+    public static Object process(ProceedingJoinPoint pjp, Class<?> returnType, Object globalExceptionHandler)
             throws Throwable {
         try {
             String traceId = Configuration.traceUtil.get();

@@ -7,12 +7,13 @@ package com.github.dqqzj.athena.core;
  * @since JDK 1.8.0_212-b10
  */
 public interface ResultCodeInterface {
+
     /**
      * 错误码
      *
      * @return 错误码
      */
-    String code();
+    int code();
 
     /**
      * 错误具体信息

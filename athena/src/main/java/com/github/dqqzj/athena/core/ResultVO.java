@@ -1,5 +1,6 @@
 package com.github.dqqzj.athena.core;
 
+import com.github.dqqzj.athena.core.enums.ResultCodeEnum;
 import lombok.Builder;
 import lombok.Data;
 
@@ -23,13 +24,17 @@ public class ResultVO<T> implements Serializable {
     private String message;
     private T data;
 
-    public static <T> ResultVOBuilder<T> successBuilder(T data) {
-        return ResultVO.<T>commonBuilder(ResultCodeEnum.SUCCESS)
+    public static <T> ResultVOBuilder<T> success(T data) {
+        return ResultVO.<T>common(ResultCodeEnum.SUCCESS)
                 .success(Boolean.TRUE)
                 .data(data);
     }
-
-    public static <T> ResultVOBuilder<T> commonBuilder(ResultCodeInterface resultCode) {
+    public static <T> ResultVOBuilder<T> error(ResultCodeInterface resultCode, T data) {
+        return ResultVO.<T>common(resultCode)
+            .success(Boolean.FALSE)
+            .data(data);
+    }
+    public static <T> ResultVOBuilder<T> common(ResultCodeInterface resultCode) {
         return ResultVO.<T>builder()
                 .code(resultCode.code())
                 .message(resultCode.message());

@@ -1,5 +1,7 @@
 package com.github.dqqzj.athena.aspect;
 
+import com.github.dqqzj.athena.Unify;
+import com.github.dqqzj.athena.core.ResultVO;
 import com.github.dqqzj.athena.handler.GlobalExceptionHandler;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -21,6 +23,6 @@ public class HsfProviderAspect {
 
     @Around("pointcut()")
     public Object testPointcutAround(ProceedingJoinPoint pjp) throws Throwable {
-        return Unify.clear(pjp, ResultVO.class, globalExceptionHandler);
+        return Unify.process(pjp, ResultVO.class, globalExceptionHandler);
     }
 }

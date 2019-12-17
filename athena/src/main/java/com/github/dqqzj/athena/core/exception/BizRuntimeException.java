@@ -1,5 +1,7 @@
 package com.github.dqqzj.athena.core.exception;
 
+import com.github.dqqzj.athena.core.ResultCodeInterface;
+
 /**
  * @author qinzhongjian
  * @date created in 2019/12/16 23:28
