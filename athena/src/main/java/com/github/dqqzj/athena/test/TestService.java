@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  * @description TODO
  * @since JDK1.8.0_211-b12
  */
-@LogForAll
+@LogForAll(logForParams = true,logForResult = true)
 @RestApiAdvice
 @Service
 public class TestService {

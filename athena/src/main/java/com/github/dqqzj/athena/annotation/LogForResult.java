@@ -12,5 +12,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface LogForResult {
-    boolean value() default false;
+    boolean logForResult() default false;
 }

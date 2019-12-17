@@ -43,19 +43,19 @@ public class LogPrinter {
     private static boolean checkLogConfigForInputParams(Method method) {
         LogForParams logForParams = AnnotationUtils.getAnnotation(method, LogForParams.class);
         if (logForParams != null) {
-            return logForParams.value();
+            return logForParams.logForParams();
         }
         LogForAll logForAll = AnnotationUtils.getAnnotation(method, LogForAll.class);
         if (logForAll != null) {
-            return logForAll.value();
+            return logForAll.logForParams();
         }
         logForParams = AnnotationUtils.getAnnotation(method.getDeclaringClass(), LogForParams.class);
         if (logForParams != null) {
-            return logForParams.value();
+            return logForParams.logForParams();
         }
         logForAll = AnnotationUtils.getAnnotation(method.getDeclaringClass(), LogForAll.class);
         if (logForAll != null) {
-            return logForAll.value();
+            return logForAll.logForParams();
         }
         Boolean logForInputParams = LogPrinter.logForInputParams;
         if (logForInputParams != null) {
@@ -67,19 +67,19 @@ public class LogPrinter {
     private static boolean checkLogConfigForResult(Method method) {
         LogForResult logForResult = AnnotationUtils.getAnnotation(method, LogForResult.class);
         if (logForResult != null) {
-            return logForResult.value();
+            return logForResult.logForResult();
         }
         LogForAll logForAll = AnnotationUtils.getAnnotation(method, LogForAll.class);
         if (logForAll != null) {
-            return logForAll.value();
+            return logForAll.logForResult();
         }
         logForResult = AnnotationUtils.getAnnotation(method.getDeclaringClass(), LogForResult.class);
         if (logForResult != null) {
-            return logForResult.value();
+            return logForResult.logForResult();
         }
         logForAll = AnnotationUtils.getAnnotation(method.getDeclaringClass(), LogForAll.class);
         if (logForAll != null) {
-            return logForAll.value();
+            return logForAll.logForResult();
         }
         Boolean logForResultCheck = LogPrinter.logForResult;
         if (logForResultCheck != null) {

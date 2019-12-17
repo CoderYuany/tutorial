@@ -2,6 +2,8 @@ package com.github.dqqzj.athena.annotation;
 
 import java.lang.annotation.*;
 
+import org.springframework.core.annotation.AliasFor;
+
 /**
  * @author qinzhongjian
  * @date created in 2019/12/16 23:20
@@ -14,5 +16,10 @@ import java.lang.annotation.*;
 @LogForParams
 @LogForResult
 public @interface LogForAll {
-    boolean value() default false;
+
+    @AliasFor(annotation = LogForParams.class)
+    boolean logForParams() default false;
+
+    @AliasFor(annotation = LogForResult.class)
+    boolean logForResult() default false;
 }
