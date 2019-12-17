@@ -9,7 +9,7 @@ import com.github.dqqzj.athena.core.ResultCodeInterface;
  * @since JDK 1.8.0_212-b10
  */
 public class BizRuntimeException extends RuntimeException {
-    private String errorCode;
+    private int errorCode;
 
     public BizRuntimeException(ResultCodeInterface error) {
         super(error.message());
@@ -21,12 +21,12 @@ public class BizRuntimeException extends RuntimeException {
         this.errorCode = error.code();
     }
 
-    public BizRuntimeException(String code, String message) {
+    public BizRuntimeException(int code, String message) {
         super(message);
         this.errorCode = code;
     }
 
-    public String getErrorCode() {
+    public int getErrorCode() {
         return errorCode;
     }
 }

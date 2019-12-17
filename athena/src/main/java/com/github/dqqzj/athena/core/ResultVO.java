@@ -19,13 +19,13 @@ public class ResultVO<T> implements Serializable {
     private static final long serialVersionUID = -4448696578582628909L;
 
     private String traceId;
-    private Boolean success;
-    private String code;
+    private boolean success;
+    private int code;
     private String message;
     private T data;
 
     public static <T> ResultVOBuilder<T> success(T data) {
-        return ResultVO.<T>common(ResultCodeEnum.SUCCESS)
+        return ResultVO.<T>common(ResultCodeEnum.OK)
                 .success(Boolean.TRUE)
                 .data(data);
     }

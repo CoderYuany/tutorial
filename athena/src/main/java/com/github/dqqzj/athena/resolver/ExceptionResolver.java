@@ -1,5 +1,6 @@
 package com.github.dqqzj.athena.resolver;
 
+import com.github.dqqzj.athena.utils.ReflectionUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.util.Assert;
@@ -18,10 +19,10 @@ import java.lang.reflect.Method;
 public class ExceptionResolver {
     public static Object processException(ProceedingJoinPoint pjp, Throwable throwable, Class<?> returnType,
                                           Object globalExceptionHandler) {
-        Method classMethod = RefUtil.getClassMethod(pjp);
+        Method classMethod = ReflectionUtils.getClassMethod(pjp);
         // for inner throwable handle
         Object target = pjp.getTarget();
-        log.error(RefUtil.getMethodFullName(classMethod) + ": ", throwable);
+        log.error(ReflectionUtils.getMethodFullName(classMethod) + ": ", throwable);
 
         // 防御式做法
         if (!(throwable instanceof Exception)) {

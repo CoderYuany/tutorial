@@ -2,6 +2,15 @@ package com.github.dqqzj.athena.utils;
 
 import java.util.Set;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
+
+import com.github.dqqzj.athena.core.enums.ResultCodeEnum;
+import com.github.dqqzj.athena.core.exception.BizRuntimeException;
+import com.github.dqqzj.athena.flow.JsrValidator;
+import org.springframework.util.Assert;
+import org.springframework.util.CollectionUtils;
+
 /**
  * @author qinzhongjian
  * @date created in 2019/12/16 23:45
@@ -23,7 +32,7 @@ public class BeanValidation {
         Set<ConstraintViolation<Object>> violations = VALIDATOR.validate(waitForCheck);
         if (!CollectionUtils.isEmpty(violations)) {
             String violationMsg = JsrValidator.doParseConstraintViolation(violations);
-            throw new BizRuntimeException(ResultCodeEnum.PARAMETER_ERROR, violationMsg);
+            throw new BizRuntimeException(ResultCodeEnum.ILLEGAL_ARGUMENT, violationMsg);
         }
     }
 

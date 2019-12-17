@@ -1,6 +1,7 @@
 package com.github.dqqzj.athena.handler;
 
 import com.github.dqqzj.athena.core.ResultVO;
+import com.github.dqqzj.athena.core.enums.ResultCodeEnum;
 import com.github.dqqzj.athena.core.exception.BizRuntimeException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -14,7 +15,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResultVO handleIllegalArgumentException(IllegalArgumentException e) {
-        return ResultVO.commonBuilder(ResultCodeEnum.PARAMETER_ERROR)
+        return ResultVO.common(ResultCodeEnum.ILLEGAL_ARGUMENT)
                 .message(e.getMessage())
                 .build();
     }
@@ -32,7 +33,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResultVO handleException(Exception e) {
-        return ResultVO.commonBuilder(ResultCodeEnum.SYSTEM_ERROR)
+        return ResultVO.common(ResultCodeEnum.INTERNAL_SERVER_ERROR)
                 .success(Boolean.FALSE)
                 .message(e.getMessage())
                 .build();

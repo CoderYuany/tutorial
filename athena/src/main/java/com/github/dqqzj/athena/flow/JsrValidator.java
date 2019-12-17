@@ -15,6 +15,7 @@ import com.github.dqqzj.athena.core.InvokeMethod;
 import com.github.dqqzj.athena.core.enums.ResultCodeEnum;
 import com.github.dqqzj.athena.core.exception.SimpleBizException;
 import com.github.dqqzj.athena.utils.ReflectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.hibernate.validator.internal.engine.ValidatorContextImpl;
 import org.springframework.util.CollectionUtils;
@@ -71,14 +72,14 @@ public class JsrValidator {
     }
 
     private static String parseConstraintViolation(Set<ConstraintViolation<Object>> constraintViolations, Method realMethod) {
-        String methodFullName = RefUtil.getMethodFullName(realMethod);
+        String methodFullName = ReflectionUtils.getMethodFullName(realMethod);
         return methodFullName + " $$ " + "<< " + doParseConstraintViolation(constraintViolations) + " >>";
     }
 
     public static String doParseConstraintViolation(Set<ConstraintViolation<Object>> constraintViolations) {
         List<String> kvs = new ArrayList<>();
         for (ConstraintViolation<Object> constraintViolation : constraintViolations) {
-            String innerStr = String.valueOf(constraintViolation.getPropertyPath()) +
+            String innerStr = constraintViolation.getPropertyPath() +
                     " " + constraintViolation.getMessage();
             kvs.add(innerStr);
         }

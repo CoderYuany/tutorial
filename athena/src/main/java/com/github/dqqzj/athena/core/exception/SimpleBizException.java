@@ -18,7 +18,7 @@ public class SimpleBizException extends BizRuntimeException {
         super(error, message);
     }
 
-    public SimpleBizException(String code, String message) {
+    public SimpleBizException(int code, String message) {
         super(code, message);
     }
 

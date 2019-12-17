@@ -3,6 +3,8 @@ package com.github.dqqzj.athena.utils;
 import java.util.Map;
 import java.util.concurrent.*;
 
+import org.slf4j.MDC;
+
 /**
  * @author qinzhongjian
  * @date created in 2019/12/16 23:46

@@ -4,6 +4,19 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.ParameterNameProvider;
+
+import com.github.dqqzj.athena.annotation.LogForAll;
+import com.github.dqqzj.athena.annotation.LogForParams;
+import com.github.dqqzj.athena.annotation.LogForResult;
+import com.github.dqqzj.athena.core.InvokeMethod;
+import com.github.dqqzj.athena.utils.ClearParameterNameProvider;
+import com.github.dqqzj.athena.utils.ReflectionUtils;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.springframework.core.annotation.AnnotationUtils;
+
 /**
  * @author qinzhongjian
  * @date created in 2019/12/16 23:42
@@ -81,13 +94,9 @@ public class LogPrinter {
         if (!needPrintLog) {
             return;
         }
-
         List<String> parameterNames = discoverer.getParameterNames(classMethod);
         Object[] args = invokeMethod.getArgs();
-
         StringBuilder builder = new StringBuilder();
-
-
         List<String> kvs = new ArrayList<>();
         for (int i = 0; i < args.length; i++) {
             String parameterName = parameterNames.get(i);
@@ -106,13 +115,13 @@ public class LogPrinter {
             return;
         }
 
-        String methodFullName = RefUtil.getMethodFullName(classMethod);
+        String methodFullName = ReflectionUtils.getMethodFullName(classMethod);
         log.info(methodFullName + ": result = {}", invokeMethod.getResult());
     }
 
     public void printLog4Exceptions(InvokeMethod invokeMethod) {
         Method classMethod = invokeMethod.getMethod();
-        String methodFullName = RefUtil.getMethodFullName(classMethod);
+        String methodFullName = ReflectionUtils.getMethodFullName(classMethod);
         log.error(methodFullName + ": ", invokeMethod.getThrowable());
     }
 }
