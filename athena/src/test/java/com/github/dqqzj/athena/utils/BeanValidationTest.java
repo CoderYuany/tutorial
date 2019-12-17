@@ -1,15 +1,12 @@
-package com.github.dqqzj.athena;
+package com.github.dqqzj.athena.utils;
 
-import com.roc.unify.clear.domain.exception.BizRuntimeException;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.springframework.util.Assert;
 
-import javax.validation.constraints.NotBlank;
+class BeanValidationTest {
 
-public class BeanValidationTest {
-
-    @Test(expected = BizRuntimeException.class)
-    public void checkAndThrow() {
+    @Test
+    void checkAndThrow() {
         BeanDemo beanDemo = new BeanDemo();
         beanDemo.field = "Hi~";
         BeanValidation.checkAndThrow(beanDemo);
@@ -19,18 +16,16 @@ public class BeanValidationTest {
     }
 
     @Test
-    public void check() {
+    void check() {
         BeanDemo beanDemo = new BeanDemo();
         beanDemo.field = "Hi~";
         String msg = BeanValidation.check(beanDemo);
-        Assert.assertNull(msg);
+        Assert.notNull(msg);
         beanDemo.field = "";
         msg = BeanValidation.check(beanDemo);
-        Assert.assertNotNull(msg);
+        Assert.notNull(msg);
     }
-
-    static class BeanDemo {
-        @NotBlank
+    public class BeanDemo {
         private String field;
     }
 }
