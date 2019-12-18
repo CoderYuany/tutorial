@@ -47,7 +47,6 @@ public class Unify {
             Object result;
             try {
                 LogConfig.log4InputParams.accept(invokeMethod);
-                LogConfig.ValidatorConfig.jsrValidator.accept(invokeMethod);
                 result = pjp.proceed();
                 if (result instanceof ResultVO) {
                     ResultVO resultVO = ResultVO.class.cast(result);
