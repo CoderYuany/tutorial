@@ -14,5 +14,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface LogForParams {
-    boolean value() default true;
+    boolean logForParams() default true;
 }

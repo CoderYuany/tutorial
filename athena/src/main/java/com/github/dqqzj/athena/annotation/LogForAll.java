@@ -1,5 +1,7 @@
 package com.github.dqqzj.athena.annotation;
 
+import org.springframework.core.annotation.AliasFor;
+
 import java.lang.annotation.*;
 
 /**
@@ -12,6 +14,11 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
+@LogForParams
+@LogForResult
 public @interface LogForAll {
-    boolean value() default true;
+    @AliasFor(annotation = LogForParams.class)
+    boolean logForParams() default true;
+    @AliasFor(annotation = LogForResult.class)
+    boolean logForResult() default true;
 }

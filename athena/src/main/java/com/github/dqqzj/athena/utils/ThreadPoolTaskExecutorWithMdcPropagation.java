@@ -178,7 +178,6 @@ public class ThreadPoolTaskExecutorWithMdcPropagation extends ThreadPoolExecutor
      * Helper {@link Runnable} class that transfers {@link MDC} context values from
      * the origin thread to the execution thread
      *
-     * @author crhx7117
      */
     static class RunnableWrapperWithMdc implements Runnable {
         private final Runnable wrapped;
@@ -202,7 +201,6 @@ public class ThreadPoolTaskExecutorWithMdcPropagation extends ThreadPoolExecutor
      * Helper {@link Callable} class that transfers {@link MDC} context values from
      * the origin thread to the execution thread
      *
-     * @author crhx7117
      */
     static class CallableWrapperWithMdc<T> implements Callable<T> {
         private final Callable<T> wrapped;
