@@ -18,7 +18,7 @@ import org.springframework.core.ParameterNameDiscoverer;
  * @description 有清晰说明的参数名成解析器
  * @since JDK 1.8.0_212-b10
  */
-public class ClearParameterNameProvider implements ParameterNameProvider {
+public class DefaultParameterProvider implements ParameterNameProvider {
 
     private static ParameterNameDiscoverer discoverer = new LocalVariableTableParameterNameDiscoverer();
     private static ParameterNameProvider provider = new DefaultParameterNameProvider();
@@ -35,9 +35,4 @@ public class ClearParameterNameProvider implements ParameterNameProvider {
         return Optional.ofNullable(parameterNames).map(Arrays::asList).orElse(provider.getParameterNames(method));
     }
 
-//    {
-//        List<Path.Node> nodes =
-//                (constraintViolations.iterator().next().getPropertyPath().iterator());
-//        nodes.get(nodes.size()-1)
-//    }
 }

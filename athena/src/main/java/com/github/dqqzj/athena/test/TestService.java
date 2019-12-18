@@ -7,6 +7,7 @@ import com.github.dqqzj.athena.annotation.LogForParams;
 import com.github.dqqzj.athena.core.ResultVO;
 import com.github.dqqzj.athena.core.enums.ResultCodeEnum;
 import com.github.dqqzj.athena.core.exception.BizRuntimeException;
+import lombok.NonNull;
 import org.springframework.stereotype.Service;
 
 import java.util.prefs.BackingStoreException;
@@ -22,11 +23,11 @@ import java.util.prefs.BackingStoreException;
 @Service
 public class TestService {
     @LogForParams(logForParams = false)
-    public ResultVO<String> hello(Integer x,String y) throws Exception{
-        throw new BizRuntimeException(ResultCodeEnum.REQUEST_TIMEOUT);
+    public ResultVO<String> hello(Integer x,@NonNull Test y) throws Exception{
+        //throw new BizRuntimeException(ResultCodeEnum.REQUEST_TIMEOUT);
         //int xx = 9/0;
         //return null;
-       // System.out.println(JSON.toJSONString(name));
-        //return ResultVO.success("success");
+        //System.out.println(JSON.toJSONString(x+y));
+        return ResultVO.success("success");
     }
 }

@@ -10,7 +10,7 @@ import com.github.dqqzj.athena.annotation.LogForAll;
 import com.github.dqqzj.athena.annotation.LogForParams;
 import com.github.dqqzj.athena.annotation.LogForResult;
 import com.github.dqqzj.athena.core.InvokeMethod;
-import com.github.dqqzj.athena.utils.ClearParameterNameProvider;
+import com.github.dqqzj.athena.utils.DefaultParameterProvider;
 import com.github.dqqzj.athena.utils.ReflectionUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -25,7 +25,7 @@ import org.springframework.core.annotation.AnnotationUtils;
 @Slf4j
 public class LogPrinter {
 
-    private static ParameterNameProvider discoverer = new ClearParameterNameProvider();
+    private static ParameterNameProvider discoverer = new DefaultParameterProvider();
 
     private static boolean checkLogConfigForInputParams(Method method) {
         LogForParams logForParams = AnnotationUtils.getAnnotation(method, LogForParams.class);
