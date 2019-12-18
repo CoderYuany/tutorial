@@ -18,7 +18,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class TestService {
     public ResultVO<String> hello(Integer x,double y) {
+        throw new RuntimeException("ssssss");
        // System.out.println(JSON.toJSONString(name));
-        return ResultVO.success("success");
+        //return ResultVO.success("success");
     }
 }

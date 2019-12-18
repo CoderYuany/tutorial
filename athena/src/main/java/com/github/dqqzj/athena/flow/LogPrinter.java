@@ -107,6 +107,6 @@ public class LogPrinter {
     public static void printLog4Exceptions(InvokeMethod invokeMethod) {
         Method classMethod = invokeMethod.getMethod();
         String methodFullName = ReflectionUtils.getMethodFullName(classMethod);
-        log.error(methodFullName + ": ", invokeMethod.getThrowable());
+        log.error(methodFullName + " ", invokeMethod.getThrowable());
     }
 }

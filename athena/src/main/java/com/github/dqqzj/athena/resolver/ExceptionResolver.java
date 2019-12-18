@@ -22,7 +22,6 @@ public class ExceptionResolver {
         Method classMethod = ReflectionUtils.getClassMethod(pjp);
         // for inner throwable handle
         Object target = pjp.getTarget();
-        log.error(ReflectionUtils.getMethodFullName(classMethod) + ": ", throwable);
 
         // 防御式做法
         if (!(throwable instanceof Exception)) {
