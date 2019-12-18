@@ -6,6 +6,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.reflect.MethodSignature;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /**
@@ -15,6 +16,11 @@ import java.lang.reflect.Method;
  * @since JDK 1.8.0_212-b10
  */
 public abstract class ReflectionUtils {
+
+    /**
+     * 对象类型字段
+     */
+    private static final String TYPE = "TYPE";
 
     public static Method getClassMethod(ProceedingJoinPoint pjp) {
         Object target = pjp.getTarget();
@@ -36,7 +42,8 @@ public abstract class ReflectionUtils {
     }
 
     public static String getMethodFullName(Method method) {
-        return method.getDeclaringClass().getSimpleName() + "#" + method.getName();
+       String packageName =  method.getDeclaringClass().getPackage().getName();
+        return packageName + "." + method.getDeclaringClass().getSimpleName() + "#" + method.getName();
     }
 
     private static Method getClassMethod(Class<?> clazz, Method method) {
@@ -71,5 +78,21 @@ public abstract class ReflectionUtils {
             signature[x] = types[x].getName();
         }
         return signature;
+    }
+
+    public static boolean isPrimitive(Object object) {
+        try {
+            if (((Class<?>)object.getClass().getField(TYPE).get(null)).isPrimitive()) {
+                return true;
+            }
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            /**
+             * if this field is String,it should be ignored.
+             */
+            return false;
+        }
+        return false;
     }
 }

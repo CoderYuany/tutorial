@@ -2,11 +2,14 @@ package com.github.dqqzj.athena.flow;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.ParameterNameProvider;
 
 import com.alibaba.fastjson.JSON;
+
 import com.github.dqqzj.athena.annotation.LogForAll;
 import com.github.dqqzj.athena.annotation.LogForParams;
 import com.github.dqqzj.athena.annotation.LogForResult;
@@ -78,16 +81,17 @@ public class LogPrinter {
         }
         List<String> parameterNames = discoverer.getParameterNames(classMethod);
         Object[] args = invokeMethod.getArgs();
-        StringBuilder builder = new StringBuilder();
-        List<String> kvs = new ArrayList<>();
+        Map<String, Object> objectMap = new HashMap<>(args.length);
         for (int i = 0; i < args.length; i++) {
             String parameterName = parameterNames.get(i);
-            String value = JSON.toJSONString(args[i]);
-            kvs.add(parameterName + "=" + value);
+            boolean isPrimitive = ReflectionUtils.isPrimitive(args[i]);
+            if (isPrimitive) {
+                objectMap.put(parameterName, args[i]);
+            } else {
+                objectMap.put(parameterName, JSON.toJSONString(args[i]));
+            }
         }
-        String join = StringUtils.join(kvs, "|");
-        builder.append(join);
-        log.error(builder.toString());
+        log.info("there are parameters: " + JSON.toJSONString(objectMap));
     }
 
     public static void printLog4ReturnValues(InvokeMethod invokeMethod) {
@@ -97,7 +101,7 @@ public class LogPrinter {
             return;
         }
         String methodFullName = ReflectionUtils.getMethodFullName(classMethod);
-        log.info(methodFullName + ": result = {}", invokeMethod.getResult());
+        log.info(methodFullName + ": result = {}", JSON.toJSONString(invokeMethod.getResult()));
     }
 
     public static void printLog4Exceptions(InvokeMethod invokeMethod) {
@@ -105,5 +109,4 @@ public class LogPrinter {
         String methodFullName = ReflectionUtils.getMethodFullName(classMethod);
         log.error(methodFullName + ": ", invokeMethod.getThrowable());
     }
-
 }

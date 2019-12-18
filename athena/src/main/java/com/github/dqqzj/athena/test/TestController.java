@@ -18,7 +18,7 @@ public class TestController {
     @Autowired
     TestService testService;
     @GetMapping("hello")
-    public ResultVO hello(String x,String y) {
+    public ResultVO hello(Integer x,double y) {
         return testService.hello(x,y);
     }
 }

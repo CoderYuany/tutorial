@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 @LogForAll
 @Service
 public class TestService {
-    public ResultVO<String> hello(String x,String y) {
+    public ResultVO<String> hello(Integer x,double y) {
        // System.out.println(JSON.toJSONString(name));
         return ResultVO.success("success");
     }
