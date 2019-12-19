@@ -20,6 +20,7 @@ public class TestController {
     @Autowired
     TestService testService;
     @GetMapping("hello")
+    @LogAdvice
     public ResultVO hello(Integer x,double y) {
          testService.hello(x,y);
          return ResultVO.ofSuccess("ss");
