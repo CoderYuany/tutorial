@@ -3,7 +3,7 @@ package com.github.dqqzj.athena;
 import com.github.dqqzj.athena.config.LogConfig;
 import com.github.dqqzj.athena.core.InvokeMethod;
 import com.github.dqqzj.athena.core.ResultVO;
-import com.github.dqqzj.athena.resolver.ExceptionResolver;
+import com.github.dqqzj.athena.resolver.GlobalExceptionResolver;
 import com.github.dqqzj.athena.utils.ReflectionUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -58,7 +58,7 @@ public class Unify {
             } catch (Throwable throwable) {
                 invokeMethod.setThrowable(throwable);
                 LogConfig.log4Exceptions.accept(invokeMethod);
-                result = ExceptionResolver.processException(pjp, throwable, returnType, globalExceptionHandler);
+                result = GlobalExceptionResolver.processException(pjp, throwable, returnType, globalExceptionHandler);
             }
             return result;
         } finally {

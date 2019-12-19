@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
  * @since JDK 1.8.0_212-b10
  */
 @Slf4j
-public class ExceptionResolver {
+public class GlobalExceptionResolver {
     public static Object processException(ProceedingJoinPoint pjp, Throwable throwable, Class<?> returnType,
                                           Object globalExceptionHandler) {
         Method classMethod = ReflectionUtils.getClassMethod(pjp);
