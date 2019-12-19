@@ -9,7 +9,6 @@ import java.lang.annotation.*;
  * @since JDK 1.8.0_212-b10
  */
 
-
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

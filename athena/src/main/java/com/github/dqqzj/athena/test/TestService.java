@@ -15,11 +15,11 @@ import org.springframework.stereotype.Service;
  * @description TODO
  * @since JDK1.8.0_211-b12
  */
-@LogAdvice
+//@LogAdvice
 //@LogForAll
 @Service
 public class TestService {
-    @LogAdvice
+    //@LogAdvice
     public String hello(Integer x,double y) {
         if (x != null) {
             throw new RuntimeException("ssssss");

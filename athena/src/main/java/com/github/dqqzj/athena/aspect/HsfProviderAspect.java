@@ -2,7 +2,6 @@ package com.github.dqqzj.athena.aspect;
 
 import com.github.dqqzj.athena.Unify;
 import com.github.dqqzj.athena.annotation.LogAdvice;
-import com.github.dqqzj.athena.core.ResultVO;
 import com.github.dqqzj.athena.handler.GlobalExceptionHandler;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -23,7 +22,7 @@ public class HsfProviderAspect {
 
     private static final GlobalExceptionHandler globalExceptionHandler = new GlobalExceptionHandler();
 
-    @Pointcut("@within(com.github.dqqzj.athena.annotation.LogAdvice)")
+    @Pointcut("@annotation(com.github.dqqzj.athena.annotation.LogAdvice) || @within(com.github.dqqzj.athena.annotation.LogAdvice)")
     public void pointcut() {
     }
 
@@ -33,6 +32,6 @@ public class HsfProviderAspect {
         if (logAdvice == null) {
             logAdvice = ((MethodSignature)pjp.getSignature()).getClass().getAnnotation(LogAdvice.class);
         }
-        return Unify.process(pjp, logAdvice.returnType(), globalExceptionHandler);
+        return Unify.process(pjp, logAdvice.value(), globalExceptionHandler);
     }
 }

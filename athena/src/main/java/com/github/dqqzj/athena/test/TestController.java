@@ -14,13 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
  * @description TODO
  * @since JDK1.8.0_211-b12
  */
-
+//@LogAdvice
 @RestController
 public class TestController {
+
     @Autowired
     TestService testService;
+
+
     @GetMapping("hello")
-    @LogAdvice
+   @LogAdvice
     public ResultVO hello(Integer x,double y) {
          testService.hello(x,y);
          return ResultVO.ofSuccess("ss");
