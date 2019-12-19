@@ -17,7 +17,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResultVO handleIllegalArgumentException(IllegalArgumentException e) {
-        return ResultVO.common(ResultCodeEnum.ILLEGAL_ARGUMENT)
+        return ResultVO.ofCommon(ResultCodeEnum.ILLEGAL_ARGUMENT)
             .success(false)
             .traceId(MDC.get(Unify.TRACE_KEY))
             .data(e.getMessage())
@@ -38,7 +38,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResultVO handleException(Exception e) {
-        return ResultVO.common(ResultCodeEnum.INTERNAL_SERVER_ERROR)
+        return ResultVO.ofCommon(ResultCodeEnum.INTERNAL_SERVER_ERROR)
             .success(Boolean.FALSE)
             .traceId(MDC.get(Unify.TRACE_KEY))
             .message(e.getMessage())
