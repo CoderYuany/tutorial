@@ -14,7 +14,7 @@ import java.io.Serializable;
  */
 @Data
 @Builder
-public class ResultVO<T> implements Serializable {
+public abstract class ResultVO<T> implements Serializable {
 
     private static final long serialVersionUID = -4448696578582628909L;
 
@@ -24,19 +24,19 @@ public class ResultVO<T> implements Serializable {
     private String message;
     private T data;
 
-    public static <T> ResultVO<T> success(T data) {
-        return ResultVO.<T>common(ResultCodeEnum.OK)
+    public static <T> ResultVO<T> ofSuccess(T data) {
+        return ResultVO.<T>ofCommon(ResultCodeEnum.OK)
                 .success(Boolean.TRUE)
                 .data(data)
                 .build();
     }
-    public static <T> ResultVO<T> error(ResultCodeInterface resultCode, T data) {
-        return ResultVO.<T>common(resultCode)
+    public static <T> ResultVO<T> ofError(ResultCodeInterface resultCode, T data) {
+        return ResultVO.<T>ofCommon(resultCode)
             .success(Boolean.FALSE)
             .data(data)
             .build();
     }
-    public static <T> ResultVOBuilder<T> common(ResultCodeInterface resultCode) {
+    public static <T> ResultVOBuilder<T> ofCommon(ResultCodeInterface resultCode) {
         return ResultVO.<T>builder()
                 .code(resultCode.code())
                 .message(resultCode.message());
