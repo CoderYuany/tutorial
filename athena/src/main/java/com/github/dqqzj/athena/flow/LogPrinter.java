@@ -32,15 +32,15 @@ public class LogPrinter {
         if (logForParams != null) {
             return logForParams.logForParams();
         }
-       /* LogForAll logForAll = AnnotationUtils.getAnnotation(method, LogForAll.class);
+        LogForAll logForAll = AnnotationUtils.getAnnotation(method, LogForAll.class);
         if (logForAll != null) {
             return logForAll.logForParams();
-        }*/
+        }
         logForParams = AnnotationUtils.getAnnotation(method.getDeclaringClass(), LogForParams.class);
         if (logForParams != null) {
             return logForParams.logForParams();
         }
-        LogForAll logForAll = AnnotationUtils.getAnnotation(method.getDeclaringClass(), LogForAll.class);
+        logForAll = AnnotationUtils.getAnnotation(method.getDeclaringClass(), LogForAll.class);
         if (logForAll != null) {
             return logForAll.logForParams();
         }
@@ -52,15 +52,15 @@ public class LogPrinter {
         if (logForResult != null) {
             return logForResult.logForResult();
         }
-       /* LogForAll logForAll = AnnotationUtils.getAnnotation(method, LogForAll.class);
+        LogForAll logForAll = AnnotationUtils.getAnnotation(method, LogForAll.class);
         if (logForAll != null) {
             return logForAll.logForResult();
-        }*/
+        }
         logForResult = AnnotationUtils.getAnnotation(method.getDeclaringClass(), LogForResult.class);
         if (logForResult != null) {
             return logForResult.logForResult();
         }
-        LogForAll logForAll = AnnotationUtils.getAnnotation(method.getDeclaringClass(), LogForAll.class);
+        logForAll = AnnotationUtils.getAnnotation(method.getDeclaringClass(), LogForAll.class);
         if (logForAll != null) {
             return logForAll.logForResult();
         }
