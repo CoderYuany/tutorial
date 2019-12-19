@@ -28,7 +28,7 @@ public class HsfProviderAspect {
 
     @Around("pointcut()")
     public Object pointcutAround(ProceedingJoinPoint pjp) throws Throwable {
-        LogAdvice logAdvice = ((MethodSignature)pjp.getSignature()).getClass().getAnnotation(LogAdvice.class);
-        return Unify.process(pjp, logAdvice.include(), globalExceptionHandler);
+        Class<?> returnType = ((MethodSignature)pjp.getSignature()).getReturnType();
+        return Unify.process(pjp, returnType, globalExceptionHandler);
     }
 }

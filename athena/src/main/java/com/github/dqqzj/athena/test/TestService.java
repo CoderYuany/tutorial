@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 //@LogForAll
 @Service
 public class TestService {
+    @LogForAll
     public String hello(Integer x,double y) {
         if (x != null) {
             throw new RuntimeException("ssssss");

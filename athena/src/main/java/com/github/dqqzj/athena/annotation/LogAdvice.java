@@ -18,5 +18,10 @@ import com.github.dqqzj.athena.core.ResultVO;
 @LogForAll
 public @interface LogAdvice {
     boolean value() default true;
-    Class<?> include() default ResultVO.class;
+
+    /**
+     * 发生异常的时候进行渲染的异常实体，主要是给前端统一封装异常信息
+     * @return
+     */
+    Class<?> returnType() default ResultVO.class;
 }

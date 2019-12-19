@@ -2,6 +2,44 @@ GET http://localhost:8080/hello?x=23&y=100.09
 Accept: */*
 Cache-Control: no-cache
 
+<> 2019-12-19T055546-1.500.json
+
+###
+
+GET http://localhost:8080/hello?x=23&y=100.09
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-12-19T055546.500.json
+
+###
+
+GET http://localhost:8080/hello?x=23&y=100.09
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8080/hello?x=23&y=100.09
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-12-19T053822.500.json
+
+###
+
+GET http://localhost:8080/hello?x=23&y=100.09
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-12-19T053748.500.json
+
+###
+
+GET http://localhost:8080/hello?x=23&y=100.09
+Accept: */*
+Cache-Control: no-cache
+
 ###
 
 GET http://localhost:8080/hello?x=23&y=100.09
@@ -379,38 +417,6 @@ Accept: */*
 Cache-Control: no-cache
 
 <> 2019-12-14T113723.200.json
-
-###
-
-POST http://localhost:8080/save?name=rose&price=99
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-14T113722-1.200.json
-
-###
-
-POST http://localhost:8080/save?name=rose&price=99
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-14T113722.200.json
-
-###
-
-POST http://localhost:8080/save?name=rose&price=99
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-14T113720.200.json
-
-###
-
-POST http://localhost:8080/save?name=rose&price=99
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-14T113718.200.json
 
 ###
 
