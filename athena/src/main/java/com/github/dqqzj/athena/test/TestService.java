@@ -16,11 +16,14 @@ import org.springframework.stereotype.Service;
  * @since JDK1.8.0_211-b12
  */
 @LogAdvice
-@LogForAll
+//@LogForAll
 @Service
 public class TestService {
     public String hello(Integer x,double y) {
-        throw new RuntimeException("ssssss");
+        if (x != null) {
+            throw new RuntimeException("ssssss");
+        }
+        return "ss";
        // System.out.println(JSON.toJSONString(x+y));
         //return ResultVO.success("success");
     }

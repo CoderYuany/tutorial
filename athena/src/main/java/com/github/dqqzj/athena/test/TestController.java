@@ -21,7 +21,6 @@ public class TestController {
     TestService testService;
     @GetMapping("hello")
     public ResultVO hello(Integer x,double y) {
-        Runtime.getRuntime().traceMethodCalls(true);
          testService.hello(x,y);
          return ResultVO.ofSuccess("ss");
     }

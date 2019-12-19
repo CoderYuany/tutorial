@@ -3,7 +3,6 @@ package com.github.dqqzj.athena;
 import com.github.dqqzj.athena.config.LogConfig;
 import com.github.dqqzj.athena.core.InvokeMethod;
 import com.github.dqqzj.athena.core.ResultVO;
-import com.github.dqqzj.athena.flow.JsrValidator;
 import com.github.dqqzj.athena.resolver.ExceptionResolver;
 import com.github.dqqzj.athena.utils.ReflectionUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -40,15 +39,14 @@ public class Unify {
             String traceId = LogConfig.traceUtil.get();
             MDC.put(TRACE_KEY, traceId);
             Method classMethod = ReflectionUtils.getClassMethod(pjp);
-            // 类型检查
-            if (!returnType.isAssignableFrom(classMethod.getReturnType())) {
-                return pjp.proceed();
-            }
             InvokeMethod invokeMethod = ReflectionUtils.getInvokeMethod(pjp);
             Object result;
             try {
+                // 类型检查
+                if (!returnType.isAssignableFrom(classMethod.getReturnType())) {
+                    return pjp.proceed();
+                }
                 LogConfig.log4InputParams.accept(invokeMethod);
-                JsrValidator.validate(pjp);
                 result = pjp.proceed();
                 if (result instanceof ResultVO) {
                     ResultVO resultVO = ResultVO.class.cast(result);

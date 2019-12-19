@@ -1,12 +1,13 @@
 package com.github.dqqzj.athena.aspect;
 
 import com.github.dqqzj.athena.Unify;
-import com.github.dqqzj.athena.core.ResultVO;
+import com.github.dqqzj.athena.annotation.LogAdvice;
 import com.github.dqqzj.athena.handler.GlobalExceptionHandler;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
 /**
@@ -27,6 +28,7 @@ public class HsfProviderAspect {
 
     @Around("pointcut()")
     public Object pointcutAround(ProceedingJoinPoint pjp) throws Throwable {
-        return Unify.process(pjp, ResultVO.class, globalExceptionHandler);
+        LogAdvice logAdvice = ((MethodSignature)pjp.getSignature()).getClass().getAnnotation(LogAdvice.class);
+        return Unify.process(pjp, logAdvice.include(), globalExceptionHandler);
     }
 }
