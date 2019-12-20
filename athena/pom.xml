@@ -72,9 +72,9 @@
 						</manifest>
 						<manifestEntries>
 							<!-- 参数方式启动agent需要这个 -->
-							<Premain-Class>com.github.dqqzj.athena.agent.main.PreMain</Premain-Class>
+							<Premain-Class>com.github.dqqzj.athena.agent.PreMain</Premain-Class>
 							<!-- 启动后附加启动agent需要这个 -->
-							<Agent-Class>com.github.dqqzj.athena.agent.main.TimeTunnelAgentMain</Agent-Class>
+							<Agent-Class>com.github.dqqzj.athena.agent.Test</Agent-Class>
 							<!-- 是否可以重新转换类 -->
 							<Can-Retransform-Classes>true</Can-Retransform-Classes>
 							<!-- 是否可以重新定义类 -->
