@@ -1,32 +1,313 @@
-GET http://localhost:8080/hello?x=23&y=100.09
+GET http://localhost:8080/hello?x=0&y=48.09
 Accept: */*
 Cache-Control: no-cache
+Content-Type: application/json
 
-<> 2019-12-19T074554.500.json
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T110847.200.json
 
 ###
 
-GET http://localhost:8080/hello?x=23&y=100.09
+GET http://localhost:8080/hello?x=0&y=48.09
 Accept: */*
 Cache-Control: no-cache
+Content-Type: application/json
 
-<> 2019-12-19T074515.500.json
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
 
 ###
 
-GET http://localhost:8080/hello?x=23&y=100.09
+GET http://localhost:8080/hello?x=0&y=48.09
 Accept: */*
 Cache-Control: no-cache
+Content-Type: application/json
 
-<> 2019-12-19T074346.500.json
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
 
 ###
 
-GET http://localhost:8080/hello?x=23&y=100.09
+GET http://localhost:8080/hello?x=0&y=48.09
 Accept: */*
 Cache-Control: no-cache
+Content-Type: application/json
 
-<> 2019-12-19T074259.500.json
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T100634.200.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T095955.500.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T095908.500.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T095606.500.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T095445.500.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T095308.500.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T095235.200.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T095055.200.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T095024.500.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T094929.200.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T094859.200.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T094819.500.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T094713.500.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T094543.500.html
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T094409.500.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T093419.500.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T093345.500.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T092922.500.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T092559.500.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T092520.500.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T092440.500.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T092422.500.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T092355.500.json
+
+###
+
+GET http://localhost:8080/hello?x=0&y=48.09
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T092342.500.json
+
+###
+
+GET http://localhost:8080/hello?x=0
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"age":20,"beanDemo":{"age":22,"name":"dqq~"},"name":"Hi~"}
+
+<> 2019-12-19T092318.500.json
 
 ###
 
@@ -187,200 +468,6 @@ Accept: */*
 Cache-Control: no-cache
 
 <> 2019-12-19T022749.500.json
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-19T022453.500.json
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-19T022154.500.json
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-19T020415.500.json
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-19T020139.500.json
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-19T020006.500.json
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-19T015114.500.json
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-19T014819.500.json
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-19T014549.500.json
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-19T014153.500.json
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-19T014036.500.json
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-19T013601.200.json
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-19T091135.200.json
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-18T025401.200.json
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-18T025107.200.json
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-18T021720.200.json
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-18T021150.200.json
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-18T020443.200.json
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-18T014955.200.json
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-18T014756.200.json
-
-###
-
-GET http://localhost:8080/hello?x=23&y=100.09
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-18T014023.200.json
-
-###
-
-GET http://localhost:8080/hello?x=2&y=100
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-18T104242.200.json
-
-###
-
-GET http://localhost:8080/hello?x=2&y=100
-Accept: */*
-Cache-Control: no-cache
-
-###
-
-GET http://localhost:8080/hello?x=2&y=100
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-12-18T092700.200.json
 
 ###
 

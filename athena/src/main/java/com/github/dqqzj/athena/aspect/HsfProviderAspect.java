@@ -22,7 +22,7 @@ public class HsfProviderAspect {
 
     private static final GlobalExceptionHandler globalExceptionHandler = new GlobalExceptionHandler();
 
-    @Pointcut("@within(com.github.dqqzj.athena.annotation.LogAdvice)")
+    @Pointcut("@annotation(com.github.dqqzj.athena.annotation.LogAdvice) || @within(com.github.dqqzj.athena.annotation.LogAdvice)")
     public void pointcut() {
     }
 
@@ -32,6 +32,6 @@ public class HsfProviderAspect {
         if (logAdvice == null) {
             logAdvice = ((MethodSignature)pjp.getSignature()).getClass().getAnnotation(LogAdvice.class);
         }
-        return Unify.process(pjp, logAdvice.returnType(), globalExceptionHandler);
+        return Unify.process(pjp, logAdvice.value(), globalExceptionHandler);
     }
 }

@@ -1,8 +1,9 @@
 package com.github.dqqzj.athena.annotation;
 
-import java.lang.annotation.*;
-
 import com.github.dqqzj.athena.core.ResultVO;
+import org.springframework.core.annotation.AliasFor;
+
+import java.lang.annotation.*;
 
 /**
  * @author qinzhongjian
@@ -15,13 +16,12 @@ import com.github.dqqzj.athena.core.ResultVO;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-@LogForAll
+@LogForParams
+@LogForResult
 public @interface LogAdvice {
-    boolean value() default true;
-
-    /**
-     * 发生异常的时候进行渲染的异常实体，主要是给前端统一封装异常信息
-     * @return
-     */
-    Class<?> returnType() default ResultVO.class;
+    Class<?> value() default ResultVO.class;
+    @AliasFor(annotation = LogForParams.class)
+    boolean logForParams() default true;
+    @AliasFor(annotation = LogForResult.class)
+    boolean logForResult() default true;
 }
