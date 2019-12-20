@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import javax.validation.ParameterNameProvider;
 import com.alibaba.fastjson.JSON;
+
+import com.github.dqqzj.athena.annotation.LogAdvice;
 import com.github.dqqzj.athena.annotation.LogForAll;
 import com.github.dqqzj.athena.annotation.LogForParams;
 import com.github.dqqzj.athena.annotation.LogForResult;
@@ -32,17 +34,17 @@ public class LogPrinter {
         if (logForParams != null) {
             return logForParams.logForParams();
         }
-        LogForAll logForAll = AnnotationUtils.getAnnotation(method, LogForAll.class);
-        if (logForAll != null) {
-            return logForAll.logForParams();
+        LogAdvice logAdvice = AnnotationUtils.getAnnotation(method, LogAdvice.class);
+        if (logAdvice != null) {
+            return logAdvice.logForParams();
         }
         logForParams = AnnotationUtils.getAnnotation(method.getDeclaringClass(), LogForParams.class);
         if (logForParams != null) {
             return logForParams.logForParams();
         }
-        logForAll = AnnotationUtils.getAnnotation(method.getDeclaringClass(), LogForAll.class);
-        if (logForAll != null) {
-            return logForAll.logForParams();
+        logAdvice = AnnotationUtils.getAnnotation(method.getDeclaringClass(), LogAdvice.class);
+        if (logAdvice != null) {
+            return logAdvice.logForParams();
         }
         return false;
     }
@@ -52,17 +54,17 @@ public class LogPrinter {
         if (logForResult != null) {
             return logForResult.logForResult();
         }
-        LogForAll logForAll = AnnotationUtils.getAnnotation(method, LogForAll.class);
-        if (logForAll != null) {
-            return logForAll.logForResult();
+        LogAdvice logAdvice = AnnotationUtils.getAnnotation(method, LogAdvice.class);
+        if (logAdvice != null) {
+            return logAdvice.logForResult();
         }
         logForResult = AnnotationUtils.getAnnotation(method.getDeclaringClass(), LogForResult.class);
         if (logForResult != null) {
             return logForResult.logForResult();
         }
-        logForAll = AnnotationUtils.getAnnotation(method.getDeclaringClass(), LogForAll.class);
-        if (logForAll != null) {
-            return logForAll.logForResult();
+        logAdvice = AnnotationUtils.getAnnotation(method.getDeclaringClass(), LogAdvice.class);
+        if (logAdvice != null) {
+            return logAdvice.logForResult();
         }
         return false;
     }
