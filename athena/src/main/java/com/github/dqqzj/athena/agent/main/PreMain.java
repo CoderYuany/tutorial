@@ -8,7 +8,7 @@ import java.lang.instrument.Instrumentation;
  * @description TODO
  * @since JDK1.8.0_211-b12
  */
-public class IPreMain {
+public class PreMain {
     public static void premain(String agentOps, Instrumentation inst) throws Exception{
        /* System.out.println("preAgent begin...");
         System.out.println("add transformer...");
