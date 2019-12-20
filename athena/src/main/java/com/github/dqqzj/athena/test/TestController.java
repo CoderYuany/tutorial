@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
     @Autowired
     TestService testService;
-    @GetMapping("hello")
     @LogAdvice
+    @GetMapping("hello")
     public ResultVO hello(Integer x,double y) {
          testService.hello(x,y);
          return ResultVO.ofSuccess("ss");
