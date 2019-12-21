@@ -7,7 +7,6 @@ import javassist.CtMethod;
 import javassist.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
 import java.lang.instrument.Instrumentation;
@@ -28,16 +27,16 @@ import java.util.stream.Stream;
  * @author qinzhongjian
  * @date created in 2019/12/21 16:29
  * @description Invoke as follows:
- * <pre>java -javaagent:target/debug-agent-0.1-SNAPSHOT.jar={opts} application.jar<pre/>
+ * <pre>java -javaagent:target/agent-0.1-SNAPSHOT.jar={opts} application.jar<pre/>
  *
  * Example:
- *  java -javaagent:target/debug-agent-0.1-SNAPSHOT.jar=debug=true;methods=java.net.InetAddress::getByName(java.lang.String)|java.net.InetAddress::getByName(java.lang.String, java.net.InetAddress) -jar application.jar
- *
+ *  java -javaagent:target/agent-0.1-SNAPSHOT.jar=debug=true;methods=java.net.InetAddress::getByName(java.lang.String)|java.net.InetAddress::getByName(java.lang.String, java.net.InetAddress) -jar application.jar
+ *TODO 后期考虑支持class级别和扫描包级别等其他手段，以做到更加灵活配置
  *
  * Agent opts (as key1=value1;key2=value2)
  *
- * - debug=true
- *         enable debug logging to standard error
+ * - logForParams=true
+ *         enable logging to standard logForParams
  *
  * - methods=methodDefinitions
  *         definitions of methods to be intercepted separated by "|"
@@ -49,6 +48,10 @@ import java.util.stream.Stream;
  */
 public class LogAgent {
     private static final Logger logger = LoggerFactory.getLogger(LogAgent.class);
+    private static final String SPLIT_EQUALS = "=";
+    private static final String SPLIT_SEMICOLON = ";";
+    private static final String LOG_FOR_PARAMS = "logForParams";
+    private static final String LOG_FOR_RESULT = "logForResult";
     private static final Pattern PATTERN = Pattern.compile("([^:]+)::([^(]+)\\(([^)]+)\\)");
     private static final String TIME_STAMP_STRING_CODE = "java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern(\"yyyy-MM-dd HH:mm:ss.SSS\"))";
     private static final String THREAD_NAME_STRING_CODE = "java.lang.Thread.currentThread().getName()";
@@ -68,7 +71,10 @@ public class LogAgent {
     public static void premain(String agentArgs, Instrumentation inst) {
         // Parse args
         Map<String, String> agentArgsMap = parseAgentArgs(agentArgs);
-
+        //Get logForParams argument
+        boolean logForParams = agentArgsMap.get(LOG_FOR_PARAMS) == null ? false : Boolean.valueOf(agentArgsMap.get(LOG_FOR_PARAMS));
+        //Get logForResult argument
+        boolean logForResult = agentArgsMap.get(LOG_FOR_RESULT) == null ? false : Boolean.valueOf(agentArgsMap.get(LOG_FOR_RESULT));
         // Get methods argument
         Stream<String> methods = (agentArgsMap.get("methods") == null)
                 ? Stream.of(DEFAULT_INSTRUMENT_METHODS)
@@ -83,23 +89,22 @@ public class LogAgent {
                 .collect(Collectors.groupingBy(MethodDesc::getClassName));
 
         // Register transformer
-        inst.addTransformer(new Transformer(instructionMap));
+        inst.addTransformer(new Transformer(logForParams,logForResult,instructionMap));
     }
 
     private static Map<String, String> parseAgentArgs(String agentArgs) {
         Map<String, String> result = new LinkedHashMap<>();
-
         if (agentArgs == null) {
             return result;
         }
-
-        for (String arg : agentArgs.split(";")) {
-            String[] argParts = arg.split("=");
-            if (argParts.length != 2) {
-                logger.error("Ignoring agentArg:{}", arg);
-                continue;
+        for (String arg : agentArgs.split(SPLIT_SEMICOLON)) {
+            String[] argParts = arg.split(SPLIT_EQUALS);
+            System.out.println(argParts.length);
+            if (argParts.length == 2) {
+                result.put(argParts[0].trim(), argParts[1].trim());
+            } else {
+                logger.error("parseAgentArgs ignoring agentArg:{}", arg);
             }
-            result.put(argParts[0].trim(), argParts[1].trim());
         }
 
         return result;
@@ -121,8 +126,11 @@ public class LogAgent {
 
     private static class Transformer implements ClassFileTransformer {
         private final Map<String, List<MethodDesc>> instructionMap;
-
-        private Transformer(Map<String, List<MethodDesc>> instrumentMethods) {
+        private boolean logForParams = false;
+        private boolean logForResult = false;
+        private Transformer(boolean logForParams, boolean logForResult, Map<String, List<MethodDesc>> instrumentMethods) {
+            this.logForParams = logForParams;
+            this.logForResult = logForResult;
             this.instructionMap = instrumentMethods;
         }
 
