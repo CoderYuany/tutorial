@@ -190,7 +190,11 @@ public class LogAgent {
                  * 方法调用成功的日志打印
                  */
                 if (logForParams) {
-                    String successCode = getCodeLogMethodArgsAndResult(m, "$_");
+                    String successCode = getCodeLogMethodArgs(m);
+                    m.insertAfter(successCode);
+                }
+                if (logForResult) {
+                    String successCode = getCodeLogMethodResult(m, "$_");
                     m.insertAfter(successCode);
                 }
 
