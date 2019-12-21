@@ -57,7 +57,7 @@ public class LogAgent {
     private static final String THREAD_NAME_STRING_CODE = "java.lang.Thread.currentThread().getName()";
     private static final String LOG_PREFIX_STRING_CODE = TIME_STAMP_STRING_CODE + " + \" [\" + " + THREAD_NAME_STRING_CODE + " + \"] LogAgent \"";
 
-    private static final String[] DEFAULT_INSTRUMENT_METHODS = new String[]{
+    private static final String[] DEFAULT_INSTRUMENT_METHODS = new String[] {
             "java.net.InetAddress::getByName(java.lang.String)",
             "java.net.InetAddress::getByName(java.lang.String, java.net.InetAddress)",
             "java.net.Socket::connect(java.net.SocketAddress, int)",
@@ -86,7 +86,6 @@ public class LogAgent {
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .collect(Collectors.groupingBy(MethodDesc::getClassName));
-
         // Register transformer
         inst.addTransformer(new Transformer(logForParams, logForResult, instructionMap));
     }
@@ -98,7 +97,6 @@ public class LogAgent {
         }
         for (String arg : agentArgs.split(SPLIT_SEMICOLON)) {
             String[] argParts = arg.split(SPLIT_EQUALS);
-            System.out.println(argParts.length);
             if (argParts.length == 2) {
                 result.put(argParts[0].trim(), argParts[1].trim());
             } else {
@@ -137,7 +135,6 @@ public class LogAgent {
         @Override
         public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) {
             className = className.replace("/", ".");
-
             List<MethodDesc> methods = instructionMap.get(className);
             if (methods != null) {
                 return instrumentClass(className, methods);
@@ -214,7 +211,7 @@ public class LogAgent {
             StringBuilder code = new StringBuilder();
 
             // Prefix
-            code.append("System.err.println(")
+            code.append("logger.warn(")
                     .append(LOG_PREFIX_STRING_CODE)
                     .append(" + ");
             // ClassName::methodName
@@ -243,7 +240,7 @@ public class LogAgent {
             StringBuilder code = new StringBuilder();
 
             // Prefix
-            code.append("System.err.println(")
+            code.append("logger.warn(")
                     .append(LOG_PREFIX_STRING_CODE)
                     .append(" + ");
 
@@ -264,9 +261,8 @@ public class LogAgent {
         private String getCodeLogMethodArgsAndResult(CtMethod m, String result) throws NotFoundException {
             m.getDeclaringClass();
             StringBuilder code = new StringBuilder();
-
             // Prefix
-            code.append("System.err.println(")
+            code.append("logger.error(")
                     .append(LOG_PREFIX_STRING_CODE)
                     .append(" + ");
 

@@ -1,7 +1,6 @@
 package com.github.dqqzj.debug;
 
 import lombok.extern.slf4j.Slf4j;
-
 import java.net.*;
 import java.util.concurrent.Callable;
 
@@ -14,20 +13,23 @@ import java.util.concurrent.Callable;
 @Slf4j
 public class TestMain {
     public static void main(String[] args) {
+        //=logForParams=true
+
         System.out.println("TestMain invoked");
         InetAddress address = noFail(() -> InetAddress.getByName("www.google.com"));
-       // System.out.println("TestMain returned " + address);
-       // noFail(() -> new Socket("www.google.con", 80));
+        // System.out.println("TestMain returned " + address);
+        // noFail(() -> new Socket("www.google.con", 80));
 
     }
 
     private static <T> T noFail(Callable<T> action) {
-       try {
+        try {
             return action.call();
         } catch (Exception ex) {
             System.out.println("---------Error " + ex);
             return null;
         }
     }
+
 }
 

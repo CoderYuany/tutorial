@@ -50,8 +50,6 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-
-
             <!--  Packaging options -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -70,6 +68,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>
