@@ -12,6 +12,7 @@
         <module>security</module>
         <module>springboot</module>
         <module>athena</module>
+        <module>debug</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
