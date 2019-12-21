@@ -62,9 +62,9 @@
                             <Premain-Class>com.github.dqqzj.debug.LogAgent</Premain-Class>
                             <Can-Retransform-Classes>true</Can-Retransform-Classes>
                         </manifestEntries>
-                        <manifest>
+                        <!--<manifest>
                             <mainClass>com.github.dqqzj.debug.TestMain</mainClass>
-                        </manifest>
+                        </manifest>-->
                     </archive>
                 </configuration>
             </plugin>

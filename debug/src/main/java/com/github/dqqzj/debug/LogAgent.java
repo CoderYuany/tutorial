@@ -7,8 +7,8 @@ import javassist.CtMethod;
 import javassist.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import java.lang.instrument.ClassFileTransformer;
-import java.lang.instrument.IllegalClassFormatException;
 import java.lang.instrument.Instrumentation;
 import java.security.ProtectionDomain;
 import java.util.Arrays;
@@ -31,7 +31,7 @@ import java.util.stream.Stream;
  *
  * Example:
  *  java -javaagent:target/agent-0.1-SNAPSHOT.jar=debug=true;methods=java.net.InetAddress::getByName(java.lang.String)|java.net.InetAddress::getByName(java.lang.String, java.net.InetAddress) -jar application.jar
- *TODO 后期考虑支持class级别和扫描包级别等其他手段，以做到更加灵活配置
+ * TODO 后期考虑支持class级别和扫描包级别等其他手段，以做到更加灵活配置
  *
  * Agent opts (as key1=value1;key2=value2)
  *
@@ -55,7 +55,7 @@ public class LogAgent {
     private static final Pattern PATTERN = Pattern.compile("([^:]+)::([^(]+)\\(([^)]+)\\)");
     private static final String TIME_STAMP_STRING_CODE = "java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern(\"yyyy-MM-dd HH:mm:ss.SSS\"))";
     private static final String THREAD_NAME_STRING_CODE = "java.lang.Thread.currentThread().getName()";
-    private static final String LOG_PREFIX_STRING_CODE = TIME_STAMP_STRING_CODE + " + \" [\" + " + THREAD_NAME_STRING_CODE + " + \"] Agent \"";
+    private static final String LOG_PREFIX_STRING_CODE = TIME_STAMP_STRING_CODE + " + \" [\" + " + THREAD_NAME_STRING_CODE + " + \"] LogAgent \"";
 
     private static final String[] DEFAULT_INSTRUMENT_METHODS = new String[]{
             "java.net.InetAddress::getByName(java.lang.String)",
@@ -79,7 +79,6 @@ public class LogAgent {
         Stream<String> methods = (agentArgsMap.get("methods") == null)
                 ? Stream.of(DEFAULT_INSTRUMENT_METHODS)
                 : Stream.of(agentArgsMap.get("methods").split("\\|"));
-
         // Parse method arguments into instruction map
         Map<String, List<MethodDesc>> instructionMap = methods
                 .map(String::trim)
@@ -89,7 +88,7 @@ public class LogAgent {
                 .collect(Collectors.groupingBy(MethodDesc::getClassName));
 
         // Register transformer
-        inst.addTransformer(new Transformer(logForParams,logForResult,instructionMap));
+        inst.addTransformer(new Transformer(logForParams, logForResult, instructionMap));
     }
 
     private static Map<String, String> parseAgentArgs(String agentArgs) {
@@ -128,6 +127,7 @@ public class LogAgent {
         private final Map<String, List<MethodDesc>> instructionMap;
         private boolean logForParams = false;
         private boolean logForResult = false;
+
         private Transformer(boolean logForParams, boolean logForResult, Map<String, List<MethodDesc>> instrumentMethods) {
             this.logForParams = logForParams;
             this.logForResult = logForResult;
@@ -135,7 +135,7 @@ public class LogAgent {
         }
 
         @Override
-        public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
+        public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) {
             className = className.replace("/", ".");
 
             List<MethodDesc> methods = instructionMap.get(className);
@@ -167,7 +167,7 @@ public class LogAgent {
                         .map(type -> getCtClass(pool, type))
                         .toArray(CtClass[]::new);
                 CtMethod ctMethod = ctClass.getDeclaredMethod(methodDesc.getMethodName(), methodArgs);
-                logReturn(ctMethod);
+                logForMethod(ctMethod);
             } catch (Throwable e) {
                 logger.error("instrumentMethod invoked method error.pool:{} ctClass:{} methodDesc:{}", JSON.toJSONString(pool), JSON.toJSONString(ctClass), JSON.toJSONString(methodDesc));
             }
@@ -184,13 +184,16 @@ public class LogAgent {
             }
         }
 
-        private void logReturn(CtMethod m) {
+        private void logForMethod(CtMethod m) {
             try {
                 /**
                  * 方法调用成功的日志打印
                  */
-                String successCode = getCodeLogMethodArgsAndResult(m, "$_");
-                m.insertAfter(successCode);
+                if (logForParams) {
+                    String successCode = getCodeLogMethodArgsAndResult(m, "$_");
+                    m.insertAfter(successCode);
+                }
+
                 /**
                  * 方法调用过程中产生了异常的日志打印
                  */
@@ -200,6 +203,58 @@ public class LogAgent {
             } catch (Throwable e) {
                 logger.error("logReturn to handler method error. method:{}", JSON.toJSONString(m), e);
             }
+        }
+
+        private String getCodeLogMethodArgs(CtMethod m) throws NotFoundException {
+            m.getDeclaringClass();
+            StringBuilder code = new StringBuilder();
+
+            // Prefix
+            code.append("System.err.println(")
+                    .append(LOG_PREFIX_STRING_CODE)
+                    .append(" + ");
+            // ClassName::methodName
+            code.append("\"")
+                    .append(m.getDeclaringClass().getSimpleName())
+                    .append("::")
+                    .append(m.getName())
+                    .append("(\"");
+            // Arguments
+            code.append(" + ");
+            int argCount = m.getParameterTypes().length;
+            for (int i = 1; i <= argCount; i++) {
+                if (i != 1) {
+                    code.append(" + \", \" + ");
+                }
+                code.append("$").append(i);
+            }
+            // Right Bracket
+            code.append(" + \")\"");
+            code.append(");");
+            return code.toString();
+        }
+
+        private String getCodeLogMethodResult(CtMethod m, String result) throws NotFoundException {
+            m.getDeclaringClass();
+            StringBuilder code = new StringBuilder();
+
+            // Prefix
+            code.append("System.err.println(")
+                    .append(LOG_PREFIX_STRING_CODE)
+                    .append(" + ");
+
+            // ClassName::methodName
+            code.append("\"")
+                    .append(m.getDeclaringClass().getSimpleName())
+                    .append("::")
+                    .append(m.getName());
+            // Result
+            code.append(" + \"  ==> \"");
+            code.append(" + ");
+            code.append(result);
+            code.append(");");
+
+            return code.toString();
         }
 
         private String getCodeLogMethodArgsAndResult(CtMethod m, String result) throws NotFoundException {
@@ -232,7 +287,7 @@ public class LogAgent {
             code.append(" + \")\"");
 
             // Result
-            code.append(" + \" ==> \"");
+            code.append(" + \"  ==> \"");
             code.append(" + ");
             code.append(result);
             code.append(");");
