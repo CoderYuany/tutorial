@@ -125,8 +125,8 @@ public class LogAgent {
 
     private static class Transformer implements ClassFileTransformer {
         private final Map<String, List<MethodDesc>> instructionMap;
-        private boolean logForParams = false;
-        private boolean logForResult = false;
+        private boolean logForParams;
+        private boolean logForResult;
 
         private Transformer(boolean logForParams, boolean logForResult, Map<String, List<MethodDesc>> instrumentMethods) {
             this.logForParams = logForParams;
