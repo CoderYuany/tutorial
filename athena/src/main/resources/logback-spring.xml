@@ -100,7 +100,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.github.dqqzj" level="INFO"/>
+    <logger name="com.github.dqqzj.log" level="INFO"/>
     <root level="INFO">
         <appender-ref ref="ERROR"/>
         <appender-ref ref="INFO"/>

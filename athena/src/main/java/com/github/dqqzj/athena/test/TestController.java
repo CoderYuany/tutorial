@@ -24,7 +24,7 @@ public class TestController {
     TestService testService;
 
     @GetMapping("hello")
-    @LogAdvice
+    //@LogAdvice
     public ResultVO hello(Integer x,double y) {
         try {
             testService.hello(x,y);

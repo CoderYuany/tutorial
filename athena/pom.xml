@@ -23,6 +23,12 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.24.0-GA</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
 		</dependency>
@@ -62,23 +68,24 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!-- Compiler options  -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<!--  Packaging options -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
 					<archive>
-						<manifest>
-							<addClasspath>true</addClasspath>
-						</manifest>
 						<manifestEntries>
-							<!-- 参数方式启动agent需要这个 -->
-							<Premain-Class>com.github.dqqzj.athena.agent.PreMain</Premain-Class>
-							<!-- 启动后附加启动agent需要这个 -->
-							<Agent-Class>com.github.dqqzj.athena.agent.Test</Agent-Class>
-							<!-- 是否可以重新转换类 -->
+							<Premain-Class>com.github.dqqzj.athena.agent.LogAgent</Premain-Class>
 							<Can-Retransform-Classes>true</Can-Retransform-Classes>
-							<!-- 是否可以重新定义类 -->
-							<Can-Redefine-Classes>true</Can-Redefine-Classes>
 						</manifestEntries>
 					</archive>
 				</configuration>
