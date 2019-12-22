@@ -22,7 +22,7 @@ public class AgentUtils {
     private static final String SPLIT_SEMICOLON = ";";
     private static final Pattern PATTERN = Pattern.compile("([^:]+)#([^(]+)\\(([^)]+)\\)");
 
-    public static Optional<MethodDesc> parseMethodDesc(String desc) {
+    /*public static Optional<MethodDesc> parseMethodDesc(String desc) {
         Matcher matcher = PATTERN.matcher(desc);
         if (matcher.matches()) {
             String className = matcher.group(1);
@@ -49,5 +49,5 @@ public class AgentUtils {
             }
         }
         return result;
-    }
+    }*/
 }

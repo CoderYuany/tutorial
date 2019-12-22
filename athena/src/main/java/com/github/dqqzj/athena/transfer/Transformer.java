@@ -8,13 +8,11 @@ import javassist.CtClass;
 import javassist.CtField;
 import javassist.CtMethod;
 import lombok.extern.slf4j.Slf4j;
-
 import java.lang.instrument.ClassFileTransformer;
 import java.security.ProtectionDomain;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Stream;
 
 /**
  * @author qinzhongjian
@@ -65,7 +63,8 @@ public class Transformer implements ClassFileTransformer {
 
     private void instrumentMethod(ClassPool pool, CtClass ctClass, MethodDesc methodDesc) {
         try {
-            CtClass[] methodArgs = Stream.of(methodDesc.getMethodArgs())
+            CtClass[] methodArgs = methodDesc.getMethodArgs()
+                    .stream()
                     .map(type -> getCtClass(pool, type))
                     .toArray(CtClass[]::new);
             CtMethod ctMethod = ctClass.getDeclaredMethod(methodDesc.getMethodName(), methodArgs);
