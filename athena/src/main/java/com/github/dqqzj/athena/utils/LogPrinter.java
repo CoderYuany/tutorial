@@ -57,7 +57,7 @@ public class LogPrinter {
                 .append("::")
                 .append(m.getName());
         // Result
-        code.append(" \" + \"  ==> \"");
+        code.append(" \" + \"  ==>  \"");
         code.append(" + ");
         code.append(result);
         code.append(");");
@@ -91,7 +91,7 @@ public class LogPrinter {
         // Right Bracket
         code.append(" + \")\"");
         // Result
-        code.append(" + \"  ==> \"");
+        code.append(" + \"  ==>  \"");
         code.append(" + ");
         code.append(result);
         code.append(");");
