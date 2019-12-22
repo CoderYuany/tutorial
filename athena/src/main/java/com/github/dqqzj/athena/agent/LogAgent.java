@@ -15,9 +15,14 @@ import java.util.stream.Collectors;
  * <pre>java -javaagent:target/athena-0.0.1-SNAPSHOT.jar={opts} application.jar<pre/>
  *
  * Example:
- *  java -javaagent:/Users/qinzhongjian/IdeaProjects/tutorial/athena/target/athena-0.0.1-SNAPSHOT.jar={"logForParams":true,"logForResult":false,"methods":["com.github.dqqzj.athena.test.TestController#hello(java.lang.Integer,double)","com.github.dqqzj.athena.test.TestService#hello(java.lang.Integer,double)"]}
- * TODO 后期考虑支持class级别和扫描包级别等其他手段，以做到更加灵活配置
- * @see AgentArgs 将其进行转化为json字符串作为参数用于传递给jvm使用
+ *  一、如果你是采用方法级别的字节码增强，请参照如下方式：
+ *   opts={\"logForParams\":true,\"logForResult\":false,\"methods\":[{\"className\":\"com.github.dqqzj.athena.test.TestController\",\"methodArgs\":[\"java.lang.Integer\",\"double\"],\"methodName\":\"hello\"},{\"className\":\"com.github.dqqzj.athena.test.TestService\",\"methodArgs\":[\"java.lang.Integer\",\"double\"],\"methodName\":\"hello\"}]}
+ *  二、如果你是采用类级别的字节码增强，请参照如下方式：TODO
+ *  三、如果你是采用包级别的字节码增强，请参照如下方式：TODO
+ * opts就是将AgentArgs对象进行转化为json字符串作为参数用于传递给jvm的agentArgs，
+ * 详细参数细节参考如下：
+ * @see AgentArgs
+ * 如果你是
  * @since JDK 1.8.0_212-b10
  */
 public class LogAgent {
