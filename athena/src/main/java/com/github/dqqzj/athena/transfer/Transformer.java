@@ -1,6 +1,7 @@
 package com.github.dqqzj.athena.transfer;
 
 import com.alibaba.fastjson.JSON;
+import com.github.dqqzj.athena.agent.AgentArgs;
 import com.github.dqqzj.athena.utils.LogPrinter;
 import javassist.ClassPool;
 import javassist.CtClass;
@@ -28,9 +29,9 @@ public class Transformer implements ClassFileTransformer {
     private boolean logForParams;
     private boolean logForResult;
 
-    public Transformer(boolean logForParams, boolean logForResult, Map<String, List<MethodDesc>> instrumentMethods) {
-        this.logForParams = logForParams;
-        this.logForResult = logForResult;
+    public Transformer(AgentArgs agentArgs, Map<String, List<MethodDesc>> instrumentMethods) {
+        this.logForParams = agentArgs.isLogForParams();
+        this.logForResult = agentArgs.isLogForResult();
         this.instructionMap = instrumentMethods;
     }
 

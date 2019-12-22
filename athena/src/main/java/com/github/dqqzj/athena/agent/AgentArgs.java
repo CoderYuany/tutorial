@@ -1,5 +1,6 @@
 package com.github.dqqzj.athena.agent;
 
+import com.github.dqqzj.athena.transfer.MethodDesc;
 import lombok.Data;
 import lombok.ToString;
 import org.springframework.util.CollectionUtils;
@@ -23,17 +24,17 @@ public class AgentArgs implements Serializable {
     /**
      * 是否输出入参
      */
-    boolean logForParams = false;
+    boolean logForParams;
 
     /**
      * 是否输出出参
      */
-    boolean logForResult = false;
+    boolean logForResult;
 
     /**
      * 指定方法进行字节码增强
      */
-    List<String> methods;
+    List<MethodDesc> methods;
 
     /**
      * 指定类中的所有方法进行字节码增强
@@ -53,5 +54,11 @@ public class AgentArgs implements Serializable {
     }
     private boolean checkPackages() {
         return CollectionUtils.isEmpty(this.packages) ? false : true;
+    }
+    protected boolean isBytecodeEnhanced() {
+        if (checkMethods() || checkClasses() || checkPackages()) {
+            return true;
+        }
+        return false;
     }
 }
