@@ -27,7 +27,7 @@ public class TestController {
     //@LogAdvice
     public ResultVO hello(Integer x,double y) {
         try {
-            testService.hello(x,y);
+            testService.hello(600,88.0);
         }catch (Exception e) {
             log.error("hello error. x:{},y:{}",x,y,e);
         }
