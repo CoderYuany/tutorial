@@ -1,9 +1,7 @@
 package com.github.dqqzj.athena.utils;
 
 import com.github.dqqzj.athena.transfer.MethodDesc;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import lombok.extern.slf4j.Slf4j;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -17,8 +15,9 @@ import java.util.stream.Stream;
  * @description TODO
  * @since JDK 1.8.0_212-b10
  */
+@Slf4j
 public class AgentUtils {
-    private static Logger logger = LoggerFactory.getLogger(AgentUtils.class);
+
     private static final String SPLIT_EQUALS = "=";
     private static final String SPLIT_SEMICOLON = ";";
     private static final Pattern PATTERN = Pattern.compile("([^:]+)#([^(]+)\\(([^)]+)\\)");
@@ -46,8 +45,7 @@ public class AgentUtils {
             if (argParts.length == 2) {
                 result.put(argParts[0].trim(), argParts[1].trim());
             } else {
-                System.out.println("parseAgentArgs ignoring.....");
-                logger.warn("parseAgentArgs ignoring agentArg");
+                log.warn("parseAgentArgs ignoring agentArg");
             }
         }
         return result;
