@@ -6,7 +6,7 @@ import javassist.NotFoundException;
 /**
  * @author qinzhongjian
  * @date created in 2019/12/22 00:11
- * @description TODO
+ * @description 输出日志工具类
  * @since JDK 1.8.0_212-b10
  */
 public class LogPrinter {
