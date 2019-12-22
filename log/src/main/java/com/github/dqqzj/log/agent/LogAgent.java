@@ -1,17 +1,17 @@
-package com.github.dqqzj.log;
+package com.github.dqqzj.log.agent;
 
+import com.github.dqqzj.log.transfer.MethodDesc;
+import com.github.dqqzj.log.transfer.Transformer;
 import com.github.dqqzj.log.utils.AgentUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 
 import java.lang.instrument.Instrumentation;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -39,12 +39,11 @@ import java.util.stream.Stream;
  * @since JDK 1.8.0_212-b10
  */
 @Slf4j
-public class LogAgent {
+public class LogAgent implements ApplicationContextAware {
 
     private static final String LOG_FOR_PARAMS = "logForParams";
     private static final String LOG_FOR_RESULT = "logForResult";
-    private static Logger logger = LoggerFactory.getLogger(LogAgent.class);
-
+    private ApplicationContext applicationContext;
     private static final String[] DEFAULT_INSTRUMENT_METHODS = new String[] {
             "java.net.InetAddress::getByName(java.lang.String)",
             "java.net.InetAddress::getByName(java.lang.String, java.net.InetAddress)",
@@ -76,9 +75,13 @@ public class LogAgent {
                 .collect(Collectors.groupingBy(MethodDesc::getClassName));
         //
         log.info("Register transformer.....");
-        logger.info("0000000000");
+        log.info("0000000000");
         inst.addTransformer(new Transformer(logForParams, logForResult, instructionMap));
         log.info("premain   end.....");
     }
 
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+    }
 }

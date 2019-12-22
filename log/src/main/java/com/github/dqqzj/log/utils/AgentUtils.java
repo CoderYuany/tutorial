@@ -1,7 +1,6 @@
 package com.github.dqqzj.log.utils;
 
-import com.github.dqqzj.log.LogAgent;
-import com.github.dqqzj.log.MethodDesc;
+import com.github.dqqzj.log.transfer.MethodDesc;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +21,7 @@ public class AgentUtils {
     private static Logger logger = LoggerFactory.getLogger(AgentUtils.class);
     private static final String SPLIT_EQUALS = "=";
     private static final String SPLIT_SEMICOLON = ";";
-    private static final Pattern PATTERN = Pattern.compile("([^:]+)::([^(]+)\\(([^)]+)\\)");
+    private static final Pattern PATTERN = Pattern.compile("([^:]+)#([^(]+)\\(([^)]+)\\)");
 
     public static Optional<MethodDesc> parseMethodDesc(String desc) {
         Matcher matcher = PATTERN.matcher(desc);

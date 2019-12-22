@@ -1,134 +1,312 @@
-2019-12-22 00:03:30.872 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
-                Shutting down ExecutorService 'applicationTaskExecutor'
-2019-12-22 00:03:54.354 [main] INFO  com.github.dqqzj.log.LogApplication -
-                Starting LogApplication on MacBook-Pro.local with PID 16970 (/Users/qinzhongjian/IdeaProjects/tutorial/log/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
-2019-12-22 00:03:54.356 [main] INFO  com.github.dqqzj.log.LogApplication -
+2019-12-22 14:20:42.967 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Starting LogApplication on MacBook-Pro.local with PID 18436 (/Users/qinzhongjian/IdeaProjects/tutorial/log/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
+2019-12-22 14:20:42.969 [main] INFO  com.github.dqqzj.log.LogApplication -
                 No active profile set, falling back to default profiles: default
-2019-12-22 00:03:55.173 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+2019-12-22 14:20:43.738 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
                 Tomcat initialized with port(s): 8080 (http)
-2019-12-22 00:03:55.182 [main] INFO  org.apache.catalina.core.StandardService -
+2019-12-22 14:20:43.747 [main] INFO  org.apache.catalina.core.StandardService -
                 Starting service [Tomcat]
-2019-12-22 00:03:55.182 [main] INFO  org.apache.catalina.core.StandardEngine -
+2019-12-22 14:20:43.748 [main] INFO  org.apache.catalina.core.StandardEngine -
                 Starting Servlet engine: [Apache Tomcat/9.0.27]
-2019-12-22 00:03:55.250 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+2019-12-22 14:20:43.812 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
                 Initializing Spring embedded WebApplicationContext
-2019-12-22 00:03:55.251 [main] INFO  org.springframework.web.context.ContextLoader -
-                Root WebApplicationContext: initialization completed in 845 ms
-2019-12-22 00:03:55.447 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+2019-12-22 14:20:43.812 [main] INFO  org.springframework.web.context.ContextLoader -
+                Root WebApplicationContext: initialization completed in 791 ms
+2019-12-22 14:20:43.964 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
                 Initializing ExecutorService 'applicationTaskExecutor'
-2019-12-22 00:03:55.766 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+2019-12-22 14:20:44.132 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
                 Tomcat started on port(s): 8080 (http) with context path ''
-2019-12-22 00:03:55.770 [main] INFO  com.github.dqqzj.log.LogApplication -
-                Started LogApplication in 2.066 seconds (JVM running for 2.877)
-2019-12-22 00:19:52.490 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+2019-12-22 14:20:44.136 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Started LogApplication in 1.894 seconds (JVM running for 2.768)
+2019-12-22 14:20:50.107 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 14:20:50.107 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Initializing Servlet 'dispatcherServlet'
+2019-12-22 14:20:50.112 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Completed initialization in 5 ms
+2019-12-22 14:20:50.130 [http-nio-8080-exec-1] INFO  com.github.dqqzj.log.TestController -
+                TestMain start........
+2019-12-22 14:22:44.881 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
                 Shutting down ExecutorService 'applicationTaskExecutor'
-2019-12-22 00:20:12.473 [main] INFO  com.github.dqqzj.log.LogApplication -
-                Starting LogApplication on MacBook-Pro.local with PID 17041 (/Users/qinzhongjian/IdeaProjects/tutorial/log/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
-2019-12-22 00:20:12.475 [main] INFO  com.github.dqqzj.log.LogApplication -
+2019-12-22 14:24:17.962 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Starting LogApplication on MacBook-Pro.local with PID 18476 (/Users/qinzhongjian/IdeaProjects/tutorial/log/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
+2019-12-22 14:24:17.964 [main] INFO  com.github.dqqzj.log.LogApplication -
                 No active profile set, falling back to default profiles: default
-2019-12-22 00:20:13.338 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+2019-12-22 14:24:18.858 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
                 Tomcat initialized with port(s): 8080 (http)
-2019-12-22 00:20:13.347 [main] INFO  org.apache.catalina.core.StandardService -
+2019-12-22 14:24:18.867 [main] INFO  org.apache.catalina.core.StandardService -
                 Starting service [Tomcat]
-2019-12-22 00:20:13.348 [main] INFO  org.apache.catalina.core.StandardEngine -
+2019-12-22 14:24:18.867 [main] INFO  org.apache.catalina.core.StandardEngine -
                 Starting Servlet engine: [Apache Tomcat/9.0.27]
-2019-12-22 00:20:13.412 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+2019-12-22 14:24:18.929 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
                 Initializing Spring embedded WebApplicationContext
-2019-12-22 00:20:13.413 [main] INFO  org.springframework.web.context.ContextLoader -
-                Root WebApplicationContext: initialization completed in 805 ms
-2019-12-22 00:20:13.673 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+2019-12-22 14:24:18.929 [main] INFO  org.springframework.web.context.ContextLoader -
+                Root WebApplicationContext: initialization completed in 872 ms
+2019-12-22 14:24:19.117 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
                 Initializing ExecutorService 'applicationTaskExecutor'
-2019-12-22 00:20:13.911 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+2019-12-22 14:24:19.281 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
                 Tomcat started on port(s): 8080 (http) with context path ''
-2019-12-22 00:20:13.916 [main] INFO  com.github.dqqzj.log.LogApplication -
-                Started LogApplication in 2.086 seconds (JVM running for 2.856)
-2019-12-22 00:27:15.725 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+2019-12-22 14:24:19.284 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Started LogApplication in 2.066 seconds (JVM running for 2.666)
+2019-12-22 14:24:23.264 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 14:24:23.264 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Initializing Servlet 'dispatcherServlet'
+2019-12-22 14:24:23.269 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Completed initialization in 5 ms
+2019-12-22 14:24:23.287 [http-nio-8080-exec-1] INFO  com.github.dqqzj.log.TestController -
+                TestMain start........
+2019-12-22 14:25:00.968 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
                 Shutting down ExecutorService 'applicationTaskExecutor'
-2019-12-22 00:27:33.356 [main] INFO  com.github.dqqzj.log.LogApplication -
-                Starting LogApplication on MacBook-Pro.local with PID 17078 (/Users/qinzhongjian/IdeaProjects/tutorial/log/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
-2019-12-22 00:27:33.358 [main] INFO  com.github.dqqzj.log.LogApplication -
+2019-12-22 14:27:52.498 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Starting LogApplication on MacBook-Pro.local with PID 18489 (/Users/qinzhongjian/IdeaProjects/tutorial/log/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
+2019-12-22 14:27:52.499 [main] INFO  com.github.dqqzj.log.LogApplication -
                 No active profile set, falling back to default profiles: default
-2019-12-22 00:27:34.201 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+2019-12-22 14:27:53.274 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
                 Tomcat initialized with port(s): 8080 (http)
-2019-12-22 00:27:34.209 [main] INFO  org.apache.catalina.core.StandardService -
+2019-12-22 14:27:53.283 [main] INFO  org.apache.catalina.core.StandardService -
                 Starting service [Tomcat]
-2019-12-22 00:27:34.210 [main] INFO  org.apache.catalina.core.StandardEngine -
+2019-12-22 14:27:53.284 [main] INFO  org.apache.catalina.core.StandardEngine -
                 Starting Servlet engine: [Apache Tomcat/9.0.27]
-2019-12-22 00:27:34.299 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+2019-12-22 14:27:53.348 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
                 Initializing Spring embedded WebApplicationContext
-2019-12-22 00:27:34.300 [main] INFO  org.springframework.web.context.ContextLoader -
-                Root WebApplicationContext: initialization completed in 894 ms
-2019-12-22 00:27:34.495 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+2019-12-22 14:27:53.348 [main] INFO  org.springframework.web.context.ContextLoader -
+                Root WebApplicationContext: initialization completed in 804 ms
+2019-12-22 14:27:53.579 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
                 Initializing ExecutorService 'applicationTaskExecutor'
-2019-12-22 00:27:34.829 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+2019-12-22 14:27:53.761 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
                 Tomcat started on port(s): 8080 (http) with context path ''
-2019-12-22 00:27:34.835 [main] INFO  com.github.dqqzj.log.LogApplication -
-                Started LogApplication in 2.108 seconds (JVM running for 2.823)
-2019-12-22 00:29:06.885 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+2019-12-22 14:27:53.766 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Started LogApplication in 1.789 seconds (JVM running for 4.685)
+2019-12-22 14:28:03.578 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
                 Shutting down ExecutorService 'applicationTaskExecutor'
-2019-12-22 00:30:08.085 [main] INFO  com.github.dqqzj.log.LogApplication -
-                Starting LogApplication on MacBook-Pro.local with PID 17083 (/Users/qinzhongjian/IdeaProjects/tutorial/log/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
-2019-12-22 00:30:08.087 [main] INFO  com.github.dqqzj.log.LogApplication -
+2019-12-22 14:43:05.572 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Starting LogApplication on MacBook-Pro.local with PID 18578 (/Users/qinzhongjian/IdeaProjects/tutorial/log/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
+2019-12-22 14:43:05.573 [main] INFO  com.github.dqqzj.log.LogApplication -
                 No active profile set, falling back to default profiles: default
-2019-12-22 00:30:09.081 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+2019-12-22 14:43:06.713 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
                 Tomcat initialized with port(s): 8080 (http)
-2019-12-22 00:30:09.091 [main] INFO  org.apache.catalina.core.StandardService -
+2019-12-22 14:43:06.722 [main] INFO  org.apache.catalina.core.StandardService -
                 Starting service [Tomcat]
-2019-12-22 00:30:09.092 [main] INFO  org.apache.catalina.core.StandardEngine -
+2019-12-22 14:43:06.722 [main] INFO  org.apache.catalina.core.StandardEngine -
                 Starting Servlet engine: [Apache Tomcat/9.0.27]
-2019-12-22 00:30:09.156 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+2019-12-22 14:43:06.783 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
                 Initializing Spring embedded WebApplicationContext
-2019-12-22 00:30:09.157 [main] INFO  org.springframework.web.context.ContextLoader -
-                Root WebApplicationContext: initialization completed in 1015 ms
-2019-12-22 00:30:09.418 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+2019-12-22 14:43:06.784 [main] INFO  org.springframework.web.context.ContextLoader -
+                Root WebApplicationContext: initialization completed in 1163 ms
+2019-12-22 14:43:07.013 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
                 Initializing ExecutorService 'applicationTaskExecutor'
-2019-12-22 00:30:09.724 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+2019-12-22 14:43:07.168 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
                 Tomcat started on port(s): 8080 (http) with context path ''
-2019-12-22 00:30:09.729 [main] INFO  com.github.dqqzj.log.LogApplication -
-                Started LogApplication in 2.246 seconds (JVM running for 60.297)
-2019-12-22 00:33:09.157 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+2019-12-22 14:43:07.172 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Started LogApplication in 2.445 seconds (JVM running for 3.317)
+2019-12-22 14:45:11.267 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
                 Shutting down ExecutorService 'applicationTaskExecutor'
-2019-12-22 11:47:06.361 [main] INFO  com.github.dqqzj.log.LogApplication -
-                Starting LogApplication on MacBook-Pro.local with PID 17544 (/Users/qinzhongjian/IdeaProjects/tutorial/log/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
-2019-12-22 11:47:06.363 [main] INFO  com.github.dqqzj.log.LogApplication -
+2019-12-22 14:45:16.101 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Starting LogApplication on MacBook-Pro.local with PID 18590 (/Users/qinzhongjian/IdeaProjects/tutorial/log/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
+2019-12-22 14:45:16.103 [main] INFO  com.github.dqqzj.log.LogApplication -
                 No active profile set, falling back to default profiles: default
-2019-12-22 11:47:07.531 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+2019-12-22 14:45:16.933 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
                 Tomcat initialized with port(s): 8080 (http)
-2019-12-22 11:47:07.543 [main] INFO  org.apache.catalina.core.StandardService -
+2019-12-22 14:45:16.941 [main] INFO  org.apache.catalina.core.StandardService -
                 Starting service [Tomcat]
-2019-12-22 11:47:07.543 [main] INFO  org.apache.catalina.core.StandardEngine -
+2019-12-22 14:45:16.941 [main] INFO  org.apache.catalina.core.StandardEngine -
                 Starting Servlet engine: [Apache Tomcat/9.0.27]
-2019-12-22 11:47:07.622 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+2019-12-22 14:45:17.004 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
                 Initializing Spring embedded WebApplicationContext
-2019-12-22 11:47:07.622 [main] INFO  org.springframework.web.context.ContextLoader -
-                Root WebApplicationContext: initialization completed in 1208 ms
-2019-12-22 11:47:07.822 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+2019-12-22 14:45:17.005 [main] INFO  org.springframework.web.context.ContextLoader -
+                Root WebApplicationContext: initialization completed in 851 ms
+2019-12-22 14:45:17.158 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
                 Initializing ExecutorService 'applicationTaskExecutor'
-2019-12-22 11:47:08.071 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+2019-12-22 14:45:17.355 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
                 Tomcat started on port(s): 8080 (http) with context path ''
-2019-12-22 11:47:08.075 [main] INFO  com.github.dqqzj.log.LogApplication -
-                Started LogApplication in 2.342 seconds (JVM running for 54.433)
-2019-12-22 12:00:27.071 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+2019-12-22 14:45:17.359 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Started LogApplication in 1.96 seconds (JVM running for 2.777)
+2019-12-22 14:45:26.817 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 14:45:26.818 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Initializing Servlet 'dispatcherServlet'
+2019-12-22 14:45:26.823 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Completed initialization in 5 ms
+2019-12-22 14:45:26.859 [http-nio-8080-exec-1] INFO  com.github.dqqzj.log.TestController -
+                TestMain start........
+2019-12-22 14:51:43.358 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
                 Shutting down ExecutorService 'applicationTaskExecutor'
-2019-12-22 12:00:45.665 [main] INFO  com.github.dqqzj.log.LogApplication -
-                Starting LogApplication on MacBook-Pro.local with PID 17571 (/Users/qinzhongjian/IdeaProjects/tutorial/log/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
-2019-12-22 12:00:45.667 [main] INFO  com.github.dqqzj.log.LogApplication -
+2019-12-22 14:52:23.239 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Starting LogApplication on MacBook-Pro.local with PID 18676 (/Users/qinzhongjian/IdeaProjects/tutorial/log/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
+2019-12-22 14:52:23.241 [main] INFO  com.github.dqqzj.log.LogApplication -
                 No active profile set, falling back to default profiles: default
-2019-12-22 12:00:46.578 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+2019-12-22 14:52:24.250 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
                 Tomcat initialized with port(s): 8080 (http)
-2019-12-22 12:00:46.589 [main] INFO  org.apache.catalina.core.StandardService -
+2019-12-22 14:52:24.259 [main] INFO  org.apache.catalina.core.StandardService -
                 Starting service [Tomcat]
-2019-12-22 12:00:46.589 [main] INFO  org.apache.catalina.core.StandardEngine -
+2019-12-22 14:52:24.259 [main] INFO  org.apache.catalina.core.StandardEngine -
                 Starting Servlet engine: [Apache Tomcat/9.0.27]
-2019-12-22 12:00:46.654 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+2019-12-22 14:52:24.322 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
                 Initializing Spring embedded WebApplicationContext
-2019-12-22 12:00:46.654 [main] INFO  org.springframework.web.context.ContextLoader -
-                Root WebApplicationContext: initialization completed in 932 ms
-2019-12-22 12:00:46.875 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+2019-12-22 14:52:24.322 [main] INFO  org.springframework.web.context.ContextLoader -
+                Root WebApplicationContext: initialization completed in 970 ms
+2019-12-22 14:52:24.496 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
                 Initializing ExecutorService 'applicationTaskExecutor'
-2019-12-22 12:00:47.078 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+2019-12-22 14:52:24.733 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
                 Tomcat started on port(s): 8080 (http) with context path ''
-2019-12-22 12:00:47.084 [main] INFO  com.github.dqqzj.log.LogApplication -
-                Started LogApplication in 2.382 seconds (JVM running for 3.648)
-2019-12-22 12:03:43.719 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+2019-12-22 14:52:24.739 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Started LogApplication in 2.083 seconds (JVM running for 2.71)
+2019-12-22 14:52:28.959 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 14:52:28.960 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Initializing Servlet 'dispatcherServlet'
+2019-12-22 14:52:28.965 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Completed initialization in 5 ms
+2019-12-22 14:52:29.007 [http-nio-8080-exec-1] INFO  com.github.dqqzj.log.TestController -
+                TestMain start........
+2019-12-22 15:02:07.646 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 15:11:35.296 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Starting LogApplication on MacBook-Pro.local with PID 18708 (/Users/qinzhongjian/IdeaProjects/tutorial/log/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
+2019-12-22 15:11:35.299 [main] INFO  com.github.dqqzj.log.LogApplication -
+                No active profile set, falling back to default profiles: default
+2019-12-22 15:11:36.162 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat initialized with port(s): 8080 (http)
+2019-12-22 15:11:36.170 [main] INFO  org.apache.catalina.core.StandardService -
+                Starting service [Tomcat]
+2019-12-22 15:11:36.171 [main] INFO  org.apache.catalina.core.StandardEngine -
+                Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-22 15:11:36.229 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring embedded WebApplicationContext
+2019-12-22 15:11:36.229 [main] INFO  org.springframework.web.context.ContextLoader -
+                Root WebApplicationContext: initialization completed in 822 ms
+2019-12-22 15:11:36.361 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 15:11:36.562 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-22 15:11:36.566 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Started LogApplication in 1.836 seconds (JVM running for 2.498)
+2019-12-22 15:11:40.327 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 15:11:40.328 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Initializing Servlet 'dispatcherServlet'
+2019-12-22 15:11:40.332 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Completed initialization in 4 ms
+2019-12-22 15:11:40.372 [http-nio-8080-exec-1] INFO  com.github.dqqzj.log.TestController -
+                TestMain start........
+2019-12-22 15:13:06.512 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 15:13:11.226 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Starting LogApplication on MacBook-Pro.local with PID 18719 (/Users/qinzhongjian/IdeaProjects/tutorial/log/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
+2019-12-22 15:13:11.228 [main] INFO  com.github.dqqzj.log.LogApplication -
+                No active profile set, falling back to default profiles: default
+2019-12-22 15:13:12.325 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat initialized with port(s): 8080 (http)
+2019-12-22 15:13:12.334 [main] INFO  org.apache.catalina.core.StandardService -
+                Starting service [Tomcat]
+2019-12-22 15:13:12.334 [main] INFO  org.apache.catalina.core.StandardEngine -
+                Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-22 15:13:12.397 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring embedded WebApplicationContext
+2019-12-22 15:13:12.398 [main] INFO  org.springframework.web.context.ContextLoader -
+                Root WebApplicationContext: initialization completed in 1050 ms
+2019-12-22 15:13:12.553 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 15:13:12.718 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-22 15:13:12.721 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Started LogApplication in 2.087 seconds (JVM running for 2.699)
+2019-12-22 15:13:16.170 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 15:13:16.170 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Initializing Servlet 'dispatcherServlet'
+2019-12-22 15:13:16.186 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Completed initialization in 16 ms
+2019-12-22 15:13:28.585 [http-nio-8080-exec-3] INFO  com.github.dqqzj.log.TestController -
+                TestMain start........
+2019-12-22 15:15:14.057 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 15:15:18.737 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Starting LogApplication on MacBook-Pro.local with PID 18733 (/Users/qinzhongjian/IdeaProjects/tutorial/log/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
+2019-12-22 15:15:18.741 [main] INFO  com.github.dqqzj.log.LogApplication -
+                No active profile set, falling back to default profiles: default
+2019-12-22 15:15:19.721 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat initialized with port(s): 8080 (http)
+2019-12-22 15:15:19.729 [main] INFO  org.apache.catalina.core.StandardService -
+                Starting service [Tomcat]
+2019-12-22 15:15:19.729 [main] INFO  org.apache.catalina.core.StandardEngine -
+                Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-22 15:15:19.793 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring embedded WebApplicationContext
+2019-12-22 15:15:19.793 [main] INFO  org.springframework.web.context.ContextLoader -
+                Root WebApplicationContext: initialization completed in 935 ms
+2019-12-22 15:15:19.968 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 15:15:20.202 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-22 15:15:20.207 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Started LogApplication in 2.041 seconds (JVM running for 2.68)
+2019-12-22 15:15:25.334 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 15:15:25.335 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Initializing Servlet 'dispatcherServlet'
+2019-12-22 15:15:25.339 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Completed initialization in 4 ms
+2019-12-22 15:15:25.368 [http-nio-8080-exec-1] INFO  com.github.dqqzj.log.TestController -
+                TestMain start........
+2019-12-22 15:16:24.377 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 15:19:43.529 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Starting LogApplication on MacBook-Pro.local with PID 18760 (/Users/qinzhongjian/IdeaProjects/tutorial/log/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
+2019-12-22 15:19:43.531 [main] INFO  com.github.dqqzj.log.LogApplication -
+                No active profile set, falling back to default profiles: default
+2019-12-22 15:19:44.384 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat initialized with port(s): 8080 (http)
+2019-12-22 15:19:44.394 [main] INFO  org.apache.catalina.core.StandardService -
+                Starting service [Tomcat]
+2019-12-22 15:19:44.394 [main] INFO  org.apache.catalina.core.StandardEngine -
+                Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-22 15:19:44.457 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring embedded WebApplicationContext
+2019-12-22 15:19:44.457 [main] INFO  org.springframework.web.context.ContextLoader -
+                Root WebApplicationContext: initialization completed in 848 ms
+2019-12-22 15:19:44.602 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 15:19:44.808 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-22 15:19:44.814 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Started LogApplication in 1.91 seconds (JVM running for 2.672)
+2019-12-22 15:19:49.122 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 15:19:49.122 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Initializing Servlet 'dispatcherServlet'
+2019-12-22 15:19:49.126 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Completed initialization in 4 ms
+2019-12-22 15:20:39.405 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 15:20:44.134 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Starting LogApplication on MacBook-Pro.local with PID 18775 (/Users/qinzhongjian/IdeaProjects/tutorial/log/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
+2019-12-22 15:20:44.136 [main] INFO  com.github.dqqzj.log.LogApplication -
+                No active profile set, falling back to default profiles: default
+2019-12-22 15:20:45.077 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat initialized with port(s): 8080 (http)
+2019-12-22 15:20:45.087 [main] INFO  org.apache.catalina.core.StandardService -
+                Starting service [Tomcat]
+2019-12-22 15:20:45.087 [main] INFO  org.apache.catalina.core.StandardEngine -
+                Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-22 15:20:45.161 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring embedded WebApplicationContext
+2019-12-22 15:20:45.162 [main] INFO  org.springframework.web.context.ContextLoader -
+                Root WebApplicationContext: initialization completed in 961 ms
+2019-12-22 15:20:45.324 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 15:20:45.487 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-22 15:20:45.490 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Started LogApplication in 1.996 seconds (JVM running for 2.611)
+2019-12-22 15:20:48.176 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 15:20:48.177 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Initializing Servlet 'dispatcherServlet'
+2019-12-22 15:20:48.181 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Completed initialization in 4 ms
+2019-12-22 15:20:48.209 [http-nio-8080-exec-1] INFO  com.github.dqqzj.log.TestController -
+                change params
+2019-12-22 15:21:57.288 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
                 Shutting down ExecutorService 'applicationTaskExecutor'

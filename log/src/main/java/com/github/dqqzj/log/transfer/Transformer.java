@@ -1,6 +1,7 @@
-package com.github.dqqzj.log;
+package com.github.dqqzj.log.transfer;
 
 import com.alibaba.fastjson.JSON;
+import com.github.dqqzj.log.utils.LogPrinter;
 import javassist.*;
 import lombok.extern.slf4j.Slf4j;
 import java.lang.instrument.ClassFileTransformer;
@@ -43,15 +44,8 @@ public class Transformer implements ClassFileTransformer {
         try {
             ClassPool pool = ClassPool.getDefault();
             CtClass ctClass = pool.get(className);
-            //ClassFile classFile = ctClass.getClassFile();
-            //ConstPool constPool = classFile.getConstPool();
-            //String className = ctClass.toClass().getName();
             CtField ctField = CtField.make("private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(" + className + ".class);", ctClass);
             ctClass.addField(ctField);
-            /*FieldInfo fieldInfo = new FieldInfo(constPool,"logger","Lorg/slf4j/Logger");
-            fieldInfo.setAccessFlags(AccessFlag.PUBLIC);
-            fieldInfo.
-            classFile.addField(fieldInfo);*/
             for (MethodDesc methodDesc : collection) {
                 instrumentMethod(pool, ctClass, methodDesc);
             }
