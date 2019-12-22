@@ -988,3 +988,31 @@ Error starting ApplicationContext. To display the conditions report re-run your 
                 Completed initialization in 10 ms
 2019-12-22 17:40:35.992 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
                 Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 20:58:33.673 [main] INFO  com.github.dqqzj.athena.AthenaApplication -
+                Starting AthenaApplication on MacBook-Pro.local with PID 20052 (/Users/qinzhongjian/IdeaProjects/tutorial/athena/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
+2019-12-22 20:58:33.681 [main] INFO  com.github.dqqzj.athena.AthenaApplication -
+                No active profile set, falling back to default profiles: default
+2019-12-22 20:58:35.439 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat initialized with port(s): 8080 (http)
+2019-12-22 20:58:35.450 [main] INFO  org.apache.catalina.core.StandardService -
+                Starting service [Tomcat]
+2019-12-22 20:58:35.451 [main] INFO  org.apache.catalina.core.StandardEngine -
+                Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-22 20:58:35.539 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring embedded WebApplicationContext
+2019-12-22 20:58:35.540 [main] INFO  org.springframework.web.context.ContextLoader -
+                Root WebApplicationContext: initialization completed in 1755 ms
+2019-12-22 20:58:35.895 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 20:58:36.152 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-22 20:58:36.219 [main] INFO  com.github.dqqzj.athena.AthenaApplication -
+                Started AthenaApplication in 3.685 seconds (JVM running for 4.975)
+2019-12-22 20:58:59.096 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 20:58:59.097 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Initializing Servlet 'dispatcherServlet'
+2019-12-22 20:58:59.110 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Completed initialization in 12 ms
+2019-12-22 21:16:08.859 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Shutting down ExecutorService 'applicationTaskExecutor'
