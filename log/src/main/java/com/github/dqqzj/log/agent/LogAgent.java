@@ -64,7 +64,6 @@ public class LogAgent {
                 .collect(Collectors.groupingBy(MethodDesc::getClassName));
         //
         log.info("Register transformer.....");
-        log.info("0000000000");
         inst.addTransformer(new Transformer(logForParams, logForResult, instructionMap));
         log.info("premain   end.....");
     }

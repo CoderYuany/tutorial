@@ -53,8 +53,7 @@ public class Transformer implements ClassFileTransformer {
             ctClass.detach();
             return byteCode;
         } catch (Throwable e) {
-            System.out.println("instrumentClass invoked class error....");
-            log.error("instrumentClass invoked class error. ", e);
+            log.error("instrumentClass invoked class error. className:{} collection:{}",className,JSON.toJSONString(collection), e);
             return null;
         }
     }
@@ -95,8 +94,9 @@ public class Transformer implements ClassFileTransformer {
                 default:
                     return pool.getCtClass(className);
             }
-        } catch (Throwable ex) {
-            throw new RuntimeException("class not found " + className, ex);
+        } catch (Throwable e) {
+            log.error("getCtClass class not found. className:{}",className,e);
+            throw new RuntimeException("class not found " + className, e);
         }
     }
 
