@@ -100,11 +100,33 @@
         </encoder>
     </appender>
 
-    <logger name="com.github.dqqzj.log" level="INFO"/>
-    <root level="INFO">
-        <appender-ref ref="ERROR"/>
+    <!-- 异步输出，异步的log片段必须在同步段后面，否则不起作用 -->
+    <appender name="FILE-INFO-ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <queueSize>10000</queueSize>
         <appender-ref ref="INFO"/>
+    </appender>
+    <appender name="FILE-WARN-ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <queueSize>512</queueSize>
         <appender-ref ref="WARN"/>
-        <appender-ref ref="DEBUG"/>
+    </appender>
+    <appender name="FILE-ERROR-ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <queueSize>512</queueSize>
+        <appender-ref ref="ERROR"/>
+    </appender>
+    <appender name="FILE-DEBUG-ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <queueSize>512</queueSize>
+        <appender-ref ref="ERROR"/>
+    </appender>
+
+    <logger name="com.github.dqqzj.athena" level="INFO"/>
+    <root level="INFO">
+        <appender-ref ref="FILE-INFO-ASYNC"/>
+        <appender-ref ref="FILE-WARN-ASYNC"/>
+        <appender-ref ref="FILE-ERROR-ASYNC"/>
+        <appender-ref ref="FILE-DEBUG-ASYNC"/>
     </root>
 </configuration>
