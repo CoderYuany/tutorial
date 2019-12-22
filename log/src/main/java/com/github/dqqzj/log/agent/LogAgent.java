@@ -4,9 +4,7 @@ import com.github.dqqzj.log.transfer.MethodDesc;
 import com.github.dqqzj.log.transfer.Transformer;
 import com.github.dqqzj.log.utils.AgentUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 
 import java.lang.instrument.Instrumentation;
 import java.util.List;
@@ -39,21 +37,10 @@ import java.util.stream.Stream;
  * @since JDK 1.8.0_212-b10
  */
 @Slf4j
-public class LogAgent implements ApplicationContextAware {
+public class LogAgent {
 
     private static final String LOG_FOR_PARAMS = "logForParams";
     private static final String LOG_FOR_RESULT = "logForResult";
-    private ApplicationContext applicationContext;
-    private static final String[] DEFAULT_INSTRUMENT_METHODS = new String[] {
-            "java.net.InetAddress::getByName(java.lang.String)",
-            "java.net.InetAddress::getByName(java.lang.String, java.net.InetAddress)",
-            "java.net.Socket::connect(java.net.SocketAddress, int)",
-            "java.net.Socket::bind(java.net.SocketAddress)",
-            "java.net.ServerSocket::bind(java.net.SocketAddress, int)",
-            "java.net.DatagramSocket::bind(java.net.SocketAddress)",
-            "java.net.DatagramSocket::connect(java.net.SocketAddress)",
-            "java.net.DatagramSocket::connect(java.net.InetAddress, int)"
-    };
 
     public static void premain(String agentArgs, Instrumentation inst) {
         // Parse args
@@ -63,9 +50,11 @@ public class LogAgent implements ApplicationContextAware {
         //Get logForResult argument
         boolean logForResult = agentArgsMap.get(LOG_FOR_RESULT) == null ? false : Boolean.valueOf(agentArgsMap.get(LOG_FOR_RESULT));
         // Get methods argument
-        Stream<String> methods = (agentArgsMap.get("methods") == null)
-                ? Stream.of(DEFAULT_INSTRUMENT_METHODS)
-                : Stream.of(agentArgsMap.get("methods").split("\\|"));
+        Object methodArgs = agentArgsMap.get("methods");
+        if (methodArgs == null) {
+            return;
+        }
+        Stream<String> methods = Stream.of(agentArgsMap.get("methods").split("\\|"));
         // Parse method arguments into instruction map
         Map<String, List<MethodDesc>> instructionMap = methods
                 .map(String::trim)
@@ -80,8 +69,4 @@ public class LogAgent implements ApplicationContextAware {
         log.info("premain   end.....");
     }
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
-    }
 }
