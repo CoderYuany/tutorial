@@ -3,6 +3,8 @@ package com.github.dqqzj.athena.agent;
 import com.alibaba.fastjson.JSONObject;
 import com.github.dqqzj.athena.transfer.MethodDesc;
 import com.github.dqqzj.athena.transfer.Transformer;
+import org.springframework.util.CollectionUtils;
+
 import java.lang.instrument.Instrumentation;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +35,12 @@ public class LogAgent {
             AgentArgs args = JSONObject.parseObject(agentArgs, AgentArgs.class);
             if (args.isBytecodeEnhanced()) {
                 //获取进行字节码增强的候选方法
-                Map<String, List<MethodDesc>> instructionMap = args.getMethods().stream()
+                Map<String, List<MethodDesc>> instructionMap = args
+                        .getMethods()
+                        .stream()
+                        .filter(methodDesc ->
+                            !CollectionUtils.isEmpty(methodDesc.getMethodArgs())
+                        )
                         .collect(Collectors.groupingBy(MethodDesc::getClassName));
                 inst.addTransformer(new Transformer(args, instructionMap));
             } else {
