@@ -13,9 +13,8 @@ import java.util.Optional;
  */
 public class test {
     public static void main(String[] args) {
-        String desc = "java.net.InetAddress::getByName(java.lang.String)";
-        String desc1 = "com.github.dqqzj.log.TestController::hello(java.lang.Void)";
-        Optional<MethodDesc> optional = AgentUtils.parseMethodDesc(desc1);
-        System.out.println(optional.get().toString());
+        String x = "logger.warn(java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern(\"yyyy-MM-dd HH:mm:ss.SSS\")) + \" [\" + java.lang.Thread.currentThread().getName() + \"] LogAgent \" + \"com.github.dqqzj.log.TestController::hello + \"  ==> \" + $_);";
+
+        System.out.println(x);
     }
 }

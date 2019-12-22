@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Service
 public class TestService {
     public String hello(String name, Integer age) {
-        return " hello " + name + "your age is " + age;
+        throw new RuntimeException("hahahh");
+       // return " hello " + name + "your age is " + age;
     }
 }

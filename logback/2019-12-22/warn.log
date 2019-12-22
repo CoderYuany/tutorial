@@ -14,3 +14,23 @@
                 2019-12-22 15:20:48.213 [http-nio-8080-exec-1] LogAgent TestService::hello(----dqqzj, 125)
 2019-12-22 15:20:48.215 [http-nio-8080-exec-1] WARN  com.github.dqqzj.log.TestController -
                 2019-12-22 15:20:48.215 [http-nio-8080-exec-1] LogAgent TestController::hello(----dqqzj, 125)
+2019-12-22 16:01:46.361 [http-nio-8080-exec-1] WARN  com.github.dqqzj.log.TestService -
+                2019-12-22 16:01:46.360 [http-nio-8080-exec-1] LogAgent com.github.dqqzj.log.TestService::hello(----dqqzj, 125)
+2019-12-22 16:01:46.362 [http-nio-8080-exec-1] WARN  com.github.dqqzj.log.TestController -
+                2019-12-22 16:01:46.361 [http-nio-8080-exec-1] LogAgent com.github.dqqzj.log.TestController::hello(----dqqzj, 125)
+2019-12-22 16:03:11.710 [http-nio-8080-exec-1] WARN  com.github.dqqzj.log.TestController -
+                2019-12-22 16:03:11.709 [http-nio-8080-exec-1] LogAgent com.github.dqqzj.log.TestController::hello(dqqzj, 25)
+2019-12-22 16:03:11.711 [http-nio-8080-exec-1] WARN  com.github.dqqzj.log.TestService -
+                2019-12-22 16:03:11.711 [http-nio-8080-exec-1] LogAgent com.github.dqqzj.log.TestService::hello(----dqqzj, 125)
+2019-12-22 16:10:52.809 [http-nio-8080-exec-1] WARN  com.github.dqqzj.log.TestController -
+                2019-12-22 16:10:52.808 [http-nio-8080-exec-1] LogAgent com.github.dqqzj.log.TestController::hello(dqqzj, 25)
+2019-12-22 16:10:52.810 [http-nio-8080-exec-1] WARN  com.github.dqqzj.log.TestService -
+                2019-12-22 16:10:52.809 [http-nio-8080-exec-1] LogAgent com.github.dqqzj.log.TestService::hello(----dqqzj, 125)
+2019-12-22 16:10:52.810 [http-nio-8080-exec-1] WARN  com.github.dqqzj.log.TestService -
+                2019-12-22 16:10:52.810 [http-nio-8080-exec-1] LogAgent com.github.dqqzj.log.TestService::hello   ==>  hello ----dqqzjyour age is 125
+2019-12-22 16:10:52.810 [http-nio-8080-exec-1] WARN  com.github.dqqzj.log.TestController -
+                2019-12-22 16:10:52.810 [http-nio-8080-exec-1] LogAgent com.github.dqqzj.log.TestController::hello   ==>  hello ----dqqzjyour age is 125
+2019-12-22 16:14:11.025 [http-nio-8080-exec-1] WARN  com.github.dqqzj.log.TestController -
+                2019-12-22 16:14:11.024 [http-nio-8080-exec-1] LogAgent com.github.dqqzj.log.TestController::hello(dqqzj, 25)
+2019-12-22 16:14:11.026 [http-nio-8080-exec-1] WARN  com.github.dqqzj.log.TestService -
+                2019-12-22 16:14:11.025 [http-nio-8080-exec-1] LogAgent com.github.dqqzj.log.TestService::hello(----dqqzj, 125)
