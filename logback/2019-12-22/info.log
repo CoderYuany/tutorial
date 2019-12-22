@@ -880,3 +880,111 @@ Error starting ApplicationContext. To display the conditions report re-run your 
                 Initializing Servlet 'dispatcherServlet'
 2019-12-22 17:16:31.442 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
                 Completed initialization in 30 ms
+2019-12-22 17:24:06.676 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 17:24:13.292 [main] INFO  com.github.dqqzj.athena.AthenaApplication -
+                Starting AthenaApplication on MacBook-Pro.local with PID 19647 (/Users/qinzhongjian/IdeaProjects/tutorial/athena/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
+2019-12-22 17:24:13.329 [main] INFO  com.github.dqqzj.athena.AthenaApplication -
+                No active profile set, falling back to default profiles: default
+2019-12-22 17:24:14.381 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat initialized with port(s): 8080 (http)
+2019-12-22 17:24:14.389 [main] INFO  org.apache.catalina.core.StandardService -
+                Starting service [Tomcat]
+2019-12-22 17:24:14.389 [main] INFO  org.apache.catalina.core.StandardEngine -
+                Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-22 17:24:14.444 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring embedded WebApplicationContext
+2019-12-22 17:24:14.444 [main] INFO  org.springframework.web.context.ContextLoader -
+                Root WebApplicationContext: initialization completed in 1066 ms
+2019-12-22 17:24:14.687 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 17:24:14.871 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-22 17:24:14.875 [main] INFO  com.github.dqqzj.athena.AthenaApplication -
+                Started AthenaApplication in 2.205 seconds (JVM running for 3.068)
+2019-12-22 17:24:19.598 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 17:24:19.600 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Initializing Servlet 'dispatcherServlet'
+2019-12-22 17:24:19.607 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Completed initialization in 6 ms
+2019-12-22 17:27:13.351 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 17:27:34.737 [main] INFO  com.github.dqqzj.athena.AthenaApplication -
+                Starting AthenaApplication on MacBook-Pro.local with PID 19668 (/Users/qinzhongjian/IdeaProjects/tutorial/athena/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
+2019-12-22 17:27:34.740 [main] INFO  com.github.dqqzj.athena.AthenaApplication -
+                No active profile set, falling back to default profiles: default
+2019-12-22 17:27:35.614 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat initialized with port(s): 8080 (http)
+2019-12-22 17:27:35.622 [main] INFO  org.apache.catalina.core.StandardService -
+                Starting service [Tomcat]
+2019-12-22 17:27:35.622 [main] INFO  org.apache.catalina.core.StandardEngine -
+                Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-22 17:27:35.679 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring embedded WebApplicationContext
+2019-12-22 17:27:35.679 [main] INFO  org.springframework.web.context.ContextLoader -
+                Root WebApplicationContext: initialization completed in 902 ms
+2019-12-22 17:27:35.912 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 17:27:36.144 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-22 17:27:36.148 [main] INFO  com.github.dqqzj.athena.AthenaApplication -
+                Started AthenaApplication in 1.849 seconds (JVM running for 3.424)
+2019-12-22 17:27:40.122 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 17:27:40.122 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Initializing Servlet 'dispatcherServlet'
+2019-12-22 17:27:40.129 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Completed initialization in 7 ms
+2019-12-22 17:31:01.368 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 17:38:16.949 [main] INFO  com.github.dqqzj.athena.AthenaApplication -
+                Starting AthenaApplication on MacBook-Pro.local with PID 19753 (/Users/qinzhongjian/IdeaProjects/tutorial/athena/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
+2019-12-22 17:38:16.958 [main] INFO  com.github.dqqzj.athena.AthenaApplication -
+                No active profile set, falling back to default profiles: default
+2019-12-22 17:38:18.318 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat initialized with port(s): 8080 (http)
+2019-12-22 17:38:18.327 [main] INFO  org.apache.catalina.core.StandardService -
+                Starting service [Tomcat]
+2019-12-22 17:38:18.327 [main] INFO  org.apache.catalina.core.StandardEngine -
+                Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-22 17:38:18.391 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring embedded WebApplicationContext
+2019-12-22 17:38:18.392 [main] INFO  org.springframework.web.context.ContextLoader -
+                Root WebApplicationContext: initialization completed in 1279 ms
+2019-12-22 17:38:18.652 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 17:38:18.922 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-22 17:38:18.929 [main] INFO  com.github.dqqzj.athena.AthenaApplication -
+                Started AthenaApplication in 2.623 seconds (JVM running for 3.379)
+2019-12-22 17:39:21.630 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 17:39:26.518 [main] INFO  com.github.dqqzj.athena.AthenaApplication -
+                Starting AthenaApplication on MacBook-Pro.local with PID 19770 (/Users/qinzhongjian/IdeaProjects/tutorial/athena/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
+2019-12-22 17:39:26.523 [main] INFO  com.github.dqqzj.athena.AthenaApplication -
+                No active profile set, falling back to default profiles: default
+2019-12-22 17:39:27.723 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat initialized with port(s): 8080 (http)
+2019-12-22 17:39:27.733 [main] INFO  org.apache.catalina.core.StandardService -
+                Starting service [Tomcat]
+2019-12-22 17:39:27.734 [main] INFO  org.apache.catalina.core.StandardEngine -
+                Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-22 17:39:27.793 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring embedded WebApplicationContext
+2019-12-22 17:39:27.793 [main] INFO  org.springframework.web.context.ContextLoader -
+                Root WebApplicationContext: initialization completed in 1150 ms
+2019-12-22 17:39:28.007 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 17:39:28.188 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-22 17:39:28.191 [main] INFO  com.github.dqqzj.athena.AthenaApplication -
+                Started AthenaApplication in 2.253 seconds (JVM running for 2.866)
+2019-12-22 17:39:31.957 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 17:39:31.958 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Initializing Servlet 'dispatcherServlet'
+2019-12-22 17:39:31.968 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
+                Completed initialization in 10 ms
+2019-12-22 17:40:35.992 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Shutting down ExecutorService 'applicationTaskExecutor'

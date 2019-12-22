@@ -14,7 +14,7 @@ public class LogPrinter {
     private static final String LOG_ERROR_PREFIX = "logger.error(";
     private static final String TIME_STAMP_STRING_CODE = "java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern(\"yyyy-MM-dd HH:mm:ss.SSS\"))";
     private static final String THREAD_NAME_STRING_CODE = "java.lang.Thread.currentThread().getName()";
-    private static final String LOG_PREFIX_STRING_CODE = TIME_STAMP_STRING_CODE + " + \" [\" + " + THREAD_NAME_STRING_CODE + " + \"] LogAgent \"";
+    private static final String LOG_PREFIX_STRING_CODE = TIME_STAMP_STRING_CODE + " + \" [\" + " + THREAD_NAME_STRING_CODE + " + \"] Athena \"";
 
     public String getCodeLogMethodArgs(CtMethod m) throws NotFoundException {
         StringBuilder code = new StringBuilder();
