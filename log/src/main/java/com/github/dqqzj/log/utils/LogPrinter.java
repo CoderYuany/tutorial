@@ -1,5 +1,6 @@
 package com.github.dqqzj.log.utils;
 
+import javassist.CannotCompileException;
 import javassist.CtMethod;
 import javassist.NotFoundException;
 
@@ -16,7 +17,7 @@ public class LogPrinter {
     private static final String THREAD_NAME_STRING_CODE = "java.lang.Thread.currentThread().getName()";
     private static final String LOG_PREFIX_STRING_CODE = TIME_STAMP_STRING_CODE + " + \" [\" + " + THREAD_NAME_STRING_CODE + " + \"] LogAgent \"";
 
-    public String getCodeLogMethodArgs(CtMethod m) throws NotFoundException {
+    public String getCodeLogMethodArgs(CtMethod m) throws NotFoundException, CannotCompileException {
         StringBuilder code = new StringBuilder();
         // Prefix
         code.append(LOG_WARN_PREFIX)
@@ -24,7 +25,7 @@ public class LogPrinter {
                 .append(" + ");
         // ClassName::methodName
         code.append("\"")
-                .append(m.getDeclaringClass().getSimpleName())
+                .append(m.getDeclaringClass().toClass().getName())
                 .append("::")
                 .append(m.getName())
                 .append("(\"");
@@ -43,7 +44,7 @@ public class LogPrinter {
         return code.toString();
     }
 
-    public String getCodeLogMethodResult(CtMethod m, String result) {
+    public String getCodeLogMethodResult(CtMethod m, String result) throws CannotCompileException {
         StringBuilder code = new StringBuilder();
 
         // Prefix
@@ -53,7 +54,7 @@ public class LogPrinter {
 
         // ClassName::methodName
         code.append("\"")
-                .append(m.getDeclaringClass().getSimpleName())
+                .append(m.getDeclaringClass().toClass().getName())
                 .append("::")
                 .append(m.getName());
         // Result
@@ -65,7 +66,7 @@ public class LogPrinter {
         return code.toString();
     }
 
-    public String getCodeLogMethodArgsAndResult(CtMethod m, String result) throws NotFoundException {
+    public String getCodeLogMethodArgsAndResult(CtMethod m, String result) throws NotFoundException, CannotCompileException {
         StringBuilder code = new StringBuilder();
         // Prefix
         code.append(LOG_ERROR_PREFIX)
@@ -74,7 +75,7 @@ public class LogPrinter {
 
         // ClassName::methodName
         code.append("\"")
-                .append(m.getDeclaringClass().getSimpleName())
+                .append(m.getDeclaringClass().toClass().getName())
                 .append("::")
                 .append(m.getName())
                 .append("(\"");

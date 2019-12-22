@@ -107,7 +107,7 @@ public class Transformer implements ClassFileTransformer {
              */
             if (logForParams) {
                 String successCode = logPrinter.getCodeLogMethodArgs(m);
-                m.insertAfter(successCode);
+                m.insertBefore(successCode);
             }
             /**
              * 方法调用出参的日志打印

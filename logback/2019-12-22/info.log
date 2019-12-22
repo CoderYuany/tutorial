@@ -310,3 +310,29 @@
                 change params
 2019-12-22 15:21:57.288 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
                 Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 15:45:55.531 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Starting LogApplication on MacBook-Pro.local with PID 18966 (/Users/qinzhongjian/IdeaProjects/tutorial/log/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
+2019-12-22 15:45:55.539 [main] INFO  com.github.dqqzj.log.LogApplication -
+                No active profile set, falling back to default profiles: default
+2019-12-22 15:48:55.762 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat initialized with port(s): 8080 (http)
+2019-12-22 15:48:55.771 [main] INFO  org.apache.catalina.core.StandardService -
+                Starting service [Tomcat]
+2019-12-22 15:48:55.772 [main] INFO  org.apache.catalina.core.StandardEngine -
+                Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-22 15:48:55.839 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] -
+                Initializing Spring embedded WebApplicationContext
+2019-12-22 15:48:55.839 [main] INFO  org.springframework.web.context.ContextLoader -
+                Root WebApplicationContext: initialization completed in 180248 ms
+2019-12-22 15:48:56.013 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 15:48:56.216 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -
+                Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-22 15:48:56.224 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Started LogApplication in 181.269 seconds (JVM running for 201.328)
+2019-12-22 15:49:59.282 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 15:50:08.808 [main] INFO  com.github.dqqzj.log.LogApplication -
+                Starting LogApplication on MacBook-Pro.local with PID 18981 (/Users/qinzhongjian/IdeaProjects/tutorial/log/target/classes started by qinzhongjian in /Users/qinzhongjian/IdeaProjects/tutorial)
+2019-12-22 15:50:08.810 [main] INFO  com.github.dqqzj.log.LogApplication -
+                No active profile set, falling back to default profiles: default
