@@ -15,14 +15,14 @@ import java.util.*;
 @Slf4j
 public class AgentUtils {
 
+    /**
+     * @author qinzhongjian
+     * @date 2019/12/23 23:15
+     * @param className
+     * @return java.util.List<com.github.dqqzj.athena.transfer.MethodDesc>
+     * @description 对类级别进行方法描述处理，目前无参方法也进行了处理，尚不知有何问题，后续思考如何处理
+     */
     public static List<MethodDesc> parseMethodDesc(String className) {
-        /**
-         * @author qinzhongjian
-         * @date 2019/12/23 23:15
-         * @param className
-         * @return java.util.List<com.github.dqqzj.athena.transfer.MethodDesc>
-         * @description 对类级别进行方法描述处理，目前无参方法也进行了处理，尚不知有何问题，后续思考如何处理
-         */
         ClassPool pool = ClassPool.getDefault();
         CtClass ctClass = null;
         try {
