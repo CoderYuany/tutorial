@@ -1,13 +1,11 @@
 package com.github.dqqzj.athena.utils;
 
+import com.alibaba.fastjson.JSON;
 import com.github.dqqzj.athena.transfer.MethodDesc;
+import javassist.*;
 import lombok.extern.slf4j.Slf4j;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Stream;
+
+import java.util.*;
 
 /**
  * @author qinzhongjian
@@ -18,36 +16,40 @@ import java.util.stream.Stream;
 @Slf4j
 public class AgentUtils {
 
-    private static final String SPLIT_EQUALS = "=";
-    private static final String SPLIT_SEMICOLON = ";";
-    private static final Pattern PATTERN = Pattern.compile("([^:]+)#([^(]+)\\(([^)]+)\\)");
-
-    /*public static Optional<MethodDesc> parseMethodDesc(String desc) {
-        Matcher matcher = PATTERN.matcher(desc);
-        if (matcher.matches()) {
-            String className = matcher.group(1);
-            String methodName = matcher.group(2);
-            String argString = matcher.group(3);
-            String[] methodArgs = Stream.of(argString.split(","))
-                    .map(String::trim)
-                    .toArray(String[]::new);
-            return Optional.of(new MethodDesc(className, methodName, methodArgs));
+    public static List<MethodDesc> parseMethodDesc(String className) {
+        /**
+         * @author qinzhongjian
+         * @date 2019/12/23 23:15
+         * @param className
+         * @return java.util.List<com.github.dqqzj.athena.transfer.MethodDesc>
+         * @description 对类级别进行方法描述处理，目前无参方法也进行了处理，尚不知有何问题，后续思考如何处理
+         */
+        ClassPool pool = ClassPool.getDefault();
+        CtClass ctClass = null;
+        try {
+            ctClass = pool.get(className);
+        } catch (NotFoundException e) {
+            log.error("AgentUtils parseMethodDesc pool.get error. className:{}",className,e);
         }
-        return Optional.empty();
-    }
-    public static Map<String, String> parseAgentArgs(String agentArgs) {
-        Map<String, String> result = new LinkedHashMap<>();
-        if (agentArgs == null) {
-            return result;
-        }
-        for (String arg : agentArgs.split(SPLIT_SEMICOLON)) {
-            String[] argParts = arg.split(SPLIT_EQUALS);
-            if (argParts.length == 2) {
-                result.put(argParts[0].trim(), argParts[1].trim());
-            } else {
-                log.warn("parseAgentArgs ignoring agentArg");
+        CtMethod[] ctMethods = ctClass.getDeclaredMethods();
+        List<MethodDesc> methodDescList = new ArrayList<>();
+        for (int i=0; i<ctMethods.length; i++) {
+            CtMethod ctMethod = ctMethods[i];
+            CtClass[] parameterTypes = new CtClass[0];
+            try {
+                parameterTypes = ctMethod.getParameterTypes();
+            } catch (NotFoundException e) {
+                log.error("AgentUtils parseMethodDesc ctMethod.getParameterTypes error. className:{}",className,e);
             }
+            List<String> methodArgs = new ArrayList<>(parameterTypes.length);
+            for (int j=0; j<parameterTypes.length; j++) {
+                CtClass parameterType = parameterTypes[j];
+                    methodArgs.add(parameterType.getName());
+            }
+            MethodDesc methodDesc = new MethodDesc(className,ctMethod.getName(),methodArgs);
+            methodDescList.add(methodDesc);
         }
-        return result;
-    }*/
+        return methodDescList;
+    }
+
 }

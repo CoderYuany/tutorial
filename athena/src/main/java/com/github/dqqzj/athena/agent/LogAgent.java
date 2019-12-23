@@ -3,11 +3,14 @@ package com.github.dqqzj.athena.agent;
 import com.alibaba.fastjson.JSONObject;
 import com.github.dqqzj.athena.transfer.MethodDesc;
 import com.github.dqqzj.athena.transfer.Transformer;
+import com.github.dqqzj.athena.utils.AgentUtils;
+import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.util.CollectionUtils;
 
 import java.lang.instrument.Instrumentation;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -30,6 +33,7 @@ import java.util.stream.Collectors;
 public class LogAgent {
 
     public static void premain(String agentArgs, Instrumentation inst) {
+
         System.out.println(agentArgs);
         try {
             AgentArgs args = JSONObject.parseObject(agentArgs, AgentArgs.class);
@@ -42,6 +46,9 @@ public class LogAgent {
                             !CollectionUtils.isEmpty(methodDesc.getMethodArgs())
                         )
                         .collect(Collectors.groupingBy(MethodDesc::getClassName));
+                List<Class<?>> classes = args.getClasses();
+                Map<String, List<MethodDesc>> parseClasses = classes.stream().map(Class::getName).collect(Collectors.toMap(s -> s, AgentUtils::parseMethodDesc));
+                instructionMap.putAll(parseClasses);
                 inst.addTransformer(new Transformer(args, instructionMap));
             } else {
                 return;

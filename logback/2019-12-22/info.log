@@ -1042,3 +1042,5 @@ Error starting ApplicationContext. To display the conditions report re-run your 
                 Initializing Servlet 'dispatcherServlet'
 2019-12-22 22:09:17.396 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet -
                 Completed initialization in 8 ms
+2019-12-22 22:27:06.716 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor -
+                Shutting down ExecutorService 'applicationTaskExecutor'

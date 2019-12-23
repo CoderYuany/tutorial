@@ -5,6 +5,7 @@ import com.github.dqqzj.athena.agent.AgentArgs;
 import com.github.dqqzj.athena.test.TestController;
 import com.github.dqqzj.athena.test.TestService;
 import com.github.dqqzj.athena.transfer.MethodDesc;
+import com.github.dqqzj.athena.utils.AgentUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -41,5 +42,10 @@ class AthenaApplicationTests {
 		classes.add(TestService.class);
 		args.setClasses(classes);
 		System.out.println(JSON.toJSONString(args));
+	}
+	@Test
+	void testAgentUtils() {
+		List<MethodDesc> methodDescs = AgentUtils.parseMethodDesc(TestController.class.getName());
+		System.out.println(JSON.toJSONString(JSON.toJSONString(methodDescs)));
 	}
 }

@@ -33,4 +33,12 @@ public class TestController {
         }
          return ResultVO.ofSuccess("ss");
     }
+
+    public ResultVO test(Integer x, Test test) {
+
+        return ResultVO.ofSuccess("ss");
+    }
+    private String get() {
+        return "ss";
+    }
 }
