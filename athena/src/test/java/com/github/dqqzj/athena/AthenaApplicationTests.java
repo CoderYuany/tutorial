@@ -6,11 +6,14 @@ import com.github.dqqzj.athena.test.TestController;
 import com.github.dqqzj.athena.test.TestService;
 import com.github.dqqzj.athena.transfer.MethodDesc;
 import com.github.dqqzj.athena.utils.AgentUtils;
+import com.github.dqqzj.athena.utils.PackageUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 //@SpringBootTest
 class AthenaApplicationTests {
@@ -45,7 +48,12 @@ class AthenaApplicationTests {
 	}
 	@Test
 	void testAgentUtils() {
-		List<MethodDesc> methodDescs = AgentUtils.parseMethodDesc(TestController.class.getName());
+		List<MethodDesc> methodDescs = AgentUtils.parseMethodDescForClass(TestController.class.getName());
 		System.out.println(JSON.toJSONString(JSON.toJSONString(methodDescs)));
+	}
+	@Test
+	void testPackageUtils() throws IOException {
+		Set<String> classNames = PackageUtils.getClassName("com.github.dqqzj",true);
+		classNames.forEach(System.out::println);
 	}
 }

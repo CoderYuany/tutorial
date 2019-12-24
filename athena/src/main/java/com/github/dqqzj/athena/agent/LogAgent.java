@@ -50,7 +50,7 @@ public class LogAgent {
                 }
                 List<Class<?>> classes = args.getClasses();
                 if (!CollectionUtils.isEmpty(classes)) {
-                    instructionMap.putAll(classes.stream().map(Class::getName).collect(Collectors.toMap(s -> s, AgentUtils::parseMethodDesc)));
+                    instructionMap.putAll(classes.stream().map(Class::getName).collect(Collectors.toMap(s -> s, AgentUtils::parseMethodDescForClass)));
                 }
                 inst.addTransformer(new Transformer(args, instructionMap));
             } else {
