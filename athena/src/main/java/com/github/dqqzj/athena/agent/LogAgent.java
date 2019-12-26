@@ -40,12 +40,12 @@ public class LogAgent {
                 //获取进行字节码增强的候选方法
                 List<MethodDesc> methods = args.getMethods();
                 if (!CollectionUtils.isEmpty(methods)) {
-                     instructionMap.putAll(methods
-                             .stream()
-                             .filter(methodDesc ->
-                                     !CollectionUtils.isEmpty(methodDesc.getMethodArgs())
-                             )
-                             .collect(Collectors.groupingBy(MethodDesc::getClassName)));
+                    instructionMap.putAll(methods
+                            .stream()
+                            .filter(methodDesc ->
+                                    !CollectionUtils.isEmpty(methodDesc.getMethodArgs())
+                            )
+                            .collect(Collectors.groupingBy(MethodDesc::getClassName)));
                 }
                 List<Class<?>> classes = args.getClasses();
                 if (!CollectionUtils.isEmpty(classes)) {
@@ -55,7 +55,7 @@ public class LogAgent {
                 Set<String> classNames = new LinkedHashSet<>();
                 if (!CollectionUtils.isEmpty(packages)) {
                     packages.forEach(packageName -> {
-                        classNames.addAll(PackageUtils.getClassName(packageName,true));
+                        classNames.addAll(PackageUtils.getClassName(packageName, true));
                     });
                     instructionMap.putAll(instructionMap);
                 }
