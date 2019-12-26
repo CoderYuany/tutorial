@@ -4,12 +4,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.github.dqqzj.athena.transfer.MethodDesc;
 import com.github.dqqzj.athena.transfer.Transformer;
 import com.github.dqqzj.athena.utils.AgentUtils;
+import com.github.dqqzj.athena.utils.PackageUtils;
 import org.springframework.util.CollectionUtils;
 
 import java.lang.instrument.Instrumentation;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -51,6 +50,14 @@ public class LogAgent {
                 List<Class<?>> classes = args.getClasses();
                 if (!CollectionUtils.isEmpty(classes)) {
                     instructionMap.putAll(classes.stream().map(Class::getName).collect(Collectors.toMap(s -> s, AgentUtils::parseMethodDescForClass)));
+                }
+                List<String> packages = args.getPackages();
+                Set<String> classNames = new LinkedHashSet<>();
+                if (!CollectionUtils.isEmpty(packages)) {
+                    packages.forEach(packageName -> {
+                        classNames.addAll(PackageUtils.getClassName(packageName,true));
+                    });
+                    instructionMap.putAll(instructionMap);
                 }
                 inst.addTransformer(new Transformer(args, instructionMap));
             } else {
