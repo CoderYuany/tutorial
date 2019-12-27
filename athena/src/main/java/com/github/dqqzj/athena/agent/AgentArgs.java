@@ -6,6 +6,7 @@ import lombok.ToString;
 import org.springframework.util.CollectionUtils;
 
 import java.io.Serializable;
+import java.lang.annotation.Annotation;
 import java.util.List;
 
 /**
@@ -46,6 +47,11 @@ public class AgentArgs implements Serializable {
      */
     List<String> packages;
 
+    /**
+     * 指定注解的类进行字节码增强（主要考虑类似阿里的hsf调用进行入参和出参记录）
+     */
+    List<Annotation> annotations;
+
     private boolean checkMethods() {
         return CollectionUtils.isEmpty(this.methods) ? false : true;
     }
@@ -55,8 +61,11 @@ public class AgentArgs implements Serializable {
     private boolean checkPackages() {
         return CollectionUtils.isEmpty(this.packages) ? false : true;
     }
+    private boolean checkAnnotations() {
+        return CollectionUtils.isEmpty(this.annotations) ? false : true;
+    }
     protected boolean isBytecodeEnhanced() {
-        if (checkMethods() || checkClasses() || checkPackages()) {
+        if (checkMethods() || checkClasses() || checkPackages() || checkAnnotations()) {
             return true;
         }
         return false;

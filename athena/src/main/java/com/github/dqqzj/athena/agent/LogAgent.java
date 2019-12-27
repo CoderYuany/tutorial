@@ -7,6 +7,7 @@ import com.github.dqqzj.athena.utils.AgentUtils;
 import com.github.dqqzj.athena.utils.PackageUtils;
 import org.springframework.util.CollectionUtils;
 
+import java.lang.annotation.Annotation;
 import java.lang.instrument.Instrumentation;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -54,9 +55,9 @@ public class LogAgent {
                 List<String> packages = args.getPackages();
                 Set<String> classNames = new LinkedHashSet<>();
                 if (!CollectionUtils.isEmpty(packages)) {
-                    packages.forEach(packageName -> {
-                        classNames.addAll(PackageUtils.getClassName(packageName, true));
-                    });
+                    packages.forEach(packageName ->
+                        classNames.addAll(PackageUtils.getClassName(packageName, true))
+                    );
                     instructionMap.putAll(instructionMap);
                 }
                 inst.addTransformer(new Transformer(args, instructionMap));
